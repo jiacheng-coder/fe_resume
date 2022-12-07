@@ -1,12 +1,20 @@
 module.exports = {
-  purge: [],
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-  // darkMode: media, // or 'media' or 'class'
   theme: {
-    extend: {},
+    themes: ["cupcake", "night", "aqua"],
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  daisyui: {
+    styled: true,
+    themes: true,
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false,
+    prefix: "",
+    darkTheme: "cupcake",
+  },
 }

@@ -14,7 +14,7 @@
       </div>
     </div>
     <!-- 联系方式, 小于md时隐藏 -->
-    <div class="mx-4 my-10 md:block">
+    <div class="my-10 md:block ml-8 mr-4">
       <div class="my-5 text-lg text-gray-600 flex">
         <div class="mr-2">
           <span class="iconfont icon-wechat"></span>

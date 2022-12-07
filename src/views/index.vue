@@ -16,9 +16,13 @@
 import NavBar from '../components/NavBar.vue';
 import LeftSideBarVue from '../components/LeftSideBar.vue';
 import RightSideBarVue from '../components/RightSideBar.vue'
+// interface projectType {
+//   company: string,
+//   projects: Array<object>
+// }
 
 const name = '诸嘉诚'
-const skills = ['Vue2', 'Vue3', 'React', '原生小程序', 'uniapp', 'ElementPlus', 'GraceUI']
+const skills = ['Vue2', 'Vue3', 'Vue Router', 'Pinia', 'React', 'Mobx', '微信小程序', 'uniapp', 'ElementPlus', 'GraceUI']
 const features = [
   '熟悉HTML,CSS,JS; 了解TypeScript;',
   '熟悉Vue2, Vue3.2以及VueRouter, Pinia, Element-Plus等生态;',
@@ -27,7 +31,7 @@ const features = [
 ]
 const projectExp = [
   {
-    company: '重庆本初子午科技有限公司',
+    company: '重庆电覆者科技有限公司',
     projects: [
       {
         name: 'Wecqu',

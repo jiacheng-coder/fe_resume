@@ -61,6 +61,10 @@
 
 <script setup lang="ts">
 import Skill from '../components/Skill.vue';
+interface projectType {
+  company: string,
+  projects: Array<object>
+}
 const props = defineProps({
   skills: {
     type: Array<string>,
@@ -69,7 +73,7 @@ const props = defineProps({
     type: Array<string>
   },
   projectExp: {
-    type: Array<Object>
+    type: Array<object>
   }
 })
 </script>
