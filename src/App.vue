@@ -1,9 +1,5 @@
-<script setup lang="ts">
-import Index from './views/index.vue'
-import HomeVue from './views/Home.vue';
-</script>
-
 <template>
-  <Index />
-  <!-- <HomeVue /> -->
+	<router-view></router-view>
 </template>
+<script setup lang="ts">
+</script>

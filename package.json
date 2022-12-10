@@ -13,7 +13,8 @@
     "@heroicons/vue": "^2.0.13",
     "daisyui": "^2.42.1",
     "theme-change": "^2.2.0",
-    "vue": "^3.2.41"
+    "vue": "^3.2.41",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.8",

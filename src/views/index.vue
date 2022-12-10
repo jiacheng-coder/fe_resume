@@ -1,5 +1,7 @@
 <template>
+  <!-- 头部 -->
   <NavBar />
+  <!-- <navbarDaisyuiVue></navbarDaisyuiVue> -->
   <div class="max-w-screen-lg mx-auto my-10 container md:flex">
     <!-- 信息 -->
     <div class="md:w-1/3 p-4 relative">
@@ -14,6 +16,7 @@
 
 <script setup lang="ts">
 import NavBar from '../components/NavBar.vue';
+import navbarDaisyuiVue from '../components/navbar-daisyui.vue';
 import LeftSideBarVue from '../components/LeftSideBar.vue';
 import RightSideBarVue from '../components/RightSideBar.vue'
 // interface projectType {

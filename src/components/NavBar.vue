@@ -28,14 +28,15 @@
           </button> -->
 
           <!-- Profile dropdown -->
-          <label for="my-modal" class="btn">联系我</label>
+          <label for="my-modal">
+            <button class="text-white hover:bg-gray-700 bg-gray-900 px-3 py-2 rounded-md text-base font-medium">About Me</button>
+          </label>
 
           <!-- Put this part before </body> tag -->
           <input type="checkbox" id="my-modal" class="modal-toggle" />
           <div class="modal">
             <div class="modal-box p-10">
               <div class="h-full">
-                <h3 class="font-bold text-lg py-2">您可以通过如下方式联系我</h3>
                 <p class="py-2">邮箱: 2253541907@qq.com</p>
                 <p class="py-2">电话: 15023092023</p>
               </div>
@@ -61,7 +62,8 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 const navigation = [
-  { name: '个人简历', href: '#', current: true },
+  { name: '我的简历', href: '#', current: false },
+  { name: '我的博客', href: '/frontend-resume/blog', current: false },
   { name: '稀土掘金', href: 'https://juejin.cn/user/2538135637997560/posts', current: false },
   { name: 'Gitee链接', href: 'https://gitee.com/zhujiacheng612', current: false },
   // { name: '联系我', href: '#', current: false },
