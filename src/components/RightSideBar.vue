@@ -21,7 +21,7 @@
     <div class="mx-4 mb-6">
       <h1 class="mb-4 text-3xl text-gray-700 font-bold">项目经历</h1>
       <ul>
-        <li class="mb-4" v-for="item in props.projectExp">
+        <li class="mb-4" v-for="item in props.experience">
           <!-- <span class="iconfont icon-pointer mr-2"></span> -->
           <text class="text-2xl font-medium text-gray-800">{{item.company}}</text>
           <!-- 项目 -->
@@ -36,7 +36,7 @@
               <text>{{project.situation}}</text>,
               <text>{{project.target}}</text>,
               <text>{{project.action}}</text>,
-              <text>{{project.result}}</text>.
+              <text>{{project.result}}</text>
             </div>
             <div>
               <text class="mr-4">技术栈:</text>
@@ -61,10 +61,7 @@
 
 <script setup lang="ts">
 import Skill from '../components/Skill.vue';
-interface projectType {
-  company: string,
-  projects: Array<object>
-}
+import { project, projects } from '../../config';
 const props = defineProps({
   skills: {
     type: Array<string>,
@@ -72,8 +69,8 @@ const props = defineProps({
   features: {
     type: Array<string>
   },
-  projectExp: {
-    type: Array<object>
+  experience: {
+    type: Array<projects>
   }
 })
 </script>
