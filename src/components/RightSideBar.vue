@@ -61,7 +61,7 @@
 
 <script setup lang="ts">
 import Skill from '../components/Skill.vue';
-import { project, projects } from '../../config';
+import type { projects } from '../../config';
 const props = defineProps({
   skills: {
     type: Array<string>,

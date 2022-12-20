@@ -2,7 +2,7 @@
   <!-- Header -->
   <NavBar />
   <!-- Main -->
-  <div class="max-w-screen-lg mx-auto my-10 container md:flex">
+  <div class="max-w-screen-lg mx-auto my-10 md:flex">
     <!-- LeftSideBar -->
     <div class="md:w-1/3 p-4 relative">
       <LeftSideBarVue :name="name"/>
@@ -18,8 +18,8 @@
 import NavBar from '../components/NavBar.vue';
 import LeftSideBarVue from '../components/LeftSideBar.vue';
 import RightSideBarVue from '../components/RightSideBar.vue'
-import {project,projects} from '../../config'
-// Person Info
+import type {projects} from '../../config'
+// Person Infomation
 const name = '诸嘉诚'
 const skills = ['Vue2', 'Vue3', 'Vue Router', 'Pinia', 'React', 'Mobx', '微信小程序', 'uniapp', 'ElementPlus', 'GraceUI']
 const features = [
@@ -42,7 +42,7 @@ const experience: Array<projects> = [
         situation: '由于用户反馈现有的课表栏目不能满足研究生课表的多变性',
         target: '我们讨论后决定在原有功能上实现自定义课表的二次开发',
         action: '在查阅相关解决办法后, 我决定采用将表单数据存入小程序缓存, 之后同后端返回的课程数据一起渲染到页面中的解决办法',
-        result: '实现了用户需求, 得到了多位用户的一致好评',
+        result: '最终实现了课表二次开发的需求',
 
         skills: '微信小程序, colorUI, graceUI3'
       },
@@ -55,7 +55,7 @@ const experience: Array<projects> = [
         situation: '由于现有的点击复制功能不符合使用用户的使用习惯',
         target: '经反馈决定将其更换为长按复制的操作方法',
         action: '在查阅相关解决办法后, 我决定采用@longpress方法得到复制后的内容',
-        result: '实现了用户的需求, 受到了用户的好评',
+        result: '实现了用户的需求, 受到了多位用户的好评',
 
         skills: 'uniapp, vue2, graceUI5'
       },
@@ -81,9 +81,3 @@ const experience: Array<projects> = [
   }
 ]
 </script>
-
-<style scoped lang="scss">
-.container {
-  background-color: #f8f8f8;
-}
-</style>
