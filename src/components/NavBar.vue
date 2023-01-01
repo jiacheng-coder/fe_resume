@@ -16,7 +16,8 @@
           </div>
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
-              <a target="_blank" v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
+              <!-- <a target="_blank" v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a> -->
+              <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
             </div>
           </div>
         </div>
@@ -47,6 +48,6 @@ const navigation = [
   { name: '掘金链接', href: 'https://juejin.cn/user/2538135637997560/posts', current: false },
   { name: 'Gitee', href: 'https://gitee.com/zhujiacheng612', current: false },
   { name: 'Email Me', href: 'mailto:2253541907@qq.com', current: false },
-  // { name: '我的博客', href: '/frontend-resume/blog', current: false },
+  { name: '我的博客', href: '/frontend-resume/blog/2', current: false },
 ]
 </script>

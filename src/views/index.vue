@@ -1,6 +1,7 @@
 <template>
   <!-- Header -->
-  <NavBar />
+  <Nav />
+  <!-- <Navbar /> -->
   <!-- Main -->
   <div class="max-w-screen-lg mx-auto my-10 md:flex">
     <!-- LeftSideBar -->
@@ -15,7 +16,8 @@
 </template>
 
 <script setup lang="ts">
-import NavBar from '../components/NavBar.vue';
+import Navbar from '../components/NavBar.vue';
+import Nav from '../components/Nav.vue';
 import LeftSideBarVue from '../components/LeftSideBar.vue';
 import RightSideBarVue from '../components/RightSideBar.vue'
 import type {projects} from '../../config'
