@@ -1,4 +1,4 @@
-import type { articleInfo } from "../type/article"
+import type { articleInfo } from "../types/article"
 
 function apiPost(id: any, status: boolean) {
     let info:articleInfo = {

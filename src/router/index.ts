@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Index from '../views/Index.vue';
+import Login from '../views/Login.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -9,6 +11,11 @@ const router = createRouter({
       component: Index,
     },
     {
+      path: '/login',
+      name: 'login',
+      component: Login,
+    },
+    {
       path: '/test',
       name: 'test',
       component: () => import('../views/Test.vue'),
@@ -16,7 +23,7 @@ const router = createRouter({
     {
       path: '/blog/:id',
       name: 'blog',
-      component: () => import(/*webpackChunkName: 'blog'*/'../views/Blog.vue'),
+      component: () => import(/* webpackChunkName: 'blog' */'../views/Blog.vue'),
       children: [],
     },
     {

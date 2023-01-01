@@ -14,3 +14,19 @@ Since TypeScript cannot handle type information for `.vue` imports, they are shi
 2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
 
 You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+
+## 技术栈
+
+- vue3.2
+- pinia
+- vue-router
+- tailwindcss
+- daisyUI
+
+## 项目结构 (src)
+
+- types: ts 类型
+- store: 全局数据仓库
+- router: 路由信息
+- utils: 工具类
+- api: 发起网络请求
