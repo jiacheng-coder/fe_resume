@@ -35,7 +35,7 @@ import { apiPost } from "../api";
 import type { Ref } from "vue";
 import type { articleInfo } from "../types/article";
 
-import { useMouseMove } from "../utils/mouseMove";
+import { useMouseMove } from "../utils/useMouseMove";
 
 // 1.mousemove
 const { x, y } = useMouseMove();

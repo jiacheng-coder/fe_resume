@@ -31,7 +31,7 @@
     <div class="navbar-center">
       <a class="btn btn-ghost normal-case text-xl">前端小屋🛖</a>
     </div>
-    <div class="navbar-end">
+    <div class="navbar-end" @click="showModal = true">
       <button class="btn btn-ghost btn-circle">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -49,11 +49,25 @@
         </svg>
       </button>
     </div>
+    <Teleport to="body">
+      <!-- 使用这个 modal 组件，传入 prop -->
+      <Modal :show="showModal" @close="showModal = false">
+        <template #header>
+          <h3>了解我</h3>
+        </template>
+        <template #body>
+          <p>一个前端开发小白</p>
+        </template>
+      </Modal>
+    </Teleport>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
+import Modal from "../components/Modal.vue";
+
+const showModal = ref(false);
 const links = [
   {
     name: "Resume Project",
@@ -67,7 +81,6 @@ const links = [
   },
   { name: "Email Me", href: "mailto:2253541907@qq.com" },
 ];
-onMounted(() => {});
 </script>
 
 <style lang="scss" scoped></style>
