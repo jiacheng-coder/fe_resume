@@ -24,14 +24,15 @@
         class="input input-bordered w-full"
         v-model="password"
       />
-      <div class="mt-6 flex">
+      <div class="mt-6 flex px-4">
         <button
           class="btn w-1/3 btn-primary btn-md"
           @click="emit('submit', { username, password })"
         >
           登陆
         </button>
-        <div class="divider divider-horizontal w-1/3"></div>
+        <div class=" w-1/3"></div>
+        <!-- <div class="w-2/8"></div> -->
         <button class="btn w-1/3 btn-md" @click="reset">重置</button>
       </div>
     </div>

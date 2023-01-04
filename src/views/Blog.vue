@@ -10,8 +10,6 @@
       <h2>x: {{ x }}</h2>
       <h2>y: {{ y }}</h2>
     </div>
-    <button @click="jump">click and jump</button>
-    <!-- <router-link to="/blog/1#section3">link</router-link> -->
     <div
       id="section1"
       style="height: 500px; width: 100%; background-color: blueviolet"
@@ -28,17 +26,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch, provide } from "vue";
 import { useRoute } from "vue-router";
 import { apiPost } from "../api";
 
 import type { Ref } from "vue";
 import type { articleInfo } from "../types/article";
+import { InjectionKeyArticleInfo } from "../types/article";
 
-import { useMouseMove } from "../utils/useMouseMove";
+import { useMouse } from "@vueuse/core";
 
 // 1.mousemove
-const { x, y } = useMouseMove();
+// const { x, y } = useMouseMove();
+const {x,y} = useMouse()
 // 2.article
 const route = useRoute();
 // console.log('router: ',$router);
@@ -68,15 +68,10 @@ watch(route, () => {
 });
 // 3.锚点跳转
 const blog = ref(null);
-const jump = () => {
-  const target = blog.value.querySelector(route.hash);
-  console.log("blog jump", target);
-  // const target = showContainer.querySelector(this.$route.hash);
-  target.scrollIntoView({
-    behavior: "smooth", //平滑滚动
-  });
-};
-// onMounted(()=>{
 
-// })
+// 4. provide
+provide(InjectionKeyArticleInfo, {
+  title: "首页",
+  content: "我是一个前端开发小白，欢迎大家来到我的博客",
+});
 </script>
