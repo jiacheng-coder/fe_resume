@@ -45,8 +45,6 @@ import { useUserStore } from "../store/userInfoStore";
 
 const userStore = useUserStore();
 const { username, password } = storeToRefs(userStore);
-// const username = ref(userStore.username);
-// const password = ref(userStore.password);
 
 const emit = defineEmits({
   // 校验 submit 事件

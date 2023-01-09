@@ -1,10 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* @font-face {
-  font-family: Luminous;
-  src: url('../src/assets/font/Source_Han_Sans_SC_Medium_Medium.otf');
-} */
 :root {
   --accent: 124, 58, 237;
   --accent-gradient: linear-gradient(

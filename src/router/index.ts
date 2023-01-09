@@ -6,33 +6,23 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/login',
-      name: 'login',
-      component: Login,
-    },
-    {
       path: '/',
-      name: 'index',
-      component: Index,
+      name: 'Home',
+      component: () => import('../views/Home/Home.vue'),
     },
     {
-      path: '/blog/:id',
-      name: 'blog',
-      component: () => import(/* webpackChunkName: 'blog' */'../views/Blog.vue'),
-      children: [],
+      path: '/login',
+      name: 'Login',
+      component: () => import('../views/Login/Login.vue'),
     },
     {
-      path: '/test',
-      name: 'test',
-      component: () => import('../views/Test.vue'),
-    },
-    {
-      path: '/404',
-      component: ()=> import('../views/404.vue')
+      path: '/notFound',
+      name: 'NotFound',
+      component: () => import('../views/NotFound.vue'),
     },
     {
       path: '/:pathMatch(.*)*',
-      redirect: '/404'
+      redirect: '/notFound',
     }
   ],
   // scrollBehavior(to, from, savePosition){

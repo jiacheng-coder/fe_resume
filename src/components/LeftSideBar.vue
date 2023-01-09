@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white shadow-lg p-4 h-full">
+  <div class="bg-base-200 text-base-content border-base-300 p-4 h-full shadow-md">
     <!-- 图片,姓名,职位 -->
     <div class="md:block">
       <div class="flex justify-center">

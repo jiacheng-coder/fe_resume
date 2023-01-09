@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white p-4 shadow-lg h-full">
+  <div class="bg-base-200 text-base-content border-base-300 p-4 h-full">
     <!-- 个人优势 -->
     <div class="mx-4 mb-6 ">
       <h1 class="mb-4 text-3xl text-gray-700 font-bold">个人优势</h1>
@@ -61,7 +61,7 @@
 
 <script setup lang="ts">
 import Skill from '../components/Skill.vue';
-import type { projects } from '../../config';
+import type { projects } from '../types/projectsType';
 const props = defineProps({
   skills: {
     type: Array<string>,
