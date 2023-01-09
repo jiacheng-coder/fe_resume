@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar shadow-md bg-base-200 text-base-content border-base-300">
+  <div class="navbar shadow-md">
     <div class="navbar-start">
       <div class="dropdown">
         <label tabindex="0" class="btn btn-ghost btn-circle">
@@ -7,7 +7,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
           </svg>
         </label>
-        <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow-md rounded-box w-52">
+        <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow-lg rounded-box w-52">
           <li v-for="link in links">
             <a :href="link.href">{{ link.name }}</a>
           </li>
@@ -46,16 +46,16 @@ import Modal from "../components/Modal.vue";
 const showModal = ref(false);
 const links = [
   {
-    name: "Resume Project",
+    name: "简历项目",
     href: "https://gitee.com/zhujiacheng612/frontend-resume",
   },
-  { name: "Blog", href: "/frontend-resume/blog/1" },
-  { name: "Gitee Link", href: "https://gitee.com/zhujiacheng612" },
+  { name: "博客", href: "/frontend-resume/blog/1" },
+  { name: "Gitee链接", href: "https://gitee.com/zhujiacheng612" },
   {
-    name: "Juejin Link",
+    name: "掘金文章",
     href: "https://juejin.cn/user/2538135637997560/posts",
   },
-  { name: "Email Me", href: "mailto:2253541907@qq.com" },
+  { name: "我的邮件", href: "mailto:2253541907@qq.com" },
 ];
 </script>
 

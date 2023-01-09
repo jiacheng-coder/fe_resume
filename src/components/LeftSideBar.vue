@@ -1,15 +1,12 @@
 <template>
-  <div class="bg-base-200 text-base-content border-base-300 p-4 h-full shadow-md">
+  <div class="p-4 h-full shadow-xl">
     <!-- 图片,姓名,职位 -->
     <div class="md:block">
       <div class="flex justify-center">
-        <img
-          class="h-40 rounded-full mx-4"
-          src="../assets/me.jpg"
-        />
+        <img class="h-40 rounded-full mx-4" src="../assets/me.jpg" />
       </div>
       <div class="text-center mt-10 justify-center items-center">
-        <h1 class="text-xl text-gray-800 font-bold">{{props.name}}</h1>
+        <h1 class="text-xl text-gray-800 font-bold">{{ props.name }}</h1>
         <div class="md:text-lg text-gray-600 mt-4">前端工程师</div>
       </div>
     </div>

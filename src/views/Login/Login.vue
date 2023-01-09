@@ -14,20 +14,22 @@ import { useRouter } from "vue-router";
 
 const router = useRouter()
 
-const userInfo = ref({})
 function handleSubmit({ username, password }: userInfo) {
   console.log("login-view", username, password);
-  userInfo.value = {
+  const userInfo = {
     username,
     password,
   };
-  localStorage.setItem('userInfo_resume', JSON.stringify(userInfo.value))
-  router.push('/')
+  if (userInfo.username && userInfo.password) {
+    localStorage.setItem('userInfo_resume', JSON.stringify(userInfo))
+    router.push('/')
+  } else {
+    console.warn('账号或密码为空')
+  }
 }
 
 const isDark = useDark();
-useTitle(() => (isDark.value ? "🌙 Login" : "☀️ Login"));
-console.log("userStore", useUserStore().username);
+useTitle(() => (isDark.value ? "Login🌙 " : "Login☀️ "));
 </script>
 
 <style scoped>
