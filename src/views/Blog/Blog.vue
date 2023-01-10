@@ -28,11 +28,11 @@
 <script setup lang="ts">
 import { ref, onMounted, watch, provide } from "vue";
 import { useRoute } from "vue-router";
-import { apiPost } from "../api";
+import { apiPost } from "../../api";
 
 import type { Ref } from "vue";
-import type { articleInfo } from "../types/article";
-import { InjectionKeyArticleInfo } from "../types/article";
+import type { articleInfo } from "../../types/article";
+import { InjectionKeyArticleInfo } from "../../types/article";
 
 import { useMouse } from "@vueuse/core";
 

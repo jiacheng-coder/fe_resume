@@ -1,12 +1,19 @@
 import { defineStore } from 'pinia'
+import { ref } from "vue";
 
-export const useUserStore = defineStore('userInfo', {
-  // 推荐使用 完整类型推断的箭头函数
-  state: () => {
-    return {
-      // 所有这些属性都将自动推断其类型
-      username: '',
-      password: ''
-    }
-  },
+export const useUserStore = defineStore('userInfo', () => {
+  const username = ref('')
+  const password = ref('')
+  function setUsername(val: string) {
+    username.value = val
+  }
+  function setPassword(val: string) {
+    password.value = val
+  }
+  return {
+    username,
+    password,
+    setUsername,
+    setPassword,
+  }
 })
