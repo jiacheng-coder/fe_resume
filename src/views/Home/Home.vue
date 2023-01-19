@@ -13,8 +13,6 @@
         <RightSideBar :skills="skills" :features="features" :experience="experience" />
       </div>
     </div>
-    <!-- 3.Footer -->
-    <Footer />
   </div>
 </template>
 
@@ -22,7 +20,7 @@
 import Navbar from "../../components/Navbar.vue";
 import LeftSideBar from "../../components/LeftSideBar.vue";
 import RightSideBar from "../../components/RightSideBar.vue";
-import Footer from "../../components/Footer.vue";
+// import Footer from "../../components/Footer.vue";
 import type { projects } from "../../types/projectsType";
 // Person Infomation
 const name = "诸嘉诚";
@@ -102,7 +100,7 @@ const experience: Array<projects> = [
 </script>
 
 <style>
-#home {
+/* #home {
   background-color: #f8f8f8;
-}
+} */
 </style>

@@ -5,7 +5,7 @@
 - pinia
 - vue-router
 - tailwindcss
-- daisyUI
+- daisyUI / headlessUI/Vue
 - vitest
 
 ## src目录构成

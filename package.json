@@ -17,7 +17,7 @@
     "pinia": "^2.0.28",
     "theme-change": "^2.2.0",
     "vue": "^3.2.41",
-    "vue-router": "4"
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.8",
