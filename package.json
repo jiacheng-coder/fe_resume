@@ -13,6 +13,7 @@
     "@headlessui/vue": "^1.7.4",
     "@heroicons/vue": "^2.0.13",
     "@vueuse/core": "^9.9.0",
+    "copy-to-clipboard": "^3.3.3",
     "daisyui": "^2.42.1",
     "pinia": "^2.0.28",
     "theme-change": "^2.2.0",

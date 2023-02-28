@@ -45,20 +45,18 @@ import Modal from "../components/Modal.vue";
 
 const showModal = ref(false);
 const links = [
-  {
-    name: "简历项目",
-    href: "https://gitee.com/zhujiacheng612/frontend-resume",
-  },
-  { name: "博客", href: "/frontend-resume/blog/1" },
-  { name: "Gitee链接", href: "https://gitee.com/zhujiacheng612" },
+  // {
+  //   name: "简历项目",
+  //   href: "https://gitee.com/zhujiacheng612/frontend-resume",
+  // },
+  { name: "个人博客", href: "https://gitee.com/zhujiacheng612/blog" },
   {
     name: "掘金文章",
     href: "https://juejin.cn/user/2538135637997560/posts",
   },
-  { name: "我的邮件", href: "mailto:2253541907@qq.com" },
+  { name: "Email Me", href: "mailto:2253541907@qq.com" },
 ];
 </script>
 
 <style lang="scss" scoped>
-
 </style>

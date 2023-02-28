@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 h-full shadow-xl">
+  <div class="p-4 h-full shadow-2xl" style="border-radius: 1rem;">
     <!-- 个人优势 -->
     <div class="mx-4 mb-6 ">
       <h1 class="mb-4 text-3xl text-gray-700 font-bold">个人优势</h1>
@@ -22,27 +22,38 @@
       <h1 class="mb-4 text-3xl text-gray-700 font-bold">项目经历</h1>
       <ul>
         <li class="mb-4" v-for="item in props.experience">
-          <!-- <span class="iconfont icon-pointer mr-2"></span> -->
-          <text class="text-2xl font-medium text-gray-800">{{ item.company }}</text>
+
+          <!-- <text class="text-3xl font-medium text-gray-800">{{ item.company }}</text> -->
           <!-- 项目 -->
-          <div class="mt-1" v-for="project in item.projects">
-            <div class="flex text-md font-medium text-gray-800 justify-between">
-              <text class="font-bold">{{ project.name }}</text>
+          <div class="mb-2" v-for="project in item.projects">
+            <div class="flex text-xl font-medium text-gray-800 justify-between" style="align-items: center;">
+              <text style="font-weight:900;" class="font-bold">{{ project.name }}</text>
               <text>{{ project.job }}</text>
               <text>{{ project.time }}</text>
             </div>
-            <div>
-              <p class="mr-4">项目内容:</p>
-              <text>{{ project.situation }}</text>,
-              <text>{{ project.target }}</text>,
-              <text>{{ project.action }}</text>,
-              <text>{{ project.result }}</text>
+            <div class="mt-1">
+              <text class="mr-4 font-semibold">项目介绍:</text>
+              <text>{{ project.introduce }}</text>
             </div>
             <div>
-              <text class="mr-4">技术栈:</text>
-              <text>{{ project.skills }}</text>
+              <p class="mr-4 font-semibold">我的工作:</p>
+              <div v-for="item in project.myContribution">
+                <span class="iconfont icon-pointer mr-2"></span>
+                <text>{{ item }}</text>
+              </div>
             </div>
-
+            <div class="flex justify-between">
+              <div>
+                <text class="mr-4 font-semibold">技术栈:</text>
+                <text>{{ project.skills }}</text>
+              </div>
+              <a :href="project.more" target="_blank">
+                <span
+                  class="font-semibold border-b-2 border-solid border-gray-800 shadow-sm hover:font-bold  hover:cursor-pointer">
+                  了解更多
+                </span>
+              </a>
+            </div>
           </div>
         </li>
       </ul>
@@ -62,6 +73,23 @@
 <script setup lang="ts">
 import Skill from '../components/Skill.vue';
 import type { projects } from '../types/projectsType';
+import { ref } from 'vue'
+import {
+  TransitionRoot,
+  TransitionChild,
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+} from '@headlessui/vue'
+
+const isOpen = ref(true)
+function closeModal() {
+  isOpen.value = false
+}
+function openModal() {
+  isOpen.value = true
+}
+
 const props = defineProps({
   skills: {
     type: Array<string>,
