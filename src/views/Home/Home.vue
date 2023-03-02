@@ -1,14 +1,11 @@
 <template>
   <div id="home" style="background-color: #FAFAFA;">
-    <!-- 1.Header -->
-    <!-- <Navbar /> -->
-    <!-- 2.Main -->
     <div class="max-w-screen-lg mx-auto md:flex">
-      <!-- 2.1 LeftSideBar -->
+      <!-- LeftSideBar -->
       <div class="md:w-1/3 p-4 relative">
-        <LeftSideBar :name="name" />
+        <LeftSideBar :userInfo="userInfo" />
       </div>
-      <!-- 2.2 RightSideBar -->
+      <!-- RightSideBar -->
       <div class="md:w-2/3 p-4 w-full">
         <RightSideBar :skills="skills" :features="features" :experience="experience" />
       </div>
@@ -17,14 +14,29 @@
 </template>
 
 <script setup lang="ts">
-// import Navbar from "../../components/Navbar.vue";
+
 import LeftSideBar from "../../components/LeftSideBar.vue";
 import RightSideBar from "../../components/RightSideBar.vue";
-// import Footer from "../../components/Footer.vue";
 import type { projects } from "../../types/projectsType";
 
-
+// 1.个人信息
 const name = "诸嘉诚";
+const job = "前端开发工程师"
+const email = "2253541907@qq.com"
+const phone = "15023092023"
+const wechat = "zaqwertyuioplm7412"
+const blogUrl = "https://zhujiacheng612.gitee.io/blog/"
+const repositoryUrl = "https://gitee.com/zhujiacheng612/frontend-resume"
+const userInfo = {
+  name,
+  job,
+  email,
+  phone,
+  wechat,
+  blogUrl,
+  repositoryUrl,
+}
+// 2.技术栈
 const skills = [
   "Vue2",
   "Vue3",
@@ -38,7 +50,7 @@ const skills = [
   "DaisyUI",
   "GraceUI",
 ];
-// 个人优势
+// 3.自我介绍
 const features = [
   "熟悉HTML,CSS,JS, 熟悉W3C标准与ECMA规范, 对Typescript有一定了解",
   "熟悉Vue2, Vue3.2以及VueRouter, Pinia, Vitepress等生态, 能够结合已有基础设施快速研发项目",
@@ -47,6 +59,7 @@ const features = [
   "熟悉ColorUI, GraceUI等组件库, 能够针对具体业务对组件库进行简单的二次开发",
   "有写博客的习惯, 注重技术积累与新技术的探索",
 ];
+// 4. 项目经历
 // experience[]->projects[]->project
 const experience: Array<projects> = [
   {
@@ -111,7 +124,4 @@ const experience: Array<projects> = [
 </script>
 
 <style>
-/* #home {
-  background-color: #f8f8f8;
-} */
 </style>

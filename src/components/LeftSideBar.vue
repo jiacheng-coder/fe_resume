@@ -4,8 +4,8 @@
     <input type="checkbox" id="my-modal" class="modal-toggle" />
     <label for="my-modal" class="modal cursor-pointer">
       <label class="modal-box relative" for="">
-        <h3 class="text-lg font-bold">提示</h3>
-        <p class="py-4">内容已复制到剪贴板！</p>
+        <h3 class="text-lg font-bold">提示!</h3>
+        <p class="py-4">内容已复制到剪贴板</p>
       </label>
     </label>
   </div>
@@ -17,53 +17,57 @@
         <img class="h-40 rounded-full mx-4" src="../assets/images/me.jpg" />
       </div>
       <div class="text-center mt-10 justify-center items-center">
-        <h1 class="text-xl  font-bold">{{ props.name }}</h1>
-        <div class="md:text-lg  mt-4">前端工程师</div>
+        <h1 class="text-xl  font-bold">{{ userInfo?.name }}</h1>
+        <!-- <div class="md:text-lg  mt-4">前端工程师</div> -->
+        <div class="md:text-lg  mt-4">{{ userInfo?.job }}</div>
       </div>
     </div>
     <!-- 联系方式, 小于md时隐藏 -->
     <div class="my-10 ml-8 mr-4 md:block" style="cursor: pointer;">
-      <div class="my-5 text-lg  flex" @click="copyText('zaqwertyuioplm7412')">
+      <div class="my-5 text-lg  flex" @click="copyText(userInfo?.wechat as string)">
         <div class="mr-2">
           <span class="iconfont icon-wechat"></span>
         </div>
-        <label for="my-modal" style="cursor: pointer;">zaqwertyuioplm7412</label>
+        <label for="my-modal" style="cursor: pointer;">{{ userInfo?.wechat }}</label>
       </div>
-      <div class="my-5 text-lg  flex" @click="copyText('15023092023')">
+      <div class="my-5 text-lg  flex" @click="copyText(userInfo?.phone as string)">
         <div class="mr-2">
           <span class="iconfont icon-telephone"></span>
         </div>
-        <label for="my-modal" style="cursor: pointer;">15023092023</label>
+        <label for="my-modal" style="cursor: pointer;">{{ userInfo?.phone }}</label>
       </div>
-      <div class="my-5 text-lg  flex" @click="copyText('2253541907@qq.com')">
+      <div class="my-5 text-lg  flex" @click="copyText(userInfo?.email as string)">
         <div class="mr-2">
           <span class="iconfont icon-email"></span>
         </div>
-        <label for="my-modal" style="cursor: pointer;">2253541907@qq.com</label>
+        <label for="my-modal" style="cursor: pointer;">{{ userInfo?.email }}</label>
       </div>
-      <a href="https://zhujiacheng612.gitee.io/blog" class="my-5 flex" target="_blank">
+      <a :href="userInfo?.blogUrl" class="my-5 flex" target="_blank">
         <div class="mr-2">
           <span class="iconfont icon-gitee-fill-round"></span>
         </div>
-        <span class="text-grey-200">Vitepress博客 (完善ing)</span>
+        <span class="text-grey-200">博客链接</span>
       </a>
-      <!-- <div class="my-5 text-lg  flex">
+      <a :href="userInfo?.repositoryUrl" class="my-5 flex" target="_blank">
         <div class="mr-2">
-          <span class="iconfont icon-location"></span>
+          <span class="iconfont icon-gitee-fill-round"></span>
         </div>
-        中国 重庆
-      </div> -->
+        <span class="text-grey-200">仓库链接</span>
+      </a>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import type { PropType } from "vue"
+import type { userInfoType } from "../types/userInfo"
 import copy from "copy-to-clipboard";
 const props = defineProps({
-  name: {
-    type: String,
+  userInfo: {
+    type: Object as PropType<userInfoType>
   }
 })
+const { userInfo } = props
 let copyText = (text: string) => [
   copy(text)
 ]

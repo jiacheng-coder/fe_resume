@@ -22,11 +22,6 @@ const router = createRouter({
       path: '/:pathMatch(.*)*',
       redirect: '/notFound',
     },
-    {
-      path: '/test',
-      name: 'Test',
-      component: () => import('../views/Test.vue'),
-    }
   ],
   // scrollBehavior(to, from, savePosition){
   //   console.log("to:", to);
