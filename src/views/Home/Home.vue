@@ -59,8 +59,7 @@ const features = [
   "熟悉ColorUI, GraceUI等组件库, 能够针对具体业务对组件库进行简单的二次开发",
   "有写博客的习惯, 注重技术积累与新技术的探索",
 ];
-// 4. 项目经历
-// experience[]->projects[]->project
+// 4. 项目经历 experience[]->projects[]->project
 const experience: Array<projects> = [
   {
     company: "重庆电覆者科技有限公司",
