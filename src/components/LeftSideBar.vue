@@ -25,35 +25,38 @@
     <!-- 联系方式, 小于md时隐藏 -->
     <div class="my-10 ml-8 mr-4 md:block" style="cursor: pointer;">
       <div class="my-5 text-lg  flex" @click="copyText(userInfo?.wechat as string)">
-        <div class="mr-2">
-          <span class="iconfont icon-wechat"></span>
+        <div class="mr-2 flex justify-center items-center">
+          <!-- <span class="iconfont icon-wechat"></span> -->
+          <img src="../assets/icons/微信_wechat.svg" alt="">
         </div>
         <label for="my-modal" style="cursor: pointer;">{{ userInfo?.wechat }}</label>
       </div>
       <div class="my-5 text-lg  flex" @click="copyText(userInfo?.phone as string)">
-        <div class="mr-2">
-          <span class="iconfont icon-telephone"></span>
+        <div class="mr-2 flex justify-center items-center">
+          <!-- <span class="iconfont icon-telephone"></span> -->
+          <img src="../assets/icons/电话呼叫_phone-call.svg">
         </div>
         <label for="my-modal" style="cursor: pointer;">{{ userInfo?.phone }}</label>
       </div>
       <div class="my-5 text-lg  flex" @click="copyText(userInfo?.email as string)">
-        <div class="mr-2">
-          <span class="iconfont icon-email"></span>
+        <div class="mr-2 flex justify-center items-center">
+          <!-- <span class="iconfont icon-email"></span> -->
+          <img src="../assets/icons/发送邮件_send-email.svg">
         </div>
         <label for="my-modal" style="cursor: pointer;">{{ userInfo?.email }}</label>
       </div>
       <a :href="userInfo?.blogUrl" class="my-5 flex" target="_blank">
-        <div class="mr-2">
-          <span class="iconfont icon-gitee-fill-round"></span>
+        <div class="mr-2 flex justify-center items-center">
+          <img src="../assets/icons/瞄准_aiming.svg">
         </div>
         <span class="text-grey-200">博客链接</span>
       </a>
-      <a :href="userInfo?.repositoryUrl" class="my-5 flex" target="_blank">
+      <!-- <a :href="userInfo?.repositoryUrl" class="my-5 flex" target="_blank">
         <div class="mr-2">
           <span class="iconfont icon-gitee-fill-round"></span>
         </div>
         <span class="text-grey-200">仓库链接</span>
-      </a>
+      </a> -->
     </div>
   </div>
 </template>
