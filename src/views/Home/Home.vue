@@ -1,5 +1,5 @@
 <template>
-  <div id="home" style="background-color: #FAFAFA;">
+  <div id="home" style="background-color: #FFF;">
     <div class="max-w-screen-lg mx-auto md:flex">
       <!-- LeftSideBar -->
       <div class="md:w-1/3 p-4 relative">
