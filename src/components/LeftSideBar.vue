@@ -10,7 +10,7 @@
     </label>
   </div>
   <!-- 主要内容 -->
-  <div class="p-4 h-full text-white bg-gray-700 shadow-2xl duration-300" style="border-radius: 2rem;box-shadow: ;">
+  <div class="p-4 h-full text-white bg-gray-700 shadow-2xl duration-300" style="background-color: #;border-radius: 2rem;">
     <!-- 头像,姓名,职位 -->
     <div class="md:block ">
       <div class="flex justify-center">

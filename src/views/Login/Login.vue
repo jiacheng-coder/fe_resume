@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login" style="background-color: #f8f8f8;">
     <LoginForm @submit="handleSubmit" />
   </div>
 </template>
@@ -38,6 +38,7 @@ useTitle(() => (isDark.value ? "Login🌙 " : "Login☀️ "));
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f8f8;
+  background-color: #f4f4f4;
+  /* color: #fff */
 }
 </style>
