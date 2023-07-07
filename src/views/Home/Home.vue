@@ -15,8 +15,9 @@
 
 <script setup lang="ts">
 
-import LeftSideBar from "../../components/LeftSideBar.vue";
-import RightSideBar from "../../components/RightSideBar.vue";
+// import LeftSideBar from "../../components/LeftSideBar.vue";
+import LeftSideBar from "../../components/LeftSideBar/index.vue"
+import RightSideBar from "../../components/RightSideBar/index.vue";
 import type { projects } from "../../types/projectsType";
 
 // 1.个人信息
@@ -93,19 +94,6 @@ const experience: Array<projects> = [
       },
     ],
   },
-  // {
-  //   company: "啊对对对对队",
-  //   projects: [
-  //     {
-  //       name: "仿掘金首页",
-  //       job: "前端开发工程师",
-  //       time: "2022年7月 - 2022年9月",
-  //       introduce: "仿照掘金的设计实现首页和文章详情页的功能",
-  //       myContribution: ["1", "2"],
-  //       skills: "Vue, Apifox",
-  //     },
-  //   ],
-  // },
 ];
 // 5. 荣誉奖项
 const prizes = [

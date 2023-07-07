@@ -5,11 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { useDark, useTitle } from "@vueuse/core";
 import LoginForm from "../../components/LoginForm.vue";
 import type { userInfo } from "../../types/userInfo";
-import { useUserStore } from "../../store/userInfoStore";
 import { useRouter } from "vue-router";
 
 const router = useRouter()
