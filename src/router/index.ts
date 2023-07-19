@@ -8,15 +8,6 @@ const router = createRouter({
       name: 'Home',
       component: () => import('../pages/Home/index.vue'),
     },
-    {
-      path: '/notFound',
-      name: 'NotFound',
-      component: () => import('../pages/NotFound.vue'),
-    },
-    {
-      path: '/:pathMatch(.*)*',
-      redirect: '/notFound',
-    },
   ],
   // scrollBehavior(to, from, savePosition){
   //   console.log("to:", to);
@@ -33,4 +24,5 @@ const router = createRouter({
   //   }
   // }
 })
+
 export default router
