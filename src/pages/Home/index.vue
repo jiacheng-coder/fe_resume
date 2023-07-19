@@ -1,11 +1,9 @@
 <template>
   <div id="home" style="background-color: #FFF;">
     <div class="max-w-screen-lg mx-auto md:flex">
-      <!-- LeftSideBar -->
       <div class="md:w-1/3 p-4 relative">
         <LeftSideBar :userInfo="userInfo" />
       </div>
-      <!-- RightSideBar -->
       <div class="md:w-2/3 p-4 w-full">
         <RightSideBar :skills="skills" :features="features" :experience="experience" :prizes="prizes"
           :internship="internship" />
