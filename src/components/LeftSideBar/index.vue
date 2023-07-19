@@ -10,11 +10,11 @@
     </label>
   </div>
   <!-- 主要内容 -->
-  <div class="p-4 h-full text-white bg-gray-700 shadow-2xl duration-300 rounded-sm">
+  <div class="p-4 h-full text-white shadow-2xl duration-300 rounded-sm" style="background-color: #42946C;">
     <!-- 头像,姓名,职位 -->
     <div class="md:block ">
       <div class="flex justify-center">
-        <img class="h-40 mx-4 rounded-lg" src="../assets/images/bg_white_me.jpg" />
+        <img class="h-40 mx-4 rounded-lg" src="@assets/images/avatar.jpg" />
       </div>
       <div class="text-center mt-10 justify-center items-center">
         <h1 class="text-xl  font-bold">{{ userInfo?.name }}</h1>
@@ -22,41 +22,45 @@
         <div class="md:text-lg  mt-4">{{ userInfo?.job }}</div>
       </div>
     </div>
+    <hr class="pb-1 mt-6" style="color: #3C855D;">
     <!-- 联系方式, 小于md时隐藏 -->
-    <div class="my-10 ml-8 mr-4 md:block" style="cursor: pointer;">
-      <div class="my-5 text-lg  flex" @click="copyText(userInfo?.wechat as string)">
+    <div class="mb-10 ml-8 mr-4 md:block" style="cursor: pointer;">
+      <div class="my-5 text-lg  flex" @click="copyText(userInfo?.wechat || '')">
         <div class="mr-2 flex justify-center items-center">
           <!-- <span class="iconfont icon-wechat"></span> -->
-          <img src="../assets/icons/微信_wechat.svg" alt="">
+          <img src="@assets/icons/微信_wechat.svg" alt="">
         </div>
         <label for="my-modal" style="cursor: pointer;">{{ userInfo?.wechat }}</label>
       </div>
-      <div class="my-5 text-lg  flex" @click="copyText(userInfo?.phone as string)">
+      <div class="my-5 text-lg  flex" @click="copyText(userInfo?.phone || '')">
         <div class="mr-2 flex justify-center items-center">
           <!-- <span class="iconfont icon-telephone"></span> -->
-          <img src="../assets/icons/电话呼叫_phone-call.svg">
+          <img src="@assets/icons/电话呼叫_phone-call.svg">
         </div>
         <label for="my-modal" style="cursor: pointer;">{{ userInfo?.phone }}</label>
       </div>
-      <div class="my-5 text-lg  flex" @click="copyText(userInfo?.email as string)">
+      <div class="my-5 text-lg  flex" @click="copyText(userInfo?.email || '')">
         <div class="mr-2 flex justify-center items-center">
-          <!-- <span class="iconfont icon-email"></span> -->
-          <img src="../assets/icons/发送邮件_send-email.svg">
+          <img src="@assets/icons/发送邮件_send-email.svg">
         </div>
         <label for="my-modal" style="cursor: pointer;">{{ userInfo?.email }}</label>
       </div>
       <a :href="userInfo?.blogUrl" class="my-5 flex" target="_blank">
         <div class="mr-2 flex justify-center items-center">
-          <img src="../assets/icons/瞄准_aiming.svg">
+          <img src="@assets/icons/瞄准_aiming.svg">
         </div>
-        <span class="text-grey-200">博客链接</span>
+        <div class="border-b-1 border-white">
+          <span class="text-grey-200 ">博客链接</span>
+        </div>
       </a>
-      <!-- <a :href="userInfo?.repositoryUrl" class="my-5 flex" target="_blank">
-        <div class="mr-2">
-          <span class="iconfont icon-gitee-fill-round"></span>
+      <a :href="userInfo?.githubUrl" class="my-5 flex" target="_blank">
+        <div class="mr-2 flex justify-center items-center">
+          <img src="@assets/icons/瞄准_aiming.svg">
         </div>
-        <span class="text-grey-200">仓库链接</span>
-      </a> -->
+        <div class="border-b-1 border-white">
+          <span class="text-grey-200 ">Github</span>
+        </div>
+      </a>
     </div>
   </div>
 </template>
@@ -75,6 +79,3 @@ let copyText = (text: string) => [
   copy(text)
 ]
 </script>
-
-<style scoped>
-</style>

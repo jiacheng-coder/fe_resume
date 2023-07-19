@@ -3,7 +3,7 @@
     <!-- 个人优势 -->
     <div class="mx-4 mb-6 ">
       <h1 class="mb-4 text-3xl text-gray-700 font-bold">个人优势</h1>
-      <p class="text-md" v-for="feature in props.features">
+      <p class="text-md" v-for="feature in props.features" :key="feature">
         <span class="iconfont icon-pointer mr-2"></span>
         {{ feature }}
       </p>
@@ -21,11 +21,9 @@
     <div class="mx-4 mb-6">
       <h1 class="mb-4 text-3xl text-gray-700 font-bold">项目经历</h1>
       <ul>
-        <li class="mb-4" v-for="item in props.experience">
-
+        <li class="mb-4" v-for="item in props.experience" :key="JSON.stringify(item)">
           <!-- <text class="text-3xl font-medium text-gray-800">{{ item.company }}</text> -->
-          <!-- 项目 -->
-          <div class="mb-2" v-for="project in item.projects">
+          <div class="mb-2" v-for="project in item.projects" :key="project.name">
             <div class="flex text-xl font-medium text-gray-800 justify-between" style="align-items: center;">
               <text>{{ project.name }}</text>
               <text>{{ project.job }}</text>
@@ -38,7 +36,50 @@
               </div>
               <div>
                 <p class="mr-4 font-semibold">我的工作:</p>
-                <div v-for="item in project.myContribution">
+                <div v-for="item in project.myContribution" :key="item">
+                  <span class="iconfont icon-pointer mr-2"></span>
+                  <text>{{ item }}</text>
+                </div>
+              </div>
+              <div class="flex justify-between">
+                <div>
+                  <text class="mr-4 font-semibold">技术栈:</text>
+                  <text>{{ project.skills }}</text>
+                </div>
+                <a :href="project.more" target="_blank">
+                  <span
+                    class="font-semibold border-b-2 border-solid border-gray-800 shadow-sm hover:font-bold  hover:cursor-pointer">
+                    了解更多
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- 实习经历 -->
+    <div class="mx-4 mb-6">
+      <h1 class="mb-4 text-3xl text-gray-700 font-bold">实习经历</h1>
+      <ul>
+        <li class="mb-4" v-for="item in props.internship" :key="JSON.stringify(item.projects)">
+          <div class="mb-2">
+            <text class="text-2xl font-medium border-b-2 border-yellow-600">{{ item.company }}</text>
+          </div>
+          <div class="mb-2" v-for="project in item.projects" :key="project.name">
+            <div class="flex text-xl font-medium text-gray-800 justify-between" style="align-items: center;">
+              <text>{{ project.name }}</text>
+              <text>{{ project.job }}</text>
+              <text>{{ project.time }}</text>
+            </div>
+            <div class="text-md">
+              <div class="mt-1">
+                <text class="mr-4 font-semibold">项目介绍:</text>
+                <text>{{ project.introduce }}</text>
+              </div>
+              <div>
+                <p class="mr-4 font-semibold">我的工作:</p>
+                <div v-for="item in project.myContribution" :key="item">
                   <span class="iconfont icon-pointer mr-2"></span>
                   <text>{{ item }}</text>
                 </div>
@@ -63,7 +104,7 @@
     <!-- 获奖经历 -->
     <div class="mx-4 mb-6 ">
       <h1 class="mb-4 text-3xl text-gray-700 font-bold">获奖经历</h1>
-      <div v-for="item in prizes">
+      <div v-for="item in prizes" :key="item">
         <span class="iconfont icon-pointer mr-2"></span>
         <text>{{ item }}</text>
       </div>
@@ -72,7 +113,7 @@
     <div class="mx-4">
       <h1 class="mb-8 text-3xl text-gray-700 font-bold">技术栈</h1>
       <ul class="flex flex-wrap">
-        <li class="mb-6" v-for="skill in props.skills">
+        <li class="mb-6" v-for="skill in props.skills" :key="skill">
           <div>
             <span
               class="mr-2 my-1 rounded-full border px-4 text-sm py-2 font-medium bg-gray-200 hover:text-white hover:bg-gray-700 duration-300 hover:cursor-pointer">
@@ -100,7 +141,10 @@ const props = defineProps({
   },
   experience: {
     type: Array<projects>
-  }
+  },
+  internship: {
+    type: Array<projects>
+  },
 })
 </script>
 

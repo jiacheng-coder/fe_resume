@@ -5,10 +5,5 @@ export type userInfoType = {
     phone: string,
     wechat: string,
     blogUrl: string,
-    repositoryUrl: string
+    githubUrl: string
 }
-
-export type userInfo = {
-    username: string,
-    password: string,
-};
