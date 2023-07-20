@@ -3,6 +3,7 @@
   src: url('./assets/font/LXGWNeoXiHei.ttf');
 }
 
+/* 在 CSS 文件中定义自定义颜色 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

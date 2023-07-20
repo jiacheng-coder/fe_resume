@@ -1,12 +1,17 @@
 module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    themes: ["cupcake", "night", "aqua"],
+    themes: ['cupcake', 'night', 'aqua'],
+    extend: {
+      colors: {
+        'my-green': '#58926F',
+      },
+    },
   },
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  plugins: [require('@tailwindcss/typography'), require('daisyui')],
   daisyui: {
     styled: true,
     themes: true,
@@ -14,7 +19,7 @@ module.exports = {
     utils: true,
     logs: true,
     rtl: false,
-    prefix: "",
-    darkTheme: "cupcake",
+    prefix: '',
+    darkTheme: 'cupcake',
   },
 }

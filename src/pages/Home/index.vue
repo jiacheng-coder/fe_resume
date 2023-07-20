@@ -2,19 +2,18 @@
   <div id="home" style="background-color: #FFF;">
     <div class="max-w-screen-lg mx-auto md:flex">
       <div class="md:w-1/3 p-4 relative">
-        <LeftSideBar :userInfo="userInfo" />
+        <SideBar :userInfo="userInfo" />
       </div>
       <div class="md:w-2/3 p-4 w-full">
-        <RightSideBar :skills="skills" :features="features" :experience="experience" :prizes="prizes"
-          :internship="internship" />
+        <Main :skills="skills" :features="features" :experience="experience" :prizes="prizes" :internship="internship" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import LeftSideBar from '@components/LeftSideBar/index.vue'
-import RightSideBar from "@components/RightSideBar/index.vue";
+import SideBar from '@components/SideBar/index.vue'
+import Main from "@components/Main/index.vue";
 import type { projects } from "../../types/projectsType";
 
 // 1.个人信息
@@ -86,9 +85,10 @@ const experience: Array<projects> = [
     ],
   },
 ];
-const internship: Array<projects> = [
+const internship = [
   {
     company: "美团",
+    icon: '@assets/icons/favicon-mt.ico',
     projects: [
       {
         name: '韦恩系统',
