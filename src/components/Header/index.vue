@@ -46,14 +46,14 @@
             <h1>链接:</h1>
           </section>
           <!-- Blog -->
-          <section class="flex gap-1" @click="linkTo(userInfo?.blogUrl)">
+          <section class="flex gap-1" @click="linkTo(userInfo?.blogUrl || '')">
             <img src="@assets/icons/link.svg" alt="">
             <span class="border-b-2 border-white">Blog</span>
           </section>
           <!-- Github -->
           <section class="flex gap-1">
             <img src="@assets/icons/github.svg" alt="">
-            <span class="border-b-2 border-white" @click="linkTo(userInfo?.githubUrl)">Github</span>
+            <span class="border-b-2 border-white" @click="linkTo(userInfo?.githubUrl || '')">Github</span>
           </section>
         </div>
       </div>
@@ -74,8 +74,7 @@ const { userInfo } = props
 let copyText = (text: string) => [
   copy(text)
 ]
-const linkTo = (url) => {
-  // window.location.href = url
+const linkTo = (url: string) => {
   window.open(url, '_blank');
 }
 </script>

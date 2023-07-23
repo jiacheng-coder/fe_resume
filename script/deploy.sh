@@ -20,5 +20,5 @@ git push -f git@github.com:jiacheng-coder/fe_resume.git main:github-pages
 # 提交所有代码到github
 cd ..
 git add .
-git commit -m 'update'
-git push
+git commit -m 'update resume !'
+git push origin main
