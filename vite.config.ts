@@ -1,10 +1,11 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-// const path = require('path')
 import path from 'path'
+import viteCompression from 'vite-plugin-compression'
 
 export default defineConfig({
+  base: '/fe_resume/',
   resolve: {
     alias: {
       '@assets': path.resolve(__dirname, './src/assets'), // 路径别名
@@ -13,15 +14,26 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    viteCompression()
   ],
-  base: '/fe_resume/',
+  server: {
+    hmr: true,
+    open: true,
+  },
+  build: {
+    minify: false,
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) return 'node-modules'
+        },
+      },
+    },
+  },
   test: {
     environment: 'jsdom',
     transformMode: {
       web: [/.tsx$/]
     }
-  },
-  server: {
-    hmr: true,
   },
 })

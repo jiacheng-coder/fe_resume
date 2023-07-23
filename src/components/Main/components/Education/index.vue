@@ -4,7 +4,7 @@
     <div class="flex justify-between text-xl">
       <text>重庆大学</text>
       <text>信息与计算科学</text>
-      <text>2020-2024</text>
+      <text>2020 - 2024</text>
     </div>
   </div>
 </template>

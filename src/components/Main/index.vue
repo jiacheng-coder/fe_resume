@@ -1,9 +1,9 @@
 <template>
-  <div class="p-4 h-full shadow-2xl" style="border-radius: 1rem;">
+  <div class="pt-4 h-full">
     <Features :features="features" />
     <Education />
-    <Projects :project="experience" />
     <Internship :internship="internship" />
+    <Projects :experience="experience" />
     <Prizes :prizes="prizes" />
     <Skills :skills="skills" />
   </div>
