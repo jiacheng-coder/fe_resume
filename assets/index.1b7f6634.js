@@ -1,11 +1,12 @@
 import { f as defineComponent, o as openBlock, g as createElementBlock, h as createBaseVNode, t as toDisplayString, u as unref, F as Fragment, i as createStaticVNode, j as copyToClipboard, k as renderList, l as createTextVNode, m as createVNode } from "./node-modules.99f66ea9.js";
-import { _ as _export_sfc } from "./index.161617ed.js";
+import { _ as _export_sfc } from "./index.acf4823c.js";
 const _imports_0$1 = "/fe_resume/assets/avatar.9b3b448e.jpg";
 const _imports_1 = "/fe_resume/assets/wechat.8cecc907.svg";
 const _imports_2 = "/fe_resume/assets/phone.e5887e9e.svg";
 const _imports_3 = "/fe_resume/assets/email.06284f48.svg";
 const _imports_4 = "/fe_resume/assets/link.bd39abe6.svg";
-const _imports_5 = "/fe_resume/assets/github.ce61ff21.svg";
+const _imports_5 = "/fe_resume/assets/introduce.10f31a20.svg";
+const _imports_6 = "/fe_resume/assets/github.ce61ff21.svg";
 const _hoisted_1$8 = /* @__PURE__ */ createStaticVNode('<div><input type="checkbox" id="my-modal" class="modal-toggle"><label for="my-modal" class="modal cursor-pointer"><label class="modal-box relative" for=""><h3 class="text-lg font-bold">\u63D0\u793A!</h3><p class="py-4">\u5185\u5BB9\u5DF2\u590D\u5236\u5230\u526A\u8D34\u677F</p></label></label></div>', 1);
 const _hoisted_2$6 = { class: "p-4 h-full text-white duration-300 rounded-sm bg-my-green" };
 const _hoisted_3$6 = { class: "flex items-center" };
@@ -41,20 +42,36 @@ const _hoisted_16 = { class: "flex gap-6 cursor-pointer" };
 const _hoisted_17 = /* @__PURE__ */ createBaseVNode("section", null, [
   /* @__PURE__ */ createBaseVNode("h1", null, "\u94FE\u63A5:")
 ], -1);
-const _hoisted_18 = /* @__PURE__ */ createBaseVNode("img", {
+const _hoisted_18 = ["href"];
+const _hoisted_19 = /* @__PURE__ */ createBaseVNode("img", {
   src: _imports_4,
   alt: ""
 }, null, -1);
-const _hoisted_19 = /* @__PURE__ */ createBaseVNode("span", { class: "border-b-2 border-white" }, "Blog", -1);
-const _hoisted_20 = [
-  _hoisted_18,
-  _hoisted_19
+const _hoisted_20 = /* @__PURE__ */ createBaseVNode("span", { class: "border-b-2 border-white" }, "Resume", -1);
+const _hoisted_21 = [
+  _hoisted_19,
+  _hoisted_20
 ];
-const _hoisted_21 = { class: "flex gap-1" };
-const _hoisted_22 = /* @__PURE__ */ createBaseVNode("img", {
+const _hoisted_22 = ["href"];
+const _hoisted_23 = /* @__PURE__ */ createBaseVNode("img", {
   src: _imports_5,
   alt: ""
 }, null, -1);
+const _hoisted_24 = /* @__PURE__ */ createBaseVNode("span", { class: "border-b-2 border-white" }, "Blog", -1);
+const _hoisted_25 = [
+  _hoisted_23,
+  _hoisted_24
+];
+const _hoisted_26 = ["href"];
+const _hoisted_27 = /* @__PURE__ */ createBaseVNode("img", {
+  src: _imports_6,
+  alt: ""
+}, null, -1);
+const _hoisted_28 = /* @__PURE__ */ createBaseVNode("span", { class: "border-b-2 border-white" }, "Github", -1);
+const _hoisted_29 = [
+  _hoisted_27,
+  _hoisted_28
+];
 const _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "index",
   props: {
@@ -68,11 +85,8 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
     let copyText = (text) => [
       copyToClipboard(text)
     ];
-    const linkTo = (url) => {
-      window.open(url, "_blank");
-    };
     return (_ctx, _cache) => {
-      var _a, _b, _c, _d, _e;
+      var _a, _b, _c, _d, _e, _f, _g, _h;
       return openBlock(), createElementBlock(Fragment, null, [
         _hoisted_1$8,
         createBaseVNode("div", _hoisted_2$6, [
@@ -116,23 +130,24 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
               ]),
               createBaseVNode("div", _hoisted_16, [
                 _hoisted_17,
-                createBaseVNode("section", {
-                  class: "flex gap-1",
-                  onClick: _cache[3] || (_cache[3] = ($event) => {
-                    var _a2;
-                    return linkTo(((_a2 = unref(userInfo)) == null ? void 0 : _a2.blogUrl) || "");
-                  })
-                }, _hoisted_20),
-                createBaseVNode("section", _hoisted_21, [
-                  _hoisted_22,
-                  createBaseVNode("span", {
-                    class: "border-b-2 border-white",
-                    onClick: _cache[4] || (_cache[4] = ($event) => {
-                      var _a2;
-                      return linkTo(((_a2 = unref(userInfo)) == null ? void 0 : _a2.githubUrl) || "");
-                    })
-                  }, "Github")
-                ])
+                createBaseVNode("a", {
+                  href: (_f = unref(userInfo)) == null ? void 0 : _f.resumeUrl,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                  class: "flex gap-1"
+                }, _hoisted_21, 8, _hoisted_18),
+                createBaseVNode("a", {
+                  href: (_g = unref(userInfo)) == null ? void 0 : _g.blogUrl,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                  class: "flex gap-1"
+                }, _hoisted_25, 8, _hoisted_22),
+                createBaseVNode("a", {
+                  href: (_h = unref(userInfo)) == null ? void 0 : _h.githubUrl,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                  class: "flex gap-1"
+                }, _hoisted_29, 8, _hoisted_26)
               ])
             ])
           ])
@@ -443,6 +458,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       email: "2253541907@qq.com",
       phone: "15023092023",
       wechat: "zaqwertyuioplm7412",
+      resumeUrl: "https://jiacheng-coder.github.io/fe_resume/",
       blogUrl: "https://jiacheng-coder.github.io/my-blog",
       githubUrl: "https://github.com/jiacheng-coder"
     };
@@ -513,27 +529,15 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             name: "\u97E6\u6069\u7CFB\u7EDF",
             job: "\u524D\u7AEF\u5F00\u53D1\u5DE5\u7A0B\u5E08",
             time: "2023.6 - \u81F3\u4ECA",
-            introduce: "\u7528\u4E8E\u8FD0\u8425\u63D0\u6548\u7684 M \u7AEF\u7CFB\u7EDF, \u4E3A\u7528\u6237\u63D0\u4F9B\u4F18\u8D28\u7684\u4F9B\u7ED9\u8D44\u6E90\u7684\u540C\u65F6, \u4E5F\u4E3A B \u7AEF\u5546\u5BB6\u5F15\u6D41",
+            introduce: "\u7528\u4E8E\u8FD0\u8425\u63D0\u6548\u7684 M \u7AEF\u7CFB\u7EDF, \u4E3A\u7528\u6237\u63D0\u4F9B\u4F18\u8D28\u4F9B\u7ED9\u8D44\u6E90\u7684\u540C\u65F6\u4E5F\u4E3A B \u7AEF\u5546\u5BB6\u5F15\u6D41",
             myContribution: [
-              "\u53C2\u4E0E\u539F\u6709 \u97E6\u6069\u7CFB\u7EDF \u7684\u8FED\u4EE3\u5347\u7EA7, \u5C01\u88C5\u4E1A\u52A1\u7EC4\u4EF6\u5E76\u62BD\u79BB\u81EA\u5B9A\u4E49 Hooks, \u5BF9 UI \u548C\u903B\u8F91\u62C6\u5206\u62BD\u79BB",
-              "\u5728\u7406\u89E3 PRD \u7684\u524D\u63D0\u4E0B, \u4F18\u5316\u539F\u6709\u63D0\u62A5\u6D3B\u52A8\u7684\u4E1A\u52A1\u903B\u8F91, \u6253\u901A\u65B0\u795E\u4EF7\u6D3B\u52A8\u7684\u63D0\u62A5\u6D41\u7A0B, \u540C\u65F6\u505A\u5230\u5BF9\u8001\u795E\u4EF7\u6D3B\u52A8\u7684\u517C\u5BB9, \u8FDB\u884C\u8FD0\u8425\u63D0\u6548",
-              "\u57FA\u4E8E NineJs \u6253\u5305\u6784\u5EFA\u5DE5\u5177, \u5BF9\u539F\u6709\u9879\u76EE\u8FDB\u884C\u6253\u5305\u914D\u7F6E\u4F18\u5316, \u8FDB\u884C\u5F00\u53D1\u63D0\u6548",
-              "\u5B66\u4E60\u516C\u53F8\u7684\u5F00\u53D1\u89C4\u8303, \u8D70\u901A\u9700\u6C42\u8BC4\u5BA1 - \u5F00\u53D1 - \u8054\u8C03 - \u6D4B\u8BD5 - \u9884\u53D1 - \u4E0A\u7EBF\u7684\u6574\u5957\u6D41\u7A0B"
+              "\u53C2\u4E0E\u539F\u6709 \u97E6\u6069\u7CFB\u7EDF \u7684\u8FED\u4EE3\u5347\u7EA7, \u62BD\u79BB\u81EA\u5B9A\u4E49 Hooks, \u4F18\u5316\u7F51\u7EDC\u8BF7\u6C42\u903B\u8F91, \u589E\u5F3A\u7CFB\u7EDF\u53EF\u7EF4\u62A4\u6027",
+              "\u57FA\u4E8E Roo Plus \u91CD\u6784\u90E8\u5206\u4E1A\u52A1\u7EC4\u4EF6, \u4F18\u5316\u4EE3\u7801\u7EC4\u7EC7\u65B9\u5F0F, \u51CF\u5C11\u4E86 30% \u5DE6\u53F3\u7684\u4EE3\u7801\u91CF",
+              "\u7ED3\u5408 PRD \u7B80\u5316\u539F\u6709\u63D0\u62A5\u6D3B\u52A8\u7684\u4E1A\u52A1\u903B\u8F91, \u6253\u901A\u65B0\u795E\u4EF7\u6D3B\u52A8\u7684\u63D0\u62A5\u6D41\u7A0B, \u540C\u65F6\u505A\u5230\u5BF9\u8001\u795E\u4EF7\u6D3B\u52A8\u7684\u517C\u5BB9, \u63D0\u9AD8\u8FD0\u8425\u6548\u7387",
+              "\u57FA\u4E8E Vite \u6253\u5305\u6784\u5EFA\u5DE5\u5177\u5BF9\u539F\u6709\u9879\u76EE\u8FDB\u884C\u6253\u5305\u914D\u7F6E\u4F18\u5316, \u5305\u62EC\u914D\u7F6E\u522B\u540D\u3001\u5206\u5305\u548C gzip \u538B\u7F29\u7B49\u7B49, \u8FDB\u884C\u5F00\u53D1\u63D0\u6548",
+              "\u6309\u7167\u516C\u53F8\u7684\u5F00\u53D1\u89C4\u8303, \u8D70\u901A\u9700\u6C42\u8BC4\u5BA1 - \u5F00\u53D1 - \u8054\u8C03 - \u6D4B\u8BD5 - \u9884\u53D1 - \u4E0A\u7EBF\u7684\u6574\u5957\u6D41\u7A0B, \u4EA7\u51FA\u6280\u672F\u6587\u6863\u3001\u6301\u7EED\u7EF4\u62A4\u5E76\u52A0\u4EE5\u63A8\u5E7F"
             ],
-            skills: "Typescript + React 16.8 + React Hooks + Webpack 5 + Nine.js"
-          },
-          {
-            name: "\u7EDF\u4E00\u62DB\u5546\u5E73\u53F0",
-            job: "\u524D\u7AEF\u5F00\u53D1\u5DE5\u7A0B\u5E08",
-            time: "2023.6 - \u81F3\u4ECA",
-            introduce: "\u57FA\u4E8E Formily \u8868\u5355\u89E3\u51B3\u65B9\u6848 \u548C \u5FAE\u524D\u7AEF\u67B6\u6784 \u642D\u5EFA\u7684\u7EDF\u4E00\u62DB\u5546\u7CFB\u7EDF, \u63D0\u4F9B\u4E00\u4F53\u5316\u62DB\u5546\u89E3\u51B3\u65B9\u6848",
-            myContribution: [
-              "\u5B66\u4E60 Formily \u8868\u5355\u89E3\u51B3\u65B9\u6848\u5E76\u5E94\u7528\u5230\u62DB\u5546\u7CFB\u7EDF\u7684\u4E1A\u52A1\u6D41\u7A0B\u4E2D, \u540C\u65F6\u5BF9 M \u7AEF\u548C B \u7AEF\u8FDB\u884C\u63D0\u6548",
-              "\u62BD\u79BB \u62DB\u5546\u7CFB\u7EDF \u4E2D\u7684\u4E1A\u52A1\u903B\u8F91, \u4F18\u5316\u539F\u6709\u7684\u7F51\u7EDC\u8BF7\u6C42\u6D41\u7A0B, \u63D0\u9AD8\u7CFB\u7EDF\u7684\u5F00\u53D1\u6548\u7387",
-              "\u7ED3\u5408 PRD \u91CD\u6784\u539F\u6709\u62DB\u5546\u903B\u8F91, \u914D\u5408\u540E\u7AEF RD \u8FDB\u884C\u8054\u8C03, \u63D0\u9AD8 \u62DB\u5546\u6D3B\u52A8 \u7684\u63D0\u62A5\u6548\u7387",
-              "\u52A0\u5F3A Git \u5B9E\u6218\u80FD\u529B, \u5305\u62EC\u5904\u7406\u51B2\u7A81\u3001\u7248\u672C\u56DE\u9000\u3001\u5206\u652F\u5408\u5E76\u7B49, \u589E\u5F3A\u4EE3\u7801\u4E66\u5199\u7684\u53EF\u8BFB\u6027\u548C\u89C4\u8303\u6027"
-            ],
-            skills: "Typescript + React 18 + Webpack 5 + Vite + Monorepo"
+            skills: "Typescript + React + React Hooks + Vite"
           }
         ]
       }
