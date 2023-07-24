@@ -4,6 +4,7 @@ export type userInfoType = {
     email: string,
     phone: string,
     wechat: string,
+    resumeUrl: string,
     blogUrl: string,
     githubUrl: string
 }

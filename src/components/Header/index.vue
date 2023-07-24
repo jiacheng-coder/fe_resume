@@ -45,16 +45,21 @@
           <section>
             <h1>链接:</h1>
           </section>
-          <!-- Blog -->
-          <section class="flex gap-1" @click="linkTo(userInfo?.blogUrl || '')">
+          <!-- Resume -->
+          <a :href="userInfo?.resumeUrl" target="_blank" rel="noopener noreferrer" class="flex gap-1">
             <img src="@assets/icons/link.svg" alt="">
+            <span class="border-b-2 border-white">Resume</span>
+          </a>
+          <!-- Blog -->
+          <a :href="userInfo?.blogUrl" target="_blank" rel="noopener noreferrer" class="flex gap-1">
+            <img src="@assets/icons/introduce.svg" alt="">
             <span class="border-b-2 border-white">Blog</span>
-          </section>
+          </a>
           <!-- Github -->
-          <section class="flex gap-1">
+          <a :href="userInfo?.githubUrl" target="_blank" rel="noopener noreferrer" class="flex gap-1">
             <img src="@assets/icons/github.svg" alt="">
-            <span class="border-b-2 border-white" @click="linkTo(userInfo?.githubUrl || '')">Github</span>
-          </section>
+            <span class="border-b-2 border-white">Github</span>
+          </a>
         </div>
       </div>
     </div>
