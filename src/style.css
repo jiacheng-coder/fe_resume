@@ -3,19 +3,15 @@
   src: url('./assets/font/LXGWNeoXiHei.ttf');
 }
 
-/* 在 CSS 文件中定义自定义颜色 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --accent: 124, 58, 237;
-  --accent-gradient: linear-gradient(45deg,
-      rgb(var(--accent)),
-      #da62c4 30%,
-      white 60%);
-} */
-
 html {
   font-family: 'LXGW', sans-serif;
+}
+
+.header-icon {
+  width: 25px;
+  height: 25px;
 }

@@ -43,7 +43,7 @@
 <script setup lang="ts">
 const { internship } = defineProps({
   internship: {
-    type: [] as any,
+    type: Array<any>,
   },
 })
 </script>

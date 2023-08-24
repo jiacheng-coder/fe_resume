@@ -10,57 +10,59 @@
     </label>
   </div>
   <!-- 主要内容 -->
-  <div class="p-4 h-full text-white duration-300 rounded-sm bg-my-green">
-    <!-- 头像,姓名,职位 -->
+  <div class="p-4 h-full text-white duration-300 rounded-sm bg-my-green flex items-center gap-4">
     <div class="flex items-center">
-      <div class="flex justify-center items-center h-40">
-        <img class="h-40 mx-4 rounded-lg" src="@assets/images/avatar.jpg" />
+      <img class="h-40 rounded-lg" src="@assets/images/avatar.jpg" />
+    </div>
+    <div class="h-40 flex flex-col justify-evenly">
+      <h1 class="text-2xl font-bold">{{ userInfo?.name }}</h1>
+      <h1 class="text-xl font-bold">{{ userInfo?.job }}</h1>
+      <!-- 联系方式 -->
+      <div class="flex gap-6 cursor-pointer">
+        <section>
+          <h1>联系方式:</h1>
+        </section>
+        <!-- 微信 -->
+        <section class="flex gap-1" @click="copyText(userInfo?.wechat || '')">
+          <img src="@assets/icons/wechat.svg" alt="">
+          <label for="my-modal">{{ userInfo?.wechat }}</label>
+        </section>
+        <!-- 电话 -->
+        <section class="flex gap-1" @click="copyText(userInfo?.phone || '')">
+          <img src="@assets/icons/phone.svg" alt="">
+          <label for="my-modal">{{ userInfo?.phone }}</label>
+        </section>
+        <!-- 邮箱 -->
+        <section class="flex gap-1" @click="copyText(userInfo?.email || '')">
+          <img src="@assets/icons/email.svg" alt="">
+          <label for="my-modal">{{ userInfo?.email }}</label>
+        </section>
       </div>
-      <div class="h-40 flex flex-col justify-evenly">
-        <h1 class="text-2xl font-bold">{{ userInfo?.name }}</h1>
-        <h1 class="text-xl font-bold">{{ userInfo?.job }}</h1>
-        <!-- 联系方式 -->
-        <div class="flex gap-6 cursor-pointer">
-          <section>
-            <h1>联系方式:</h1>
-          </section>
-          <!-- 微信 -->
-          <section class="flex gap-1" @click="copyText(userInfo?.wechat || '')">
-            <img src="@assets/icons/wechat.svg" alt="">
-            <label for="my-modal">{{ userInfo?.wechat }}</label>
-          </section>
-          <!-- 电话 -->
-          <section class="flex gap-1" @click="copyText(userInfo?.phone || '')">
-            <img src="@assets/icons/phone.svg" alt="">
-            <label for="my-modal">{{ userInfo?.phone }}</label>
-          </section>
-          <!-- 邮箱 -->
-          <section class="flex gap-1" @click="copyText(userInfo?.email || '')">
-            <img src="@assets/icons/email.svg" alt="">
-            <label for="my-modal">{{ userInfo?.email }}</label>
-          </section>
-        </div>
-        <!-- 链接 -->
-        <div class="flex gap-6 cursor-pointer">
-          <section>
-            <h1>链接:</h1>
-          </section>
-          <!-- Resume -->
-          <a :href="userInfo?.resumeUrl" target="_blank" rel="noopener noreferrer" class="flex gap-1">
-            <img src="@assets/icons/link.svg" alt="">
-            <span class="border-b-2 border-white">Resume</span>
-          </a>
-          <!-- Blog -->
-          <a :href="userInfo?.blogUrl" target="_blank" rel="noopener noreferrer" class="flex gap-1">
-            <img src="@assets/icons/introduce.svg" alt="">
-            <span class="border-b-2 border-white">Blog</span>
-          </a>
-          <!-- Github -->
-          <a :href="userInfo?.githubUrl" target="_blank" rel="noopener noreferrer" class="flex gap-1">
-            <img src="@assets/icons/github.svg" alt="">
-            <span class="border-b-2 border-white">Github</span>
-          </a>
-        </div>
+      <!-- 链接 -->
+      <div class="flex gap-6 cursor-pointer">
+        <section>
+          <h1>链接:</h1>
+        </section>
+        <!-- Resume -->
+        <a :href="userInfo?.resumeUrl" target="_blank" rel="noopener noreferrer" class="flex gap-1 items-center">
+          <img src="@assets/icons/link.svg" alt="" class="header-icon">
+          <span class="border-b-2 border-white">Resume</span>
+        </a>
+        <!-- Blog -->
+        <a :href="userInfo?.blogUrl" target="_blank" rel="noopener noreferrer" class="flex gap-1 items-center">
+          <img src="@assets/icons/introduce.svg" alt="" class="header-icon">
+          <span class="border-b-2 border-white">Blog</span>
+        </a>
+        <!-- Github -->
+        <a :href="userInfo?.githubUrl" target="_blank" rel="noopener noreferrer" class="flex gap-1 items-center">
+          <img src="@assets/icons/github-fill.svg" alt="" class="header-icon">
+          <span class="border-b-2 border-white">Github</span>
+        </a>
+        <!-- Notion -->
+        <a :href="userInfo?.notionUrl" target="_blank" rel="noopener noreferrer" class="flex gap-1 items-center">
+          <img src="@assets/icons/Notion.svg" alt="" class="header-icon">
+          <span class="border-b-2 border-white">Notion</span>
+        </a>
       </div>
     </div>
   </div>

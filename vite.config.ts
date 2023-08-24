@@ -7,9 +7,9 @@ import viteCompression from 'vite-plugin-compression'
 export default defineConfig({
   base: '/fe_resume/',
   resolve: {
-    alias: {
-      '@assets': path.resolve(__dirname, './src/assets'), // 路径别名
-      '@components': path.resolve(__dirname, './src/components') // 路径别名
+    alias: { // 路径别名
+      '@assets': path.resolve(__dirname, './src/assets'),
+      '@components': path.resolve(__dirname, './src/components') 
     }
   },
   plugins: [

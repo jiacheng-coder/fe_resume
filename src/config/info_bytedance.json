@@ -1,0 +1,99 @@
+{
+  "name": "zhujiacheng",
+  "age": 18,
+  "userInfo": {
+    "name": "诸嘉诚",
+    "job": "前端开发工程师",
+    "email": "2253541907@qq.com",
+    "phone": "15023092023",
+    "wechat": "zaqwertyuioplm7412",
+    "resumeUrl": "https://jiacheng-coder.github.io/fe_resume/",
+    "blogUrl": "https://jiacheng-coder.github.io/my-blog",
+    "githubUrl": "https://github.com/jiacheng-coder",
+    "notionUrl": "https://fir-supply-fbd.notion.site/FE-70100f740395477ba01ad7a2f5a33dfc?pvs=4"
+  },
+  "skills": ["Vue 2/3", "React 18", "Vue Router / React Router", "Pinia / Mobx", "Miniprogram", "Uniapp", "Roo UI / Antd Design", "TailwindCSS / DaisyUI", "Color UI / Grace UI"],
+  "prizes": ["第四届 - 字节跳动 - 前端青训营 - 码如磐石奖", "2021年全国大学生数学竞赛 - 重庆赛区 - 省级三等奖"],
+  "features": [
+    "精通 HTML5, CSS3, ES6, TS, 熟悉常规的 W3C 标准与 ECMA 规范;",
+    "具备 Vue 和 React 等 MVVM 框架开发经验, 能够结合已有基建快速完成需求;",
+    "熟悉 微信小程序 和 Uniapp 的开发流程, 拥有单日累计打开次数10万+小程序的开发与维护经验;",
+    "熟练使用 Webpack, Vite 等打包构建工具, 对打包构建流程有一定了解;",
+    "对前端性能优化有一定了解, 落地实现过 首屏加载优化 及 gzip压缩 等优化手段;",
+    "熟悉 Formily 表单解决方案, 包括各种字段的联动问题和异步校验场景的处理;",
+    "熟悉 ColorUI, TailwindCSS, RooUI / Antd 组件库, 能够针对具体业务对组件库进行二次开发;",
+    "有写博客的习惯, 关注用户体验, 注重技术积累与新技术的探索, 具有良好的沟通和团队协作能力;"
+  ],
+  "experience": [
+    {
+      "company": "重庆电覆者科技有限公司",
+      "projects": [
+        {
+          "name": "WeCQU小程序",
+          "job": "前端开发工程师",
+          "time": "2022.9 - 2023.8",
+          "introduce": "面向大学生群体的校园一体化查询小程序, 单日巅峰累计打开次数10万+",
+          "myContribution": [
+            "重构页面 UI , 简化原有 JS 逻辑, 总重构率约50%",
+            "对组件库中的轮播图组件进行二次封装, 实现点击跳转 webview 公众号推文的功能",
+            "使用 promise 封装 wx.request 和 wx.showModal 请求",
+            "通过防抖防止登录请求的重复发送, 减轻服务器压力",
+            "通过 setStorage 实现数据持久化, 包括用户头像与课表信息的存储等"
+          ],
+          "skills": "微信小程序 + JS + ColorUI + GraceUI 3",
+          "more": "https://zhujiacheng612.gitee.io/blog/07.%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D/Wecqu.html"
+        },
+        {
+          "name": "生态圈校园论坛",
+          "job": "前端开发工程师",
+          "time": "2022年12月 - 至今",
+          "introduce": "基于 Uniapp 开发的高校论坛类H5应用, 影响力涵盖川大、重大等多所高校",
+          "myContribution": [
+            "基于 Vue 的动态组件实现tabs切换不同组件的功能, 优化页面渲染效率",
+            "基于 vue-virtual-scroller 虚拟滚动方案实现APP的首屏渲染优化",
+            "使用 Vue3.2 的 v-memo, v-once Hooks 进行长列表优化",
+            "基于单例模式的思想, 使用Vuex进行全局状态管理, 统一暴露接口对通用数据进行CRUD",
+            "基于 watch 侦听器与 Vuex 的 getters 搭建系统的消息提醒模块"
+          ],
+          "skills": "Vue + ES6 + Uniapp + GraceUI 5",
+          "more": "https://zhujiacheng612.gitee.io/blog/07.%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D/ecosystem.html"
+        }
+      ]
+    }
+  ],
+  "internship" : [
+    {
+      "company": "美团",
+      "icon": "@assets/icons/favicon-mt.ico",
+      "projects": [
+        {
+          "name": "韦恩系统",
+          "job": "前端开发工程师",
+          "time": "2023.6 - 至今",
+          "introduce": "提报活动全链路配置的 M 端系统, 基于 React 全家桶、Vite 打包工具落地业务开发。",
+          "myContribution": [
+            "负责历史韦恩系统的迭代升级工作, 抽离提报业务逻辑, 网络请求单例模式统一处理, 增强系统的健壮性和可维护性",
+            "基于 Roo Plus 重构部分业务组件, 优化页面组织方式, 减少了所维护页面 30% 左右的代码量",
+            "结合 PRD 优化原提报业务的配置流程, 打通新神价活动的配置链路, 同时做到对老神价活动的兼容, 促成运营提效",
+            "基于 Vite 打包构建工具对原有项目进行打包配置优化, 包括配置别名、分包策略和 gzip 压缩等, 实现开发提效",
+            "梳理 需求评审 - 开发 - 联调 - 测试 - 预发 - 上线 的全链路开发流程, 产出技术文档并在组内推广"
+          ],
+          "skills": "React 18 + TS + Roo Plus + Vite"
+        },
+        {
+          "name": "通用招商平台",
+          "job": "前端开发工程师",
+          "time": "2023.6 - 至今",
+          "introduce": "基于微前端和 Formily 表单解决方案搭建的通用招商系统。",
+          "myContribution": [
+            "负责报名结果页面的配置回显, 解决-margin的样式溢出问题",
+            "负责各种列表页的搭建, 并基于 RooUI 和业务逻辑二次封装通用查询和通用列表组件, 提高系统可维护性",
+            "优化原有配置流程, 封装目录组件, 实现配置流程的可视化, 提高运营人员的配置效率",
+            "基于 Formily 表单解决方案, 处理系统中方案创建和活动创建中时的联动场景和异步校验问题, 并在组内开展技术分享"
+          ],
+          "skills": "React 18 + TS + RooUI + Vite + Formily + Monorepo"
+        }
+      ]
+    }
+  ]
+}
