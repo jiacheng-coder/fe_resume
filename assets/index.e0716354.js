@@ -103,7 +103,7 @@ const router = createRouter({
     {
       path: "/",
       name: "Home",
-      component: () => __vitePreload(() => import("./index.c8bf9914.js"), true ? ["assets/index.c8bf9914.js","assets/node-modules.99f66ea9.js","assets/index.78ec8d5f.css"] : void 0)
+      component: () => __vitePreload(() => import("./index.85a25d2c.js"), true ? ["assets/index.85a25d2c.js","assets/node-modules.99f66ea9.js","assets/index.78ec8d5f.css"] : void 0)
     }
   ]
 });

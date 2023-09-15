@@ -1,5 +1,5 @@
 import { f as defineComponent, g as createElementBlock, h as createBaseVNode, t as toDisplayString, u as unref, F as Fragment, i as createStaticVNode, o as openBlock, j as copyToClipboard, k as renderList, l as createTextVNode, m as createVNode } from "./node-modules.99f66ea9.js";
-import { _ as _export_sfc } from "./index.0480a226.js";
+import { _ as _export_sfc } from "./index.e0716354.js";
 const _imports_0$1 = "/fe_resume/assets/avatar.9b3b448e.jpg";
 const _imports_1 = "/fe_resume/assets/wechat.8cecc907.svg";
 const _imports_2 = "/fe_resume/assets/phone.e5887e9e.svg";
@@ -541,7 +541,7 @@ const experience = [
 const internship = [
   {
     company: "\u7F8E\u56E2",
-    icon: "@assets/icons/favicon-mt.ico",
+    icon: "@/assets/icons/favicon-mt.ico",
     projects: [
       {
         name: "\u97E6\u6069\u7CFB\u7EDF",
