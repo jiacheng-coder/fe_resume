@@ -1,21 +1,18 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import path from 'path'
-import viteCompression from 'vite-plugin-compression'
+import viteCompression from 'vite-plugin-compression' // gzip压缩
+// import { fileURLToPath, URL } from 'node:url' // 配置路径别名
+import { resolve } from 'path/posix'
 
 export default defineConfig({
   base: '/fe_resume/',
   resolve: {
-    alias: { // 路径别名
-      '@assets': path.resolve(__dirname, './src/assets'),
-      '@components': path.resolve(__dirname, './src/components') 
-    }
+    alias: {
+      '@': resolve(__dirname, './src'),
+    },
   },
-  plugins: [
-    vue(),
-    viteCompression()
-  ],
+  plugins: [vue(), viteCompression()],
   server: {
     hmr: true,
     open: true,
@@ -24,7 +21,7 @@ export default defineConfig({
     minify: false,
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
+        manualChunks: id => {
           if (id.includes('node_modules')) return 'node-modules'
         },
       },
@@ -33,7 +30,7 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     transformMode: {
-      web: [/.tsx$/]
-    }
+      web: [/.tsx$/],
+    },
   },
 })

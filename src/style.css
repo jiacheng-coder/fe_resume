@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'LXGW';
-  src: url('./assets/font/LXGWNeoXiHei.ttf');
+  src: url('@/assets/font/LXGWNeoXiHei.ttf');
 }
 
 @tailwind base;

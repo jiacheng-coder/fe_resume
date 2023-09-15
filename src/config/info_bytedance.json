@@ -64,7 +64,7 @@
   "internship" : [
     {
       "company": "美团",
-      "icon": "@assets/icons/favicon-mt.ico",
+      "icon": "@/assets/icons/favicon-mt.ico",
       "projects": [
         {
           "name": "韦恩系统",

@@ -7,7 +7,7 @@
       <li class="mb-4" v-for="item in internship" :key="JSON.stringify(item.projects)">
         <div class="mb-2 flex items-center">
           <text class="text-2xl font-medium text-gray-800">{{ item.company }}</text>
-          <img src="@assets/icons/favicon-mt.ico" alt="" class="ml-2 w-9">
+          <img src="@/assets/icons/favicon-mt.ico" alt="" class="ml-2 w-9">
         </div>
         <div class="mb-2" v-for="project in item.projects" :key="project.name">
           <div class="flex text-xl font-medium text-gray-800 justify-between" style="align-items: center;">
