@@ -1,7 +1,7 @@
 
 
 <template>
-  <div class="mx-4 mb-6">
+  <div class="mb-6">
     <h1 class="mb-4 text-3xl text-gray-700 font-bold">实习经历</h1>
     <ul>
       <li class="mb-4" v-for="item in internship" :key="JSON.stringify(item.projects)">
@@ -11,7 +11,7 @@
         </div>
         <div class="mb-2" v-for="project in item.projects" :key="project.name">
           <div class="flex text-xl font-medium text-gray-800 justify-between" style="align-items: center;">
-            <text class="border-b-4 border-my-green">{{ project.name }}</text>
+            <text class="">{{ project.name }}</text>
             <text>{{ project.job }}</text>
             <text>{{ project.time }}</text>
           </div>

@@ -1,12 +1,12 @@
 <template>
-  <div class="mx-4 mb-6">
+  <div class="mb-6">
     <h1 class="mb-4 text-3xl text-gray-700 font-bold">项目经历</h1>
     <ul>
       <li class="mb-4" v-for="item in experience" :key="JSON.stringify(item)">
         <text class="text-2xl font-medium text-gray-800">{{ item.company }}</text>
         <div class="mb-2" v-for="project in item.projects" :key="project.name">
           <div class="flex text-xl font-medium text-gray-800 justify-between" style="align-items: center;">
-            <text class="border-b-4 border-my-green">{{ project.name }}</text>
+            <text>{{ project.name }}</text>
             <text>{{ project.job }}</text>
             <text>{{ project.time }}</text>
           </div>
