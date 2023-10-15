@@ -1,28 +1,23 @@
-import { f as defineComponent, g as createElementBlock, h as createBaseVNode, t as toDisplayString, u as unref, F as Fragment, i as createStaticVNode, o as openBlock, j as copyToClipboard, k as renderList, l as createTextVNode, m as createVNode } from "./node-modules.99f66ea9.js";
-import { _ as _export_sfc } from "./index.e0716354.js";
+import { f as defineComponent, g as ref, h as createElementBlock, i as createBaseVNode, t as toDisplayString, u as unref, F as Fragment, j as createStaticVNode, o as openBlock, k as copyToClipboard, l as renderList, m as createTextVNode, n as createVNode } from "./node-modules.2895efd9.js";
+import { _ as _export_sfc } from "./index.d9434e3c.js";
 const _imports_0$1 = "/fe_resume/assets/avatar.9b3b448e.jpg";
 const _imports_1 = "/fe_resume/assets/wechat.8cecc907.svg";
 const _imports_2 = "/fe_resume/assets/phone.e5887e9e.svg";
 const _imports_3 = "/fe_resume/assets/email.06284f48.svg";
-const _imports_4 = "/fe_resume/assets/link.bd39abe6.svg";
-const _imports_5 = "/fe_resume/assets/introduce.10f31a20.svg";
-const _imports_6 = "/fe_resume/assets/github-fill.6ccda0b8.svg";
-const _imports_7 = "/fe_resume/assets/Notion.cde23a08.svg";
-const _hoisted_1$8 = /* @__PURE__ */ createStaticVNode('<div><input type="checkbox" id="my-modal" class="modal-toggle"><label for="my-modal" class="modal cursor-pointer"><label class="modal-box relative" for=""><h3 class="text-lg font-bold">\u63D0\u793A!</h3><p class="py-4">\u5185\u5BB9\u5DF2\u590D\u5236\u5230\u526A\u8D34\u677F</p></label></label></div>', 1);
-const _hoisted_2$6 = { class: "p-4 h-full text-white duration-300 rounded-sm bg-my-green flex items-center gap-4" };
-const _hoisted_3$6 = /* @__PURE__ */ createBaseVNode("div", { class: "flex items-center" }, [
-  /* @__PURE__ */ createBaseVNode("img", {
-    class: "h-40 rounded-lg",
-    src: _imports_0$1
-  })
-], -1);
-const _hoisted_4$4 = { class: "h-40 flex flex-col justify-evenly" };
-const _hoisted_5$2 = { class: "text-2xl font-bold" };
-const _hoisted_6$2 = { class: "text-xl font-bold" };
-const _hoisted_7$2 = { class: "flex gap-6 cursor-pointer" };
-const _hoisted_8$2 = /* @__PURE__ */ createBaseVNode("section", null, [
-  /* @__PURE__ */ createBaseVNode("h1", null, "\u8054\u7CFB\u65B9\u5F0F:")
-], -1);
+const _hoisted_1$8 = /* @__PURE__ */ createStaticVNode('<section><input type="checkbox" id="my-modal" class="modal-toggle"><label for="my-modal" class="modal cursor-pointer"><label class="modal-box relative" for=""><h3 class="text-lg font-bold">\u63D0\u793A!</h3><p class="py-4">\u5185\u5BB9\u5DF2\u590D\u5236\u5230\u526A\u8D34\u677F</p></label></label></section>', 1);
+const _hoisted_2$6 = {
+  class: "p-4 text-white duration-300 rounded-sm flex flex-col",
+  style: { "background-color": "#0284C7" }
+};
+const _hoisted_3$6 = { class: "flex justify-between items-center" };
+const _hoisted_4$3 = { class: "flex items-center" };
+const _hoisted_5$2 = /* @__PURE__ */ createBaseVNode("img", {
+  class: "h-24 object-fill rounded-xl",
+  src: _imports_0$1
+}, null, -1);
+const _hoisted_6$2 = { class: "ml-4 text-2xl font-bold" };
+const _hoisted_7$2 = { class: "text-xl font-bold" };
+const _hoisted_8$2 = { class: "flex justify-between mt-4" };
 const _hoisted_9$2 = /* @__PURE__ */ createBaseVNode("img", {
   src: _imports_1,
   alt: ""
@@ -32,60 +27,12 @@ const _hoisted_11$2 = /* @__PURE__ */ createBaseVNode("img", {
   src: _imports_2,
   alt: ""
 }, null, -1);
-const _hoisted_12$2 = { for: "my-modal" };
+const _hoisted_12$1 = { for: "my-modal" };
 const _hoisted_13$1 = /* @__PURE__ */ createBaseVNode("img", {
   src: _imports_3,
   alt: ""
 }, null, -1);
 const _hoisted_14$1 = { for: "my-modal" };
-const _hoisted_15 = { class: "flex gap-6 cursor-pointer" };
-const _hoisted_16 = /* @__PURE__ */ createBaseVNode("section", null, [
-  /* @__PURE__ */ createBaseVNode("h1", null, "\u94FE\u63A5:")
-], -1);
-const _hoisted_17 = ["href"];
-const _hoisted_18 = /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_4,
-  alt: "",
-  class: "header-icon"
-}, null, -1);
-const _hoisted_19 = /* @__PURE__ */ createBaseVNode("span", { class: "border-b-2 border-white" }, "Resume", -1);
-const _hoisted_20 = [
-  _hoisted_18,
-  _hoisted_19
-];
-const _hoisted_21 = ["href"];
-const _hoisted_22 = /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_5,
-  alt: "",
-  class: "header-icon"
-}, null, -1);
-const _hoisted_23 = /* @__PURE__ */ createBaseVNode("span", { class: "border-b-2 border-white" }, "Blog", -1);
-const _hoisted_24 = [
-  _hoisted_22,
-  _hoisted_23
-];
-const _hoisted_25 = ["href"];
-const _hoisted_26 = /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_6,
-  alt: "",
-  class: "header-icon"
-}, null, -1);
-const _hoisted_27 = /* @__PURE__ */ createBaseVNode("span", { class: "border-b-2 border-white" }, "Github", -1);
-const _hoisted_28 = [
-  _hoisted_26,
-  _hoisted_27
-];
-const _hoisted_29 = ["href"];
-const _hoisted_30 = /* @__PURE__ */ createBaseVNode("img", {
-  src: _imports_7,
-  alt: "",
-  class: "header-icon"
-}, null, -1);
-const _hoisted_31 = /* @__PURE__ */ createBaseVNode("span", { class: "border-b-2 border-white" }, "Notion", -1);
-const _hoisted_32 = [
-  _hoisted_30,
-  _hoisted_31
-];
 const _sfc_main$8 = /* @__PURE__ */ defineComponent({
   __name: "index",
   props: {
@@ -96,77 +43,52 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const props = __props;
     const { userInfo: userInfo2 } = props;
-    let copyText = (text) => [
+    let copyText = (text = "") => [
       copyToClipboard(text)
     ];
+    ref(false);
     return (_ctx, _cache) => {
-      var _a, _b, _c, _d, _e, _f, _g, _h, _i;
+      var _a, _b, _c, _d, _e;
       return openBlock(), createElementBlock(Fragment, null, [
         _hoisted_1$8,
         createBaseVNode("div", _hoisted_2$6, [
-          _hoisted_3$6,
-          createBaseVNode("div", _hoisted_4$4, [
-            createBaseVNode("h1", _hoisted_5$2, toDisplayString((_a = unref(userInfo2)) == null ? void 0 : _a.name), 1),
-            createBaseVNode("h1", _hoisted_6$2, toDisplayString((_b = unref(userInfo2)) == null ? void 0 : _b.job), 1),
-            createBaseVNode("div", _hoisted_7$2, [
-              _hoisted_8$2,
-              createBaseVNode("section", {
-                class: "flex gap-1",
-                onClick: _cache[0] || (_cache[0] = ($event) => {
-                  var _a2;
-                  return unref(copyText)(((_a2 = unref(userInfo2)) == null ? void 0 : _a2.wechat) || "");
-                })
-              }, [
-                _hoisted_9$2,
-                createBaseVNode("label", _hoisted_10$2, toDisplayString((_c = unref(userInfo2)) == null ? void 0 : _c.wechat), 1)
-              ]),
-              createBaseVNode("section", {
-                class: "flex gap-1",
-                onClick: _cache[1] || (_cache[1] = ($event) => {
-                  var _a2;
-                  return unref(copyText)(((_a2 = unref(userInfo2)) == null ? void 0 : _a2.phone) || "");
-                })
-              }, [
-                _hoisted_11$2,
-                createBaseVNode("label", _hoisted_12$2, toDisplayString((_d = unref(userInfo2)) == null ? void 0 : _d.phone), 1)
-              ]),
-              createBaseVNode("section", {
-                class: "flex gap-1",
-                onClick: _cache[2] || (_cache[2] = ($event) => {
-                  var _a2;
-                  return unref(copyText)(((_a2 = unref(userInfo2)) == null ? void 0 : _a2.email) || "");
-                })
-              }, [
-                _hoisted_13$1,
-                createBaseVNode("label", _hoisted_14$1, toDisplayString((_e = unref(userInfo2)) == null ? void 0 : _e.email), 1)
-              ])
+          createBaseVNode("div", _hoisted_3$6, [
+            createBaseVNode("section", _hoisted_4$3, [
+              _hoisted_5$2,
+              createBaseVNode("h1", _hoisted_6$2, toDisplayString((_a = unref(userInfo2)) == null ? void 0 : _a.name), 1)
             ]),
-            createBaseVNode("div", _hoisted_15, [
-              _hoisted_16,
-              createBaseVNode("a", {
-                href: (_f = unref(userInfo2)) == null ? void 0 : _f.resumeUrl,
-                target: "_blank",
-                rel: "noopener noreferrer",
-                class: "flex gap-1 items-center"
-              }, _hoisted_20, 8, _hoisted_17),
-              createBaseVNode("a", {
-                href: (_g = unref(userInfo2)) == null ? void 0 : _g.blogUrl,
-                target: "_blank",
-                rel: "noopener noreferrer",
-                class: "flex gap-1 items-center"
-              }, _hoisted_24, 8, _hoisted_21),
-              createBaseVNode("a", {
-                href: (_h = unref(userInfo2)) == null ? void 0 : _h.githubUrl,
-                target: "_blank",
-                rel: "noopener noreferrer",
-                class: "flex gap-1 items-center"
-              }, _hoisted_28, 8, _hoisted_25),
-              createBaseVNode("a", {
-                href: (_i = unref(userInfo2)) == null ? void 0 : _i.notionUrl,
-                target: "_blank",
-                rel: "noopener noreferrer",
-                class: "flex gap-1 items-center"
-              }, _hoisted_32, 8, _hoisted_29)
+            createBaseVNode("h1", _hoisted_7$2, toDisplayString((_b = unref(userInfo2)) == null ? void 0 : _b.job), 1)
+          ]),
+          createBaseVNode("div", _hoisted_8$2, [
+            createBaseVNode("section", {
+              class: "flex items-center gap-1",
+              onClick: _cache[0] || (_cache[0] = ($event) => {
+                var _a2;
+                return unref(copyText)((_a2 = unref(userInfo2)) == null ? void 0 : _a2.wechat);
+              })
+            }, [
+              _hoisted_9$2,
+              createBaseVNode("label", _hoisted_10$2, toDisplayString((_c = unref(userInfo2)) == null ? void 0 : _c.wechat), 1)
+            ]),
+            createBaseVNode("section", {
+              class: "flex items-center gap-1",
+              onClick: _cache[1] || (_cache[1] = ($event) => {
+                var _a2;
+                return unref(copyText)((_a2 = unref(userInfo2)) == null ? void 0 : _a2.phone);
+              })
+            }, [
+              _hoisted_11$2,
+              createBaseVNode("label", _hoisted_12$1, toDisplayString((_d = unref(userInfo2)) == null ? void 0 : _d.phone), 1)
+            ]),
+            createBaseVNode("section", {
+              class: "flex items-center gap-1",
+              onClick: _cache[2] || (_cache[2] = ($event) => {
+                var _a2;
+                return unref(copyText)((_a2 = unref(userInfo2)) == null ? void 0 : _a2.email);
+              })
+            }, [
+              _hoisted_13$1,
+              createBaseVNode("label", _hoisted_14$1, toDisplayString((_e = unref(userInfo2)) == null ? void 0 : _e.email), 1)
             ])
           ])
         ])
@@ -174,7 +96,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$7 = { class: "mx-4 mb-6" };
+const _hoisted_1$7 = { class: "mb-6" };
 const _hoisted_2$5 = /* @__PURE__ */ createBaseVNode("h1", { class: "mb-4 text-3xl text-gray-700 font-bold" }, "\u4E2A\u4EBA\u4F18\u52BF", -1);
 const _hoisted_3$5 = /* @__PURE__ */ createBaseVNode("span", { class: "iconfont icon-pointer mr-2" }, null, -1);
 const _sfc_main$7 = /* @__PURE__ */ defineComponent({
@@ -202,25 +124,24 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
   }
 });
 const _sfc_main$6 = {};
-const _hoisted_1$6 = { class: "mx-4 mb-6" };
+const _hoisted_1$6 = { class: "mb-6" };
 const _hoisted_2$4 = /* @__PURE__ */ createBaseVNode("h1", { class: "mb-4 text-3xl text-gray-700 font-bold" }, "\u6559\u80B2\u7ECF\u5386", -1);
 const _hoisted_3$4 = /* @__PURE__ */ createBaseVNode("div", { class: "flex justify-between text-xl" }, [
   /* @__PURE__ */ createBaseVNode("text", null, "\u91CD\u5E86\u5927\u5B66"),
   /* @__PURE__ */ createBaseVNode("text", null, "\u4FE1\u606F\u4E0E\u8BA1\u7B97\u79D1\u5B66"),
   /* @__PURE__ */ createBaseVNode("text", null, "2020 - 2024")
 ], -1);
-const _hoisted_4$3 = [
+const _hoisted_4$2 = [
   _hoisted_2$4,
   _hoisted_3$4
 ];
 function _sfc_render(_ctx, _cache) {
-  return openBlock(), createElementBlock("div", _hoisted_1$6, _hoisted_4$3);
+  return openBlock(), createElementBlock("div", _hoisted_1$6, _hoisted_4$2);
 }
 const Education = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render]]);
-const _hoisted_1$5 = { class: "mx-4" };
-const _hoisted_2$3 = /* @__PURE__ */ createBaseVNode("h1", { class: "mb-8 text-3xl text-gray-700 font-bold" }, "\u6280\u672F\u6808", -1);
-const _hoisted_3$3 = { class: "flex flex-wrap" };
-const _hoisted_4$2 = { class: "mr-2 my-1 rounded-full border px-4 text-sm py-2 font-medium bg-gray-200 hover:text-white duration-300 hover:bg-my-green hover:cursor-pointer skill" };
+const _hoisted_1$5 = /* @__PURE__ */ createBaseVNode("h1", { class: "mb-8 text-3xl text-gray-700 font-bold" }, "\u6280\u672F\u6808", -1);
+const _hoisted_2$3 = { class: "flex flex-wrap" };
+const _hoisted_3$3 = { class: "mr-2 my-1 rounded-full border px-4 text-sm py-2 font-medium bg-gray-200 hover:text-white duration-300 hover:bg-my-blue hover:cursor-pointer skill" };
 const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "index",
   props: {
@@ -230,16 +151,16 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", _hoisted_1$5, [
-        _hoisted_2$3,
-        createBaseVNode("ul", _hoisted_3$3, [
+      return openBlock(), createElementBlock("div", null, [
+        _hoisted_1$5,
+        createBaseVNode("ul", _hoisted_2$3, [
           (openBlock(true), createElementBlock(Fragment, null, renderList(__props.skills, (skill) => {
             return openBlock(), createElementBlock("li", {
               class: "mb-6",
               key: skill
             }, [
               createBaseVNode("div", null, [
-                createBaseVNode("span", _hoisted_4$2, toDisplayString(skill), 1)
+                createBaseVNode("span", _hoisted_3$3, toDisplayString(skill), 1)
               ])
             ]);
           }), 128))
@@ -248,7 +169,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$4 = { class: "mx-4 mb-6" };
+const _hoisted_1$4 = { class: "mb-6" };
 const _hoisted_2$2 = /* @__PURE__ */ createBaseVNode("h1", { class: "mb-4 text-3xl text-gray-700 font-bold" }, "\u83B7\u5956\u7ECF\u5386", -1);
 const _hoisted_3$2 = /* @__PURE__ */ createBaseVNode("span", { class: "iconfont icon-pointer mr-2" }, null, -1);
 const _sfc_main$4 = /* @__PURE__ */ defineComponent({
@@ -272,21 +193,20 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1$3 = { class: "mx-4 mb-6" };
+const _hoisted_1$3 = { class: "mb-6" };
 const _hoisted_2$1 = /* @__PURE__ */ createBaseVNode("h1", { class: "mb-4 text-3xl text-gray-700 font-bold" }, "\u9879\u76EE\u7ECF\u5386", -1);
 const _hoisted_3$1 = { class: "text-2xl font-medium text-gray-800" };
 const _hoisted_4$1 = {
   class: "flex text-xl font-medium text-gray-800 justify-between",
   style: { "align-items": "center" }
 };
-const _hoisted_5$1 = { class: "border-b-4 border-my-green" };
-const _hoisted_6$1 = { class: "text-md" };
-const _hoisted_7$1 = { class: "mt-1" };
-const _hoisted_8$1 = /* @__PURE__ */ createBaseVNode("text", { class: "mr-4 font-semibold" }, "\u9879\u76EE\u63CF\u8FF0:", -1);
-const _hoisted_9$1 = /* @__PURE__ */ createBaseVNode("p", { class: "mr-4 font-semibold" }, "\u9879\u76EE\u804C\u8D23:", -1);
-const _hoisted_10$1 = /* @__PURE__ */ createBaseVNode("span", { class: "iconfont icon-pointer mr-2" }, null, -1);
-const _hoisted_11$1 = { class: "flex justify-between" };
-const _hoisted_12$1 = /* @__PURE__ */ createBaseVNode("text", { class: "mr-4 font-semibold" }, "\u6280\u672F\u6808:", -1);
+const _hoisted_5$1 = { class: "text-md" };
+const _hoisted_6$1 = { class: "mt-1" };
+const _hoisted_7$1 = /* @__PURE__ */ createBaseVNode("text", { class: "mr-4 font-semibold" }, "\u9879\u76EE\u63CF\u8FF0:", -1);
+const _hoisted_8$1 = /* @__PURE__ */ createBaseVNode("p", { class: "mr-4 font-semibold" }, "\u9879\u76EE\u804C\u8D23:", -1);
+const _hoisted_9$1 = /* @__PURE__ */ createBaseVNode("span", { class: "iconfont icon-pointer mr-2" }, null, -1);
+const _hoisted_10$1 = { class: "flex justify-between" };
+const _hoisted_11$1 = /* @__PURE__ */ createBaseVNode("text", { class: "mr-4 font-semibold" }, "\u6280\u672F\u6808:", -1);
 const _sfc_main$3 = /* @__PURE__ */ defineComponent({
   __name: "index",
   props: {
@@ -311,27 +231,27 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                   key: project.name
                 }, [
                   createBaseVNode("div", _hoisted_4$1, [
-                    createBaseVNode("text", _hoisted_5$1, toDisplayString(project.name), 1),
+                    createBaseVNode("text", null, toDisplayString(project.name), 1),
                     createBaseVNode("text", null, toDisplayString(project.job), 1),
                     createBaseVNode("text", null, toDisplayString(project.time), 1)
                   ]),
-                  createBaseVNode("div", _hoisted_6$1, [
-                    createBaseVNode("div", _hoisted_7$1, [
-                      _hoisted_8$1,
+                  createBaseVNode("div", _hoisted_5$1, [
+                    createBaseVNode("div", _hoisted_6$1, [
+                      _hoisted_7$1,
                       createBaseVNode("text", null, toDisplayString(project.introduce), 1)
                     ]),
                     createBaseVNode("div", null, [
-                      _hoisted_9$1,
+                      _hoisted_8$1,
                       (openBlock(true), createElementBlock(Fragment, null, renderList(project.myContribution, (item2) => {
                         return openBlock(), createElementBlock("div", { key: item2 }, [
-                          _hoisted_10$1,
+                          _hoisted_9$1,
                           createBaseVNode("text", null, toDisplayString(item2), 1)
                         ]);
                       }), 128))
                     ]),
-                    createBaseVNode("div", _hoisted_11$1, [
+                    createBaseVNode("div", _hoisted_10$1, [
                       createBaseVNode("div", null, [
-                        _hoisted_12$1,
+                        _hoisted_11$1,
                         createBaseVNode("text", null, toDisplayString(project.skills), 1)
                       ])
                     ])
@@ -346,7 +266,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
   }
 });
 const _imports_0 = "/fe_resume/assets/favicon-mt.a6f4dd99.ico";
-const _hoisted_1$2 = { class: "mx-4 mb-6" };
+const _hoisted_1$2 = { class: "mb-6" };
 const _hoisted_2 = /* @__PURE__ */ createBaseVNode("h1", { class: "mb-4 text-3xl text-gray-700 font-bold" }, "\u5B9E\u4E60\u7ECF\u5386", -1);
 const _hoisted_3 = { class: "mb-2 flex items-center" };
 const _hoisted_4 = { class: "text-2xl font-medium text-gray-800" };
@@ -359,7 +279,7 @@ const _hoisted_6 = {
   class: "flex text-xl font-medium text-gray-800 justify-between",
   style: { "align-items": "center" }
 };
-const _hoisted_7 = { class: "border-b-4 border-my-green" };
+const _hoisted_7 = { class: "" };
 const _hoisted_8 = { class: "text-md" };
 const _hoisted_9 = { class: "mt-1" };
 const _hoisted_10 = /* @__PURE__ */ createBaseVNode("text", { class: "mr-4 font-semibold" }, "\u9879\u76EE\u63CF\u8FF0:", -1);

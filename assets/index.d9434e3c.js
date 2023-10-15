@@ -1,4 +1,4 @@
-import { o as openBlock, c as createBlock, r as resolveComponent, a as createRouter, b as createWebHistory, d as createPinia, e as createApp } from "./node-modules.99f66ea9.js";
+import { o as openBlock, c as createBlock, r as resolveComponent, a as createRouter, b as createWebHistory, d as createPinia, e as createApp } from "./node-modules.2895efd9.js";
 (function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) {
@@ -103,7 +103,7 @@ const router = createRouter({
     {
       path: "/",
       name: "Home",
-      component: () => __vitePreload(() => import("./index.85a25d2c.js"), true ? ["assets/index.85a25d2c.js","assets/node-modules.99f66ea9.js","assets/index.78ec8d5f.css"] : void 0)
+      component: () => __vitePreload(() => import("./index.ad18f96f.js"), true ? ["assets/index.ad18f96f.js","assets/node-modules.2895efd9.js","assets/index.78ec8d5f.css"] : void 0)
     }
   ]
 });
