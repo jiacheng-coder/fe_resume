@@ -1,7 +1,7 @@
 module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    themes: ['cupcake', 'night', 'aqua'],
+    themes: ['light', 'night', 'cupcake', 'aqua'],
     extend: {
       colors: {
         'my-green': '#58926F',
