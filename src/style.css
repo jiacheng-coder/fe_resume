@@ -9,6 +9,12 @@
 
 html {
   font-family: 'LXGW', sans-serif;
+  color-scheme: light;
+}
+
+body {
+  background-color: #fff;
+  color: #27272a;
 }
 
 .header-icon {

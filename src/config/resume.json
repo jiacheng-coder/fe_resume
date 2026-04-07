@@ -7,6 +7,10 @@
       "title": "提示!",
       "message": "内容已复制到剪贴板"
     },
+    "exportPdf": {
+      "button": "导出 PDF",
+      "hint": "将打开打印对话框，目标打印机请选择「存储为 PDF」"
+    },
     "sections": {
       "features": "个人优势",
       "education": "教育经历",

@@ -1,9 +1,15 @@
 {
-  "name": "my-resume",
+  "name": "andy-resume",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "packageManager": "pnpm@8.3.1",
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=8"
+  },
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",

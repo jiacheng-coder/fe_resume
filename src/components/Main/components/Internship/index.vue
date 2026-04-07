@@ -8,27 +8,29 @@
           <img v-if="item.icon" :src="iconSrc(item.icon)" alt="" class="ml-2 w-9" />
         </div>
         <div class="mb-2" v-for="project in item.projects" :key="project.name">
-          <div class="flex text-xl font-medium text-gray-800 justify-between" style="align-items: center;">
-            <text class="">{{ project.name }}</text>
-            <text>{{ project.job }}</text>
-            <text>{{ project.time }}</text>
-          </div>
-          <div class="text-md">
-            <div class="mt-1">
-              <text class="mr-4 font-semibold">{{ resume.ui.labels.projectDescription }}</text>
-              <text>{{ project.introduce }}</text>
+          <div class="resume-project-block">
+            <div class="flex text-xl font-medium text-gray-800 justify-between" style="align-items: center;">
+              <text>{{ project.name }}</text>
+              <text>{{ project.job }}</text>
+              <text>{{ project.time }}</text>
             </div>
-            <div>
-              <p class="mr-4 font-semibold">{{ resume.ui.labels.projectDuty }}</p>
-              <div v-for="line in project.myContribution" :key="line">
-                <span class="iconfont icon-pointer mr-2"></span>
-                <text>{{ line }}</text>
+            <div class="text-md">
+              <div class="mt-1">
+                <text class="mr-4 font-semibold">{{ resume.ui.labels.projectDescription }}</text>
+                <text>{{ project.introduce }}</text>
               </div>
-            </div>
-            <div class="flex justify-between">
               <div>
-                <text class="mr-4 font-semibold">{{ resume.ui.labels.techStack }}</text>
-                <text>{{ project.skills }}</text>
+                <p class="mr-4 font-semibold">{{ resume.ui.labels.projectDuty }}</p>
+                <div v-for="line in project.myContribution" :key="line">
+                  <span class="iconfont icon-pointer mr-2"></span>
+                  <text>{{ line }}</text>
+                </div>
+              </div>
+              <div class="flex justify-between">
+                <div>
+                  <text class="mr-4 font-semibold">{{ resume.ui.labels.techStack }}</text>
+                  <text>{{ project.skills }}</text>
+                </div>
               </div>
             </div>
           </div>

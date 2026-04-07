@@ -24,6 +24,21 @@
   
 # 使用
 
+## 环境与安装
+
+本项目使用 [pnpm](https://pnpm.io/) 管理依赖（勿使用 `npm install` / `yarn`）。
+
+```bash
+# 安装 pnpm（任选其一）
+npm install -g pnpm
+# 或使用 Corepack（Node 16.13+）：corepack enable && corepack prepare pnpm@8.3.1 --activate
+
+pnpm install
+pnpm dev
+```
+
+常用命令：`pnpm build` 构建，`pnpm preview` 本地预览构建结果，`pnpm test` 运行测试。
+
 ## 实习经历
  - 项目所用的技术栈
  - 项目中所负责的功能模块（行业的核心模块）

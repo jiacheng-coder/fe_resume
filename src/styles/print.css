@@ -1,0 +1,81 @@
+/* 屏幕：居中内容区，无描边 */
+#resume-print-root {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+}
+
+.resume-header {
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.resume-main {
+  padding: 1rem 1rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .resume-main {
+    padding: 1rem 1.25rem 1.5rem;
+  }
+}
+
+/*
+ * 分页：仅对「单条项目」避免从中间断开（系统打印引擎可读）。
+ * 勿对整个大区块 avoid，否则长段落会整段被挤到下一页，表现更差。
+ */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  /* 避免系统深色 / 主题扩展把打印预览做成黑底 */
+  html {
+    color-scheme: light !important;
+  }
+
+  html,
+  body,
+  #app {
+    background: #fff !important;
+    color: #27272a !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  #resume-print-root {
+    max-width: none !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    color: inherit !important;
+  }
+
+  .resume-page-wrap {
+    padding: 0 !important;
+    background: #fff !important;
+    min-height: auto !important;
+  }
+
+  .resume-main {
+    padding: 0 !important;
+  }
+
+  .resume-project-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+}

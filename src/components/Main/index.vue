@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-4 h-full">
+  <div class="resume-main pt-4 h-full">
     <Features />
     <Education />
     <Internship />

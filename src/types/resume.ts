@@ -8,6 +8,11 @@ export type ResumeUi = {
     title: string
     message: string
   }
+  exportPdf: {
+    button: string
+    /** 打印导出说明（系统打印 → 存储为 PDF） */
+    hint: string
+  }
   sections: {
     features: string
     education: string
