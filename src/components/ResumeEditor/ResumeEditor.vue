@@ -106,8 +106,9 @@
           <button type="button" class="btn btn-ghost btn-xs" @click="addExperienceCompany">+ 公司</button>
         </div>
         <div v-for="(exp, ei) in store.resume.experience" :key="ei" class="space-y-2 rounded border border-slate-200 p-2">
-          <div class="flex gap-1">
-            <input v-model="exp.company" placeholder="公司名" class="input input-bordered input-sm flex-1" />
+          <div class="flex flex-wrap gap-1">
+            <input v-model="exp.company" placeholder="公司 / 组织名" class="input input-bordered input-sm min-w-[8rem] flex-1" />
+            <input v-model="exp.icon" placeholder="图标路径（可选）/icons/..." class="input input-bordered input-sm min-w-[8rem] flex-1" />
             <button type="button" class="btn btn-ghost btn-xs" @click="removeExperienceCompany(ei)">删公司</button>
           </div>
           <button type="button" class="btn btn-ghost btn-xs" @click="addExperienceProject(ei)">+ 项目</button>
@@ -197,7 +198,7 @@ function emptyProject(): project {
 }
 
 function emptyCompany(): projects {
-  return { company: '', projects: [emptyProject()] }
+  return { company: '', icon: '', projects: [emptyProject()] }
 }
 
 function addEducation() {

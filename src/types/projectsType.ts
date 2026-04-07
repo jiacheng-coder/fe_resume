@@ -9,6 +9,8 @@ type project = {
 };
 type projects = {
   company: string;
+  /** Public URL under `public/`, e.g. `/icons/meituan.svg` */
+  icon?: string;
   projects: Array<project>;
 };
 export type { project, projects };

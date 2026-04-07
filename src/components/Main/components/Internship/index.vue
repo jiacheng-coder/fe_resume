@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-6">
+  <div v-if="resume.internship.length" class="mb-6">
     <h1 class="mb-4 text-3xl text-gray-700 font-bold">{{ resume.ui.sections.internship }}</h1>
     <ul>
       <li class="mb-4" v-for="item in resume.internship" :key="item.company">

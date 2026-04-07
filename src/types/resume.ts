@@ -34,10 +34,7 @@ export type EducationEntry = {
   period: string
 }
 
-export type InternshipCompany = projects & {
-  /** Public URL under `public/`, e.g. `/icons/meituan.svg` */
-  icon?: string
-}
+export type InternshipCompany = projects
 
 export type ResumeData = {
   userInfo: {

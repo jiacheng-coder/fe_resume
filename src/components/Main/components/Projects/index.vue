@@ -3,7 +3,10 @@
     <h1 class="mb-4 text-3xl text-gray-700 font-bold">{{ resume.ui.sections.projects }}</h1>
     <ul>
       <li class="mb-4" v-for="item in resume.experience" :key="item.company">
-        <text class="text-2xl font-medium text-gray-800">{{ item.company }}</text>
+        <div class="mb-2 flex items-center">
+          <text class="text-2xl font-medium text-gray-800">{{ item.company }}</text>
+          <img v-if="item.icon" :src="iconSrc(item.icon)" alt="" class="ml-2 w-9" />
+        </div>
         <div class="mb-2" v-for="project in item.projects" :key="project.name">
           <div
             class="resume-project-block"
@@ -43,4 +46,11 @@
 import { useResume } from '@/composables/useResume'
 
 const resume = useResume()
+
+function iconSrc(icon: string) {
+  if (icon.startsWith('http://') || icon.startsWith('https://')) return icon
+  const base = import.meta.env.BASE_URL
+  const path = icon.startsWith('/') ? icon.slice(1) : icon
+  return `${base}${path}`
+}
 </script>
