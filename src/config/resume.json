@@ -12,17 +12,17 @@
       "hint": "将打开打印对话框，目标打印机请选择「存储为 PDF」"
     },
     "sections": {
-      "features": "个人优势",
-      "education": "教育经历",
-      "internship": "实习经历",
-      "projects": "工作经历",
-      "prizes": "获奖经历",
-      "skills": "技术栈"
+      "features": "核心优势",
+      "education": "教育背景",
+      "internship": "其他实习（可选）",
+      "projects": "工作与项目经历",
+      "prizes": "荣誉与获奖",
+      "skills": "专业技能"
     },
     "labels": {
       "projectDescription": "项目描述:",
       "projectDuty": "项目职责:",
-      "techStack": "技术栈:"
+      "techStack": "主要技术:"
     }
   },
   "userInfo": {
@@ -78,7 +78,7 @@
       "projects": [
         {
           "name": "AI 智能助手",
-          "job": "AI 全栈",
+          "job": "AI 全栈工程师",
           "time": "2023.6 - 2023.9",
           "introduce": "面向美团营销业务一线同学，提供对话式检索、流程引导与配置辅助，串联「需求澄清—方案设计—研发交付」，降低跨角色协作成本，是 AI 提效方向的核心抓手之一。",
           "myContribution": [
@@ -91,7 +91,7 @@
         },
         {
           "name": "AI 智能搭建",
-          "job": "AI 全栈",
+          "job": "AI 全栈工程师",
           "time": "2023.6 - 2023.9",
           "introduce": "面向营销活动的可视化搭建与页面生产能力，将组件、数据与投放规则串联为可复用的搭建链路，支撑活动页快速迭代与多端投放，是 AI 提效在「生产侧」的重点项目。",
           "myContribution": [

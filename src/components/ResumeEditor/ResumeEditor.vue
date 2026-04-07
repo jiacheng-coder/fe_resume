@@ -73,37 +73,14 @@
       </section>
 
       <section class="space-y-2 rounded-lg bg-white p-3 shadow-sm">
-        <div class="flex items-center justify-between">
-          <h3 class="text-sm font-bold text-slate-800">教育经历</h3>
-          <button type="button" class="btn btn-ghost btn-xs" @click="addEducation">+ 一条</button>
-        </div>
-        <div v-for="(row, i) in store.resume.education" :key="i" class="grid gap-1 rounded border border-slate-100 p-2 sm:grid-cols-3">
-          <input v-model="row.school" placeholder="学校" class="input input-bordered input-xs" />
-          <input v-model="row.major" placeholder="专业" class="input input-bordered input-xs" />
-          <div class="flex gap-1">
-            <input v-model="row.period" placeholder="时间" class="input input-bordered input-xs flex-1" />
-            <button type="button" class="btn btn-ghost btn-xs" @click="removeEducation(i)">删</button>
-          </div>
-        </div>
-      </section>
-
-      <section class="space-y-2 rounded-lg bg-white p-3 shadow-sm">
-        <h3 class="text-sm font-bold text-slate-800">技术栈（每行一项）</h3>
-        <textarea v-model="skillsText" class="textarea textarea-bordered textarea-sm min-h-[6rem] w-full font-mono text-xs" />
-      </section>
-      <section class="space-y-2 rounded-lg bg-white p-3 shadow-sm">
-        <h3 class="text-sm font-bold text-slate-800">个人优势（每行一条）</h3>
+        <h3 class="text-sm font-bold text-slate-800">核心优势（每行一条）</h3>
         <textarea v-model="featuresText" class="textarea textarea-bordered textarea-sm min-h-[8rem] w-full font-mono text-xs" />
-      </section>
-      <section class="space-y-2 rounded-lg bg-white p-3 shadow-sm">
-        <h3 class="text-sm font-bold text-slate-800">获奖（每行一条）</h3>
-        <textarea v-model="prizesText" class="textarea textarea-bordered textarea-sm min-h-[4rem] w-full font-mono text-xs" />
       </section>
 
       <section class="space-y-3 rounded-lg bg-white p-3 shadow-sm">
         <div class="flex items-center justify-between">
-          <h3 class="text-sm font-bold text-slate-800">项目经历</h3>
-          <button type="button" class="btn btn-ghost btn-xs" @click="addExperienceCompany">+ 公司</button>
+          <h3 class="text-sm font-bold text-slate-800">工作与项目经历</h3>
+          <button type="button" class="btn btn-ghost btn-xs" @click="addExperienceCompany">+ 公司 / 组织</button>
         </div>
         <div v-for="(exp, ei) in store.resume.experience" :key="ei" class="space-y-2 rounded border border-slate-200 p-2">
           <div class="flex flex-wrap gap-1">
@@ -118,11 +95,37 @@
         </div>
       </section>
 
+      <section class="space-y-2 rounded-lg bg-white p-3 shadow-sm">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-bold text-slate-800">教育背景</h3>
+          <button type="button" class="btn btn-ghost btn-xs" @click="addEducation">+ 一条</button>
+        </div>
+        <div v-for="(row, i) in store.resume.education" :key="i" class="grid gap-1 rounded border border-slate-100 p-2 sm:grid-cols-3">
+          <input v-model="row.school" placeholder="学校" class="input input-bordered input-xs" />
+          <input v-model="row.major" placeholder="专业" class="input input-bordered input-xs" />
+          <div class="flex gap-1">
+            <input v-model="row.period" placeholder="时间" class="input input-bordered input-xs flex-1" />
+            <button type="button" class="btn btn-ghost btn-xs" @click="removeEducation(i)">删</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="space-y-2 rounded-lg bg-white p-3 shadow-sm">
+        <h3 class="text-sm font-bold text-slate-800">专业技能（每行一项）</h3>
+        <textarea v-model="skillsText" class="textarea textarea-bordered textarea-sm min-h-[6rem] w-full font-mono text-xs" />
+      </section>
+
+      <section class="space-y-2 rounded-lg bg-white p-3 shadow-sm">
+        <h3 class="text-sm font-bold text-slate-800">荣誉与获奖（每行一条）</h3>
+        <textarea v-model="prizesText" class="textarea textarea-bordered textarea-sm min-h-[4rem] w-full font-mono text-xs" />
+      </section>
+
       <section class="space-y-3 rounded-lg bg-white p-3 shadow-sm">
         <div class="flex items-center justify-between">
-          <h3 class="text-sm font-bold text-slate-800">实习经历</h3>
+          <h3 class="text-sm font-bold text-slate-800">其他实习（可选）</h3>
           <button type="button" class="btn btn-ghost btn-xs" @click="addInternshipCompany">+ 公司</button>
         </div>
+        <p class="text-xs text-slate-500">与「工作与项目」重复时只填一处即可；有数据时预览区会单独显示本区块。</p>
         <div v-for="(exp, ei) in store.resume.internship" :key="ei" class="space-y-2 rounded border border-slate-200 p-2">
           <div class="flex flex-wrap gap-1">
             <input v-model="exp.company" placeholder="公司名" class="input input-bordered input-sm min-w-[8rem] flex-1" />
@@ -149,13 +152,14 @@ import ExportPdfButton from '@/components/ExportPdfButton.vue'
 
 const store = useResumeEditorStore()
 
+/** 与预览阅读顺序一致：总结 → 经历 → 教育 → 技能 → 荣誉 → 可选实习 */
 const sectionKeys: (keyof ResumeData['ui']['sections'])[] = [
   'features',
-  'education',
-  'internship',
   'projects',
-  'prizes',
+  'education',
   'skills',
+  'prizes',
+  'internship',
 ]
 
 const saveName = ref('')

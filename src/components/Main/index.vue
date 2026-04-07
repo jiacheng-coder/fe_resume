@@ -1,11 +1,11 @@
 <template>
   <div class="resume-main pt-4 h-full">
     <Features />
-    <Education />
-    <Internship />
     <Projects />
-    <Prizes />
+    <Internship />
+    <Education />
     <Skills />
+    <Prizes />
   </div>
 </template>
 
