@@ -41,10 +41,9 @@
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue'
-import type { ResumeData } from '@/types/resume'
+import { useResume } from '@/composables/useResume'
 
-const resume = inject<ResumeData>('resume')!
+const resume = useResume()
 
 function iconSrc(icon: string) {
   if (icon.startsWith('http://') || icon.startsWith('https://')) return icon

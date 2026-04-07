@@ -1,3 +1,4 @@
 import { useTodoStore } from './todoStore'
 import { useUserStore } from './userInfoStore'
-export { useTodoStore, useUserStore }
+import { useResumeEditorStore } from './resumeEditorStore'
+export { useTodoStore, useUserStore, useResumeEditorStore }

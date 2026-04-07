@@ -15,8 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue'
-import type { ResumeData } from '@/types/resume'
+import { useResume } from '@/composables/useResume'
 
-const resume = inject<ResumeData>('resume')!
+const resume = useResume()
 </script>

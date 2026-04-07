@@ -49,22 +49,43 @@
     display: none !important;
   }
 
+  /*
+   * 分栏布局在打印时仍会保留「左半屏预览」，导致简历只占半页、联系方式挤成一团。
+   * 打印时改为块级全宽，只输出 #resume-print-root 区域。
+   */
+  .resume-page-wrap {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  .preview-pane,
+  .preview-scroll {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    border: none !important;
+  }
+
+  .preview-scroll {
+    padding: 0 !important;
+  }
+
   #resume-print-root {
     max-width: none !important;
     margin: 0 !important;
+    padding: 0 !important;
     box-shadow: none !important;
     background: #fff !important;
     color: inherit !important;
   }
 
-  .resume-page-wrap {
-    padding: 0 !important;
-    background: #fff !important;
-    min-height: auto !important;
-  }
-
+  /* 正文区（Header 下方）左右留白，避免打印/PDF 贴边 */
   .resume-main {
-    padding: 0 !important;
+    padding: 0.75rem 1.25rem 1.25rem !important;
   }
 
   .resume-project-block {

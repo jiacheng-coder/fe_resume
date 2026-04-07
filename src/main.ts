@@ -5,6 +5,7 @@ import './styles/print.css'
 
 import router from './router'
 import { createPinia } from 'pinia'
+import { useResumeEditorStore } from './store/resumeEditorStore'
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
 import * as Icons from 'oh-vue-icons/icons'
 
@@ -19,4 +20,5 @@ addIcons(...Fa)
 const app = createApp(App)
 app.component('v-icon', OhVueIcon)
 app.use(pinia).use(router)
+useResumeEditorStore(pinia).initFromStorage()
 app.mount('#app')

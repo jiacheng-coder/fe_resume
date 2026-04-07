@@ -22,30 +22,35 @@
       <h1 class="mt-1 sm:mt-0 text-xl font-bold">{{ resume.userInfo?.job }}</h1>
     </div>
 
-    <div class="flex flex-col sm:flex-row items-center justify-between mt-2 gap-1 sm:mt-4">
-      <section class="w-1/2 sm:w-1/3 flex items-center gap-1" @click="copyText(resume.userInfo?.wechat)">
-        <v-icon name="co-wechat" scale="1.2" />
-        <label for="my-modal">{{ resume.userInfo?.wechat }}</label>
+    <div
+      class="resume-contact-row mt-2 grid grid-cols-1 gap-x-4 gap-y-2 sm:mt-4 sm:grid-cols-3 sm:items-center sm:justify-between"
+    >
+      <section class="flex min-w-0 items-center gap-1" @click="copyText(resume.userInfo?.wechat)">
+        <v-icon name="co-wechat" scale="1.2" class="shrink-0" />
+        <label for="my-modal" class="min-w-0 break-words">{{ resume.userInfo?.wechat }}</label>
       </section>
-      <section class="w-1/2 sm:w-1/3 flex items-center gap-1" @click="copyText(resume.userInfo?.phone)">
-        <v-icon name="bi-telephone-fill" scale="1.2" />
-        <label for="my-modal">{{ resume.userInfo?.phone }}</label>
+      <section class="flex min-w-0 items-center gap-1" @click="copyText(resume.userInfo?.phone)">
+        <v-icon name="bi-telephone-fill" scale="1.2" class="shrink-0" />
+        <label for="my-modal" class="min-w-0">{{ resume.userInfo?.phone }}</label>
       </section>
-      <section class="w-1/2 sm:w-1/3 flex sm:justify-end items-center gap-1" @click="copyText(resume.userInfo?.email)">
-        <v-icon name="md-markemailread-round" scale="1.2" />
-        <label for="my-modal">{{ resume.userInfo?.email }}</label>
+      <section
+        class="flex min-w-0 items-center gap-1 sm:justify-end"
+        @click="copyText(resume.userInfo?.email)"
+      >
+        <v-icon name="md-markemailread-round" scale="1.2" class="shrink-0" />
+        <label for="my-modal" class="min-w-0 break-all text-right sm:text-right">{{ resume.userInfo?.email }}</label>
       </section>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, inject } from 'vue'
-import type { ResumeData } from '@/types/resume'
+import { computed } from 'vue'
 import copy from 'copy-to-clipboard'
+import { useResume } from '@/composables/useResume'
 import defaultAvatarUrl from '@/assets/images/avatar.jpg?url'
 
-const resume = inject<ResumeData>('resume')!
+const resume = useResume()
 
 function publicAssetUrl(path: string) {
   if (path.startsWith('http://') || path.startsWith('https://')) return path
@@ -55,7 +60,7 @@ function publicAssetUrl(path: string) {
 }
 
 const avatarSrc = computed(() => {
-  const raw = resume.userInfo.avatar?.trim()
+  const raw = resume.value.userInfo?.avatar?.trim()
   if (!raw) return defaultAvatarUrl
   return publicAssetUrl(raw)
 })
