@@ -51,7 +51,7 @@
     "RAG：Embedding、向量检索、重排序与知识库治理",
     "Agent Harness：可观测、回归基线与评测闭环",
     "OpenAI 及兼容 API（流式、Function Calling）",
-    "Python（AI 服务侧）/ TypeScript / Node.js",
+    "TypeScript / Node.js",
     "Vue 3 / React 18（大型中后台与复杂交互）",
     "Vite / Webpack、性能与可维护性治理",
     "微信小程序 / Uniapp / H5",
