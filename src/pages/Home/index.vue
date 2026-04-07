@@ -1,18 +1,19 @@
 <template>
   <div id="home" class="max-w-screen-lg mx-auto p-4 hover:shadow-2xl">
-    <Header :userInfo="userInfo" />
-    <Main :skills="skills" :features="features" :experience="experience" :prizes="prizes" :internship="internship" />
-    <!-- <Upload /> -->
+    <Header />
+    <Main />
   </div>
 </template>
 
 <script setup lang="ts">
+import { provide } from 'vue'
 import Header from '@/components/Header/index.vue'
-import Main from "@/components/Main/index.vue";
-// import Upload from "@/components/Upload/index.vue"
-import Info from '@/config/info_bytedance.json'
+import Main from '@/components/Main/index.vue'
+import resumeJson from '@/config/resume.json'
+import type { ResumeData } from '@/types/resume'
 
-const { userInfo, skills, features, experience, prizes, internship } = Info
+const resume = resumeJson as ResumeData
+provide('resume', resume)
 </script>
 
 <style>

@@ -7,5 +7,7 @@ export type userInfoType = {
   resumeUrl: string
   blogUrl: string
   githubUrl: string
-  [key: string]: string
+  notionUrl?: string
+  avatar?: string
+  [key: string]: string | undefined
 }

@@ -1,7 +1,28 @@
 {
-  "name": "zhujiacheng",
-  "age": 18,
+  "ui": {
+    "theme": {
+      "headerBackground": "#0284C7"
+    },
+    "copy": {
+      "title": "提示!",
+      "message": "内容已复制到剪贴板"
+    },
+    "sections": {
+      "features": "个人优势",
+      "education": "教育经历",
+      "internship": "实习经历",
+      "projects": "项目经历",
+      "prizes": "获奖经历",
+      "skills": "技术栈"
+    },
+    "labels": {
+      "projectDescription": "项目描述:",
+      "projectDuty": "项目职责:",
+      "techStack": "技术栈:"
+    }
+  },
   "userInfo": {
+    "avatar": "",
     "name": "诸嘉诚",
     "job": "前端开发工程师",
     "email": "2253541907@qq.com",
@@ -12,8 +33,28 @@
     "githubUrl": "https://github.com/jiacheng-coder",
     "notionUrl": "https://fir-supply-fbd.notion.site/FE-70100f740395477ba01ad7a2f5a33dfc?pvs=4"
   },
-  "skills": ["Vue 2/3", "React 18", "Vue Router / React Router", "Pinia / Mobx", "Miniprogram", "Uniapp", "Roo UI / Antd Design", "TailwindCSS / DaisyUI", "Color UI / Grace UI"],
-  "prizes": ["第四届 - 字节跳动 - 前端青训营 - 码如磐石奖", "2021年全国大学生数学竞赛 - 重庆赛区 - 省级三等奖"],
+  "education": [
+    {
+      "school": "重庆大学",
+      "major": "信息与计算科学",
+      "period": "2020 - 2024"
+    }
+  ],
+  "skills": [
+    "Vue 2/3",
+    "React 18",
+    "Vue Router / React Router",
+    "Pinia / Mobx",
+    "Miniprogram",
+    "Uniapp",
+    "Roo UI / Antd Design",
+    "TailwindCSS / DaisyUI",
+    "Color UI / Grace UI"
+  ],
+  "prizes": [
+    "第四届 - 字节跳动 - 前端青训营 - 码如磐石奖",
+    "2021年全国大学生数学竞赛 - 重庆赛区 - 省级三等奖"
+  ],
   "features": [
     "精通 HTML5, CSS3, ES6, TS, 熟悉常规的 W3C 标准与 ECMA 规范;",
     "具备 Vue 和 React 等 MVVM 框架开发经验, 能够结合已有基建快速完成需求;",
@@ -61,10 +102,10 @@
       ]
     }
   ],
-  "internship" : [
+  "internship": [
     {
       "company": "美团",
-      "icon": "@/assets/icons/favicon-mt.ico",
+      "icon": "/icons/meituan.svg",
       "projects": [
         {
           "name": "韦恩系统",

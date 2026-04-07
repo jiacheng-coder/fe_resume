@@ -1,8 +1,8 @@
 <template>
   <div class="mb-6">
-    <h1 class="mb-4 text-3xl text-gray-700 font-bold">项目经历</h1>
+    <h1 class="mb-4 text-3xl text-gray-700 font-bold">{{ resume.ui.sections.projects }}</h1>
     <ul>
-      <li class="mb-4" v-for="item in experience" :key="JSON.stringify(item)">
+      <li class="mb-4" v-for="item in resume.experience" :key="item.company">
         <text class="text-2xl font-medium text-gray-800">{{ item.company }}</text>
         <div class="mb-2" v-for="project in item.projects" :key="project.name">
           <div class="flex text-xl font-medium text-gray-800 justify-between" style="align-items: center;">
@@ -12,27 +12,21 @@
           </div>
           <div class="text-md">
             <div class="mt-1">
-              <text class="mr-4 font-semibold">项目描述:</text>
+              <text class="mr-4 font-semibold">{{ resume.ui.labels.projectDescription }}</text>
               <text>{{ project.introduce }}</text>
             </div>
             <div>
-              <p class="mr-4 font-semibold">项目职责:</p>
-              <div v-for="item in project.myContribution" :key="item">
+              <p class="mr-4 font-semibold">{{ resume.ui.labels.projectDuty }}</p>
+              <div v-for="line in project.myContribution" :key="line">
                 <span class="iconfont icon-pointer mr-2"></span>
-                <text>{{ item }}</text>
+                <text>{{ line }}</text>
               </div>
             </div>
             <div class="flex justify-between">
               <div>
-                <text class="mr-4 font-semibold">技术栈:</text>
+                <text class="mr-4 font-semibold">{{ resume.ui.labels.techStack }}</text>
                 <text>{{ project.skills }}</text>
               </div>
-              <!-- <a :href="project.more" target="_blank">
-                <span
-                  class="font-semibold border-b-2 border-solid border-gray-800 shadow-sm hover:font-bold  hover:cursor-pointer">
-                  了解更多
-                </span>
-              </a> -->
             </div>
           </div>
         </div>
@@ -42,10 +36,8 @@
 </template>
 
 <script setup lang="ts">
-import type { projects } from '../../../../types/projectsType'
-const { experience } = defineProps({
-  experience: {
-    type: Array<projects>,
-  },
-})
+import { inject } from 'vue'
+import type { ResumeData } from '@/types/resume'
+
+const resume = inject<ResumeData>('resume')!
 </script>
