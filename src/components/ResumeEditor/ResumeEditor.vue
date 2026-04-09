@@ -24,8 +24,17 @@
         <button type="button" class="btn btn-outline btn-sm" @click="onReset">恢复默认模板</button>
       </div>
       <p v-if="store.currentProfileName" class="mt-1 text-xs text-slate-500">当前：{{ store.currentProfileName }}</p>
-      <div class="mt-3 border-t border-slate-100 pt-3">
+      <div class="mt-3 space-y-2 border-t border-slate-100 pt-3">
         <ExportPdfButton />
+        <div class="flex flex-wrap items-center gap-2">
+          <button type="button" class="btn btn-outline btn-sm" @click="copyResumeJson">复制 JSON 到剪贴板</button>
+          <span v-if="exportFeedback" class="text-xs text-emerald-600">{{ exportFeedback }}</span>
+        </div>
+        <p class="text-xs leading-relaxed text-slate-500">
+          粘贴覆盖仓库中的
+          <code class="rounded bg-slate-100 px-1 py-0.5 text-[11px]">src/config/resume.json</code>
+          可作为默认模板；提交前请检查 JSON 格式。
+        </p>
       </div>
     </div>
 
@@ -144,13 +153,28 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
+import copy from 'copy-to-clipboard'
 import { useResumeEditorStore } from '@/store/resumeEditorStore'
+import { cloneResume } from '@/utils/resumeClone'
 import type { project, projects } from '@/types/projectsType'
 import type { ResumeData } from '@/types/resume'
 import ResumeProjectFields from './ResumeProjectFields.vue'
 import ExportPdfButton from '@/components/ExportPdfButton.vue'
 
 const store = useResumeEditorStore()
+const exportFeedback = ref('')
+
+function resumeJsonString(): string {
+  return JSON.stringify(cloneResume(store.resume), null, 2)
+}
+
+function copyResumeJson() {
+  const ok = copy(resumeJsonString())
+  exportFeedback.value = ok ? '已复制到剪贴板' : '复制失败，请检查浏览器权限'
+  window.setTimeout(() => {
+    exportFeedback.value = ''
+  }, 2500)
+}
 
 /** 与预览阅读顺序一致：总结 → 经历 → 教育 → 技能 → 荣誉 → 可选实习 */
 const sectionKeys: (keyof ResumeData['ui']['sections'])[] = [
