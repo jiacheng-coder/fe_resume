@@ -75,6 +75,31 @@
       "icon": "/icons/meituan.svg",
       "projects": [
         {
+          "name": "招商 M 端系统",
+          "job": "前端开发",
+          "time": "2024.7 - 2025.3",
+          "introduce": "面向美团招商运营团队的前端管理系统，涵盖商家入驻审核、合同管理、资质审查等业务模块。从老旧架构迁移至现代前端体系，通过表单方案升级大幅提升运营配置效率。",
+          "myContribution": [
+            "自学并引入 Formily 表单解决方案，以声明式 Schema 驱动复杂表单渲染，替代原有手写表单逻辑，新增表单开发成本降低约 40%；",
+            "基于 React + Vite 重构核心业务模块，处理历史技术债与线上缺陷，保障招商业务稳定运行；",
+            "参与需求评审与方案设计，推动 Formily 表单方案在团队内部分享与落地。"
+          ],
+          "skills": "React + Vite + Formily + TypeScript + Ant Design"
+        },
+        {
+          "name": "高达营销 C 端 — 素材中心 & AI 辅助",
+          "job": "前端开发 / AI 应用开发",
+          "time": "2025.3 - 2026.2",
+          "introduce": "在美团高达营销搭建平台负责 C 端能力建设与 AI 辅助工具开发。主导素材中心专项，沉淀可复用的营销素材管理基建；落地多个 MCP 注入开发工具和营销问答小助手，探索 AI 在营销研发场景的提效路径。",
+          "myContribution": [
+            "主导素材中心专项，设计并实现素材上传、分类、检索与复用的全链路能力，沉淀为团队通用素材基建，减少各活动重复开发；",
+            "落地多个 MCP（Model Context Protocol）注入开发工具，将营销组件描述、属性配置等研发知识结构化注入 LLM，辅助 AI 更准确地生成营销页面代码；",
+            "开发营销问答小助手，基于业务文档 RAG + LLM 实现运营同学对营销配置规则的即时问答，降低跨团队沟通成本；",
+            "参与高达活动页面日常开发与维护，保障线上营销活动稳定投放。"
+          ],
+          "skills": "React + MCP + LLM + RAG + TypeScript + 高达搭建平台"
+        },
+        {
           "name": "TT 智能助手",
           "job": "项目负责人",
           "time": "2025.6 - 2025.12",
@@ -90,23 +115,23 @@
           "skills": "多 Agent 编排 + Friday API + Cloud Remote Agent + 大象机器人 + Claude / OpenAPI + TypeScript + 流式交互"
         },
         {
-          "name": "AI 智能搭建",
+          "name": "AI 营销会场生成平台（marketing-ai）",
           "job": "AI 全栈工程师",
           "time": "2026.2 - 至今",
-          "introduce": "由 AI 直接产出营销 H5 会场页：接入美团 KNB 桥协议完成登录鉴权，美境生成头图素材，打通司内供给 API 与供给生产 Skill，并结合 Personal 人群圈选体系做策略投放，目标是以 JSON 意图驱动、一键生成可投放的会场效果。",
+          "introduce": "面向美团外卖营销运营场景，通过自然语言对话驱动 AI 自动完成「策略生成 → H5 会场页面直出 → 发布上线」全链路。系统采用多 Agent 编排架构，由 RouterAgent 总调度，驱动策略 Agent（6 阶段 LangGraph 工作流）与页面 Agent（skill + tool 机制编排多个子 Agent）协同生成可投放的营销 H5 页面，覆盖前端管理台、AI 编排后端、C 端落地页 SDK 三大子系统。",
           "myContribution": [
-            "负责后端 Raptor 监控体系建设，沉淀流量、白屏率、供给接口请求成功率等核心指标，支撑问题定位与稳定性治理；",
-            "对接供给 API 及供给生产 Skill，串联模型产出与真实供给数据，保障「生成—投放」链路可用；",
-            "负责供给区整体 UI 与业务逻辑开发，覆盖展示、交互与异常态；",
-            "在核心库中接入 KNB 桥协议，为 H5 提供统一登录能力并与宿主环境对齐；",
-            "协同策略与投放侧，对接人群圈选与会场配置，推动 JSON 意图到可上线页面的闭环。"
+            "参与多 Agent 编排引擎设计与开发，基于 LangGraph 实现三层 Agent 架构（Router → Strategy / Page Agent），Strategy 内部驱动 6 阶段状态图工作流（供给→生成→校验→内容→素材→落库），Page Agent 通过 skill + tool 机制编排头图、供给、权益等子 Agent 顺序执行；",
+            "设计并实现自研 SSE 流式协议（三轴正交模型 + 调用树），统一表达三层 Agent 执行过程；实现 token 级节流合批与事件旁路落库，支持分布式部署下的断线重连（DB 轮询游标回放）与异构 Agent SSE 协议的实时翻译适配；",
+            "构建 Agent 工程化基础设施：链路追踪模块通过 LangGraph Callback 构建可视化调用树；调试模块实现「快照 → 测试用例 → 运行」调试循环；版本管理模块支持 prompt / model / skill 等因子的热更新；",
+            "负责 C 端落地页 SDK（@gundam/ai-marketing-core）核心开发，从 gundam-pro 体系拆解为零依赖独立包，实现供给数据三段式获取、50+ 属性多端环境检测、多端跳转统一处理（H5 / APP Scheme / 小程序 / 鸿蒙），采用 ESM + UMD 双格式构建；",
+            "参与前端管理台开发（React 18 + Vite + MobX），设计三层混合状态管理（MobX + React Query + EventBus），实现 SSE 流式消费 Hook，构建 AI 对话搭建、Agent 调试面板、链路追踪可视化等核心模块。"
           ],
-          "skills": "React + NestJS + H5 + KNB + 美境 API + 供给 API / Skill + Personal 投放 + Raptor + TypeScript"
+          "skills": "NestJS + LangGraph / LangChain + React 18 + TypeScript + Vite + MobX + MySQL + SSE + Zod"
         }
       ]
     },
     {
-      "company": "重庆大学（个人项目 · Easylearning）",
+      "company": "重庆大学（个人 / 校园项目）",
       "projects": [
         {
           "name": "Easylearning 教学平台",
@@ -120,24 +145,6 @@
             "总结全栈交付经验，形成可复用的项目模板与部署流程。"
           ],
           "skills": "Vue 3 + TypeScript + Node.js + TypeORM + MYSQL + 阿里云部署运维"
-        }
-      ]
-    },
-    {
-      "company": "重庆电覆者科技有限公司",
-      "projects": [
-        {
-          "name": "校园论坛类产品（创业）",
-          "job": "前端开发",
-          "time": "2022.12 - 2023.6",
-          "introduce": "基于 Uniapp 产品形态服务多所高校用户的社区与内容场景，团队侧重增长与留存；项目累计总用户 10 万+，覆盖川渝、海外等地高校群体。",
-          "myContribution": [
-            "负责核心列表、详情与消息等模块的前端实现与性能治理（虚拟列表、memo 等）；",
-            "使用 Vuex 统一会话与通用数据接口，配合消息提醒等模块提升粘性；",
-            "参与产品与运营策略讨论，在有限人力下平衡交付速度与稳定性。"
-          ],
-          "skills": "Vue 3 + Uniapp + Grace UI",
-          "more": "https://zhujiacheng612.gitee.io/blog/07.%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D/ecosystem.html"
         },
         {
           "name": "WeCQU 校园小程序",
