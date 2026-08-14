@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "iconfont";
+  src: url('//at.alicdn.com/t/c/font_3811182_hr25k59bz2.woff2?t=1670304195635') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3811182_hr25k59bz2.woff?t=1670304195635') format('woff'),
+       url('//at.alicdn.com/t/c/font_3811182_hr25k59bz2.ttf?t=1670304195635') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pointer:before { content: "\e934"; }
