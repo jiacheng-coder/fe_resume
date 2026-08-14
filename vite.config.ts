@@ -7,10 +7,6 @@ import viteCompression from 'vite-plugin-compression'
 import { resolve } from 'path/posix'
 
 export default defineConfig({
-  // base: '/fe_resume/',
-  optimizeDeps: {
-    exclude: ['oh-vue-icons/icons'],
-  },
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
@@ -22,11 +18,19 @@ export default defineConfig({
     open: true,
   },
   build: {
-    minify: false,
+    minify: 'esbuild',
     rollupOptions: {
       output: {
         manualChunks: id => {
-          if (id.includes('node_modules')) return 'node-modules'
+          if (!id.includes('node_modules')) return undefined
+          // Vue 核心：vue + vue-router + @vueuse
+          if (id.includes('vue') || id.includes('@vueuse')) return 'vue-vendor'
+          // 数据层：dexie
+          if (id.includes('dexie')) return 'db-vendor'
+          // 动画：animejs
+          if (id.includes('animejs')) return 'anime-vendor'
+          // 其余 node_modules
+          return 'vendor'
         },
       },
     },

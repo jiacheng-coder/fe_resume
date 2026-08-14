@@ -1,36 +1,34 @@
 <template>
-  <div v-if="resume.internship.length" class="mb-6">
+  <div v-if="resume.internship.length" ref="rootRef" class="mb-6">
     <h1 class="mb-4 text-3xl text-gray-700 font-bold">{{ resume.ui.sections.internship }}</h1>
     <ul>
-      <li class="mb-4" v-for="item in resume.internship" :key="item.company">
+      <li class="intern-company mb-4" v-for="item in resume.internship" :key="item.id || item.company">
         <div class="mb-2 flex items-center">
-          <text class="text-2xl font-medium text-gray-800">{{ item.company }}</text>
-          <img v-if="item.icon" :src="iconSrc(item.icon)" alt="" class="ml-2 w-9" />
+          <span class="text-2xl font-medium text-gray-800">{{ item.company }}</span>
+          <img v-if="item.icon" :src="publicAssetUrl(item.icon)" alt="" class="ml-2 w-9" />
         </div>
-        <div class="mb-2" v-for="project in item.projects" :key="project.name">
-          <div class="resume-project-block">
-            <div class="flex text-xl font-medium text-gray-800 justify-between" style="align-items: center;">
-              <text>{{ project.name }}</text>
-              <text>{{ project.job }}</text>
-              <text>{{ project.time }}</text>
+        <div class="intern-block resume-project-block mb-2" v-for="project in item.projects" :key="project.id || project.name">
+          <div class="flex text-xl font-medium text-gray-800 justify-between" style="align-items: center;">
+            <span>{{ project.name }}</span>
+            <span>{{ project.job }}</span>
+            <span>{{ project.time }}</span>
+          </div>
+          <div class="text-md">
+            <div class="mt-1">
+              <span class="mr-4 font-semibold">{{ resume.ui.labels.projectDescription }}</span>
+              <span>{{ project.introduce }}</span>
             </div>
-            <div class="text-md">
-              <div class="mt-1">
-                <text class="mr-4 font-semibold">{{ resume.ui.labels.projectDescription }}</text>
-                <text>{{ project.introduce }}</text>
+            <div>
+              <p class="mr-4 font-semibold">{{ resume.ui.labels.projectDuty }}</p>
+              <div v-for="line in project.myContribution" :key="line">
+                <span class="iconfont icon-pointer mr-2"></span>
+                <span>{{ line }}</span>
               </div>
+            </div>
+            <div class="flex justify-between">
               <div>
-                <p class="mr-4 font-semibold">{{ resume.ui.labels.projectDuty }}</p>
-                <div v-for="line in project.myContribution" :key="line">
-                  <span class="iconfont icon-pointer mr-2"></span>
-                  <text>{{ line }}</text>
-                </div>
-              </div>
-              <div class="flex justify-between">
-                <div>
-                  <text class="mr-4 font-semibold">{{ resume.ui.labels.techStack }}</text>
-                  <text>{{ project.skills }}</text>
-                </div>
+                <span class="mr-4 font-semibold">{{ resume.ui.labels.techStack }}</span>
+                <span>{{ project.skills }}</span>
               </div>
             </div>
           </div>
@@ -41,14 +39,39 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref, nextTick } from 'vue'
+import { animate, stagger } from 'animejs'
 import { useResume } from '@/composables/useResume'
+import { publicAssetUrl } from '@/utils/publicAsset'
 
 const resume = useResume()
 
-function iconSrc(icon: string) {
-  if (icon.startsWith('http://') || icon.startsWith('https://')) return icon
-  const base = import.meta.env.BASE_URL
-  const path = icon.startsWith('/') ? icon.slice(1) : icon
-  return `${base}${path}`
-}
+const rootRef = ref<HTMLElement | null>(null)
+
+onMounted(() => {
+  nextTick(() => {
+    const companies = rootRef.value?.querySelectorAll('.intern-company')
+    if (companies && companies.length) {
+      companies.forEach((el) => { ;(el as HTMLElement).style.opacity = '0' })
+      animate(companies, {
+        opacity: [0, 1],
+        translateY: [20, 0],
+        duration: 500,
+        delay: stagger(100, { start: 500 }),
+        ease: 'outExpo',
+      })
+    }
+    const blocks = rootRef.value?.querySelectorAll('.intern-block')
+    if (blocks && blocks.length) {
+      blocks.forEach((el) => { ;(el as HTMLElement).style.opacity = '0' })
+      animate(blocks, {
+        opacity: [0, 1],
+        translateY: [15, 0],
+        duration: 400,
+        delay: stagger(60, { start: 700 }),
+        ease: 'outExpo',
+      })
+    }
+  })
+})
 </script>

@@ -2,23 +2,22 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import './style.css'
 import './styles/print.css'
+import './styles/iconfont.css'
 
 import router from './router'
-import { createPinia } from 'pinia'
-import { useResumeEditorStore } from './store/resumeEditorStore'
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
-import * as Icons from 'oh-vue-icons/icons'
+import {
+  CoWechat,
+  BiTelephoneFill,
+  MdMarkemailreadRound,
+  BiDownload,
+} from 'oh-vue-icons/icons'
 
-// pinia
-const pinia = createPinia()
-
-// icons
-const Fa = Object.values({ ...Icons })
-addIcons(...Fa)
+// icons — 按需注册
+addIcons(CoWechat, BiTelephoneFill, MdMarkemailreadRound, BiDownload)
 
 // finally
 const app = createApp(App)
 app.component('v-icon', OhVueIcon)
-app.use(pinia).use(router)
-useResumeEditorStore(pinia).initFromStorage()
+app.use(router)
 app.mount('#app')

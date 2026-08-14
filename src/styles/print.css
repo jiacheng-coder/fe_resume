@@ -99,4 +99,14 @@
     break-after: avoid;
     page-break-after: avoid;
   }
+
+  /* 强制清除动画残留状态，确保打印时内容完全可见 */
+  *,
+  *::before,
+  *::after {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
 }

@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     themes: ['light', 'night', 'cupcake', 'aqua'],
     extend: {
@@ -21,6 +21,6 @@ module.exports = {
     logs: true,
     rtl: false,
     prefix: '',
-    darkTheme: 'cupcake',
+    darkTheme: 'night',
   },
 }

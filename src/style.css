@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'LXGW';
-  src: url('@/assets/font/LXGWNeoXiHei.ttf');
+  src: url('@/assets/font/LXGWNeoXiHei.woff2') format('woff2');
+  font-display: swap;
 }
 
 @tailwind base;
@@ -20,4 +21,16 @@ body {
 .header-icon {
   width: 25px;
   height: 25px;
+}
+
+/* 尊重用户的减少动态效果偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
