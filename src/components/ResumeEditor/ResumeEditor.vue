@@ -1,99 +1,98 @@
 <template>
-  <div class="flex h-full min-h-0 flex-col bg-slate-50">
-    <div class="shrink-0 border-b border-slate-200 bg-white p-3 shadow-sm">
+  <div class="flex h-full min-h-0 flex-col bg-[#fafafa]">
+    <div class="shrink-0 border-b border-[#e8e8e8] bg-white p-3 shadow-sm">
       <!-- 标题 + 保存状态 -->
       <div class="mb-3 flex items-center gap-2">
-        <span class="text-sm font-bold text-slate-700">{{ store.currentProfile.value?.title || '未保存' }}</span>
-        <!-- 自动保存状态指示器 -->
+        <span class="text-sm font-bold text-[#161616]">{{ store.currentProfile.value?.title || '未保存' }}</span>
         <span
           v-if="store.saveStatus.value !== 'idle'"
           class="ml-auto flex items-center gap-1 text-xs"
-          :class="store.saveStatus.value === 'saving' ? 'text-slate-400' : 'text-emerald-500'"
+          :class="store.saveStatus.value === 'saving' ? 'text-[#a8a8a8]' : 'text-emerald-600'"
         >
           <span v-if="store.saveStatus.value === 'saving'" class="loading loading-spinner loading-xs"></span>
           {{ store.saveStatus.value === 'saving' ? '保存中…' : '已自动保存' }}
         </span>
-        <span v-else-if="store.dirty.value" class="ml-auto text-xs text-amber-500">未保存</span>
+        <span v-else-if="store.dirty.value" class="ml-auto text-xs text-amber-600">未保存</span>
       </div>
 
       <!-- 保存操作 -->
       <div class="flex flex-wrap items-end gap-2">
-        <label class="form-control min-w-[8rem] flex-1">
-          <span class="label py-0 text-xs">标题</span>
+        <label class="min-w-[8rem] flex-1">
+          <span class="mb-1 block text-xs text-[#6f6f6f]">标题</span>
           <input
             v-model="titleInput"
             type="text"
             placeholder="例如：社招版"
-            class="input input-bordered input-sm w-full"
+            class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20"
           />
         </label>
-        <button type="button" class="btn btn-primary btn-sm" @click="onSave">保存</button>
-        <button type="button" class="btn btn-outline btn-sm" @click="onSaveAs">另存为</button>
-        <button type="button" class="btn btn-ghost btn-sm" @click="onPreview">预览</button>
+        <button type="button" class="rounded-lg bg-gradient-to-r from-[#0f62fe] to-[#4589ff] px-4 py-2 text-xs font-semibold text-white shadow-[0_2px_8px_rgba(15,98,254,0.3)] transition-all duration-200 hover:shadow-[0_4px_16px_rgba(15,98,254,0.4)] hover:brightness-110" @click="onSave">保存</button>
+        <button type="button" class="rounded-lg border border-[#e0e0e0] bg-white px-4 py-2 text-xs font-medium text-[#525252] transition-all duration-200 hover:border-[#0f62fe]/50 hover:text-[#0f62fe] hover:shadow-sm" @click="onSaveAs">另存为</button>
+        <button type="button" class="rounded-lg px-3 py-2 text-xs font-medium text-[#6f6f6f] transition-all duration-200 hover:bg-[#f4f4f4] hover:text-[#161616]" @click="onPreview">预览</button>
         <router-link
           v-if="store.currentProfileId.value"
           :to="'/preview/' + store.currentProfileId.value"
-          class="btn btn-ghost btn-sm"
+          class="rounded-lg px-3 py-2 text-xs font-medium text-[#6f6f6f] transition-all duration-200 hover:bg-[#f4f4f4] hover:text-[#161616]"
         >预览链接</router-link>
       </div>
 
       <!-- 快捷键提示 -->
-      <div class="mt-1.5 flex flex-wrap gap-2 text-[10px] text-slate-400">
+      <div class="mt-1.5 flex flex-wrap gap-2 text-[10px] text-[#a8a8a8]">
         <span><kbd>Ctrl</kbd>+<kbd>S</kbd> 保存</span>
         <span><kbd>Ctrl</kbd>+<kbd>P</kbd> 预览</span>
         <span><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> 另存为</span>
       </div>
 
       <!-- 导出工具 -->
-      <div class="mt-3 space-y-2 border-t border-slate-100 pt-3">
+      <div class="mt-3 space-y-2 border-t border-[#f0f0f0] pt-3">
         <ExportPdfButton />
         <div class="flex flex-wrap items-center gap-2">
-          <button type="button" class="btn btn-outline btn-sm" @click="copyResumeJson">复制 JSON</button>
-          <button type="button" class="btn btn-ghost btn-sm" @click="onReset">恢复模板内容</button>
+          <button type="button" class="rounded-lg border border-[#e0e0e0] bg-white px-3 py-1.5 text-xs font-medium text-[#525252] transition-all duration-200 hover:border-[#0f62fe]/50 hover:text-[#0f62fe] hover:shadow-sm" @click="copyResumeJson">复制 JSON</button>
+          <button type="button" class="rounded-lg px-3 py-1.5 text-xs font-medium text-[#6f6f6f] transition-all duration-200 hover:bg-[#f4f4f4] hover:text-[#161616]" @click="onReset">恢复模板内容</button>
           <span v-if="exportFeedback" class="text-xs text-emerald-600">{{ exportFeedback }}</span>
         </div>
-        <p class="text-xs leading-relaxed text-slate-500">
+        <p class="text-xs leading-relaxed text-[#6f6f6f]">
           编辑后自动保存到浏览器本地（IndexedDB），换设备可通过「导出/导入」迁移。
         </p>
       </div>
     </div>
 
     <!-- 表单区域 -->
-    <div class="min-h-0 flex-1 space-y-6 overflow-y-auto p-3">
+    <div class="min-h-0 flex-1 space-y-5 overflow-y-auto p-3">
 
       <!-- 模板选择 -->
-      <section class="space-y-2 rounded-lg bg-white p-3 shadow-sm">
-        <h3 class="text-sm font-bold text-slate-800">模板选择</h3>
+      <section class="space-y-2.5 rounded-xl border border-[#e8e8e8] bg-white p-4 shadow-sm">
+        <h3 class="text-sm font-bold text-[#161616]">模板选择</h3>
         <div class="grid gap-2 sm:grid-cols-2">
           <button
             v-for="tpl in allTemplates"
             :key="tpl.id"
             type="button"
             class="flex items-center gap-3 rounded-lg border-2 p-3 text-left transition"
-            :class="currentTemplateId === tpl.id ? 'border-sky-500 bg-sky-50' : 'border-slate-200 hover:border-slate-300'"
+            :class="currentTemplateId === tpl.id ? 'border-[#0f62fe] bg-[#0f62fe]/5' : 'border-[#e0e0e0] hover:border-[#0f62fe]/40'"
             @click="onSelectTemplate(tpl.id)"
           >
-            <div class="h-10 w-10 shrink-0 rounded" :style="{ backgroundColor: tpl.thumbnailColor }"></div>
+            <div class="h-10 w-10 shrink-0 rounded-lg" :style="{ backgroundColor: tpl.thumbnailColor }"></div>
             <div class="min-w-0">
-              <p class="text-sm font-bold text-slate-800">{{ tpl.name }}</p>
-              <p class="text-xs text-slate-500">{{ tpl.description }}</p>
+              <p class="text-sm font-bold text-[#161616]">{{ tpl.name }}</p>
+              <p class="text-xs text-[#6f6f6f]">{{ tpl.description }}</p>
             </div>
           </button>
         </div>
       </section>
 
       <!-- 区块排序 -->
-      <section class="space-y-2 rounded-lg bg-white p-3 shadow-sm">
-        <h3 class="text-sm font-bold text-slate-800">区块排序</h3>
-        <p class="text-xs text-slate-500">拖拽以下卡片调整简历中各区块的显示顺序</p>
+      <section class="space-y-2.5 rounded-xl border border-[#e8e8e8] bg-white p-4 shadow-sm">
+        <h3 class="text-sm font-bold text-[#161616]">区块排序</h3>
+        <p class="text-xs text-[#6f6f6f]">拖拽以下卡片调整简历中各区块的显示顺序</p>
         <div class="space-y-1">
           <div
             v-for="(key, i) in sectionOrderArr"
             :key="key"
             draggable="true"
-            class="flex items-center gap-2 rounded border border-slate-200 bg-slate-50 p-2 transition"
+            class="flex items-center gap-2 rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] p-2 transition"
             :class="{
-              'border-sky-400 bg-sky-50': sectionSort.overIndex.value === i,
+              'border-[#0f62fe]/60 bg-[#0f62fe]/5': sectionSort.overIndex.value === i,
               'opacity-40': sectionSort.dragIndex.value === i,
             }"
             @dragstart="sectionSort.onDragStart(i)"
@@ -101,77 +100,77 @@
             @drop="sectionSort.onDrop(i, $event)"
             @dragend="sectionSort.onDragEnd"
           >
-            <span class="cursor-grab text-slate-400">⣿</span>
-            <span class="text-xs font-mono text-slate-400">{{ String(i + 1).padStart(2, '0') }}</span>
-            <span class="flex-1 text-sm text-slate-700">{{ sectionLabel(key) }}</span>
-            <span class="text-xs text-slate-400">{{ key }}</span>
+            <span class="cursor-grab text-[#a8a8a8]">⣿</span>
+            <span class="text-xs font-mono text-[#a8a8a8]">{{ String(i + 1).padStart(2, '0') }}</span>
+            <span class="flex-1 text-sm text-[#161616]">{{ sectionLabel(key) }}</span>
+            <span class="text-xs text-[#a8a8a8]">{{ key }}</span>
           </div>
         </div>
       </section>
 
       <!-- 基本信息 -->
-      <section class="space-y-2 rounded-lg bg-white p-3 shadow-sm">
-        <h3 class="text-sm font-bold text-slate-800">基本信息</h3>
-        <label class="text-xs text-slate-600">头像 URL（留空用打包默认图）</label>
-        <input v-model="resumeData.userInfo.avatar" type="text" class="input input-bordered input-sm w-full" />
+      <section class="space-y-2.5 rounded-xl border border-[#e8e8e8] bg-white p-4 shadow-sm">
+        <h3 class="text-sm font-bold text-[#161616]">基本信息</h3>
+        <label class="text-xs text-[#525252]">头像 URL（留空用打包默认图）</label>
+        <input v-model="resumeData.userInfo.avatar" type="text" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
         <div class="grid gap-2 sm:grid-cols-2">
-          <input v-model="resumeData.userInfo.name" placeholder="姓名" class="input input-bordered input-sm" />
-          <input v-model="resumeData.userInfo.job" placeholder="职位" class="input input-bordered input-sm" />
-          <input v-model="resumeData.userInfo.email" placeholder="邮箱" class="input input-bordered input-sm" />
-          <input v-model="resumeData.userInfo.phone" placeholder="电话" class="input input-bordered input-sm" />
-          <input v-model="resumeData.userInfo.wechat" placeholder="微信" class="input input-bordered input-sm" />
-          <input v-model="resumeData.userInfo.resumeUrl" placeholder="简历页链接" class="input input-bordered input-sm" />
-          <input v-model="resumeData.userInfo.blogUrl" placeholder="博客" class="input input-bordered input-sm" />
-          <input v-model="resumeData.userInfo.githubUrl" placeholder="GitHub" class="input input-bordered input-sm" />
-          <input v-model="resumeData.userInfo.notionUrl" placeholder="Notion（可选）" class="input input-bordered input-sm sm:col-span-2" />
+          <input v-model="resumeData.userInfo.name" placeholder="姓名" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+          <input v-model="resumeData.userInfo.job" placeholder="职位" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+          <input v-model="resumeData.userInfo.email" placeholder="邮箱" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+          <input v-model="resumeData.userInfo.phone" placeholder="电话" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+          <input v-model="resumeData.userInfo.wechat" placeholder="微信" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+          <input v-model="resumeData.userInfo.resumeUrl" placeholder="简历页链接" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+          <input v-model="resumeData.userInfo.blogUrl" placeholder="博客" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+          <input v-model="resumeData.userInfo.githubUrl" placeholder="GitHub" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+          <input v-model="resumeData.userInfo.notionUrl" placeholder="Notion（可选）" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20 sm:col-span-2" />
         </div>
       </section>
 
       <!-- 主题与界面文案 -->
-      <section class="space-y-2 rounded-lg bg-white p-3 shadow-sm">
-        <h3 class="text-sm font-bold text-slate-800">主题与界面文案</h3>
-        <span class="text-xs text-slate-600">顶栏背景色</span>
-        <input v-model="resumeData.ui.theme.headerBackground" type="text" class="input input-bordered input-sm w-full" />
+      <section class="space-y-2.5 rounded-xl border border-[#e8e8e8] bg-white p-4 shadow-sm">
+        <h3 class="text-sm font-bold text-[#161616]">主题与界面文案</h3>
+        <span class="text-xs text-[#525252]">顶栏背景色</span>
+        <input v-model="resumeData.ui.theme.headerBackground" type="text" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
         <div class="grid gap-2 sm:grid-cols-2">
-          <input v-model="resumeData.ui.copy.title" placeholder="复制提示标题" class="input input-bordered input-sm" />
-          <input v-model="resumeData.ui.copy.message" placeholder="复制提示内容" class="input input-bordered input-sm" />
-          <input v-model="resumeData.ui.exportPdf.button" placeholder="导出按钮" class="input input-bordered input-sm" />
-          <input v-model="resumeData.ui.exportPdf.hint" placeholder="导出说明" class="input input-bordered input-sm" />
+          <input v-model="resumeData.ui.copy.title" placeholder="复制提示标题" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+          <input v-model="resumeData.ui.copy.message" placeholder="复制提示内容" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+          <input v-model="resumeData.ui.exportPdf.button" placeholder="导出按钮" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+          <input v-model="resumeData.ui.exportPdf.hint" placeholder="导出说明" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
         </div>
-        <p class="text-xs text-slate-500">区块标题</p>
+        <p class="text-xs text-[#6f6f6f]">区块标题</p>
         <div class="grid gap-2 sm:grid-cols-2">
-          <label v-for="key in sectionKeys" :key="key" class="form-control">
-            <span class="label py-0 text-[10px]">{{ key }}</span>
-            <input v-model="resumeData.ui.sections[key]" class="input input-bordered input-sm" />
+          <label v-for="key in sectionKeys" :key="key">
+            <span class="mb-1 block text-[10px] text-[#6f6f6f]">{{ key }}</span>
+            <input v-model="resumeData.ui.sections[key]" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
           </label>
         </div>
-        <p class="text-xs text-slate-500">项目标签</p>
+        <p class="text-xs text-[#6f6f6f]">项目标签</p>
         <div class="grid gap-2 sm:grid-cols-2">
-          <input v-model="resumeData.ui.labels.projectDescription" class="input input-bordered input-sm" />
-          <input v-model="resumeData.ui.labels.projectDuty" class="input input-bordered input-sm" />
-          <input v-model="resumeData.ui.labels.techStack" class="input input-bordered input-sm sm:col-span-2" />
+          <input v-model="resumeData.ui.labels.projectDescription" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+          <input v-model="resumeData.ui.labels.projectDuty" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+          <input v-model="resumeData.ui.labels.techStack" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20 sm:col-span-2" />
         </div>
       </section>
 
       <!-- 核心优势 -->
-      <section class="space-y-2 rounded-lg bg-white p-3 shadow-sm">
-        <h3 class="text-sm font-bold text-slate-800">核心优势（每行一条）</h3>
-        <textarea v-model="featuresText" class="textarea textarea-bordered textarea-sm min-h-[8rem] w-full font-mono text-xs" />
+      <section class="space-y-2.5 rounded-xl border border-[#e8e8e8] bg-white p-4 shadow-sm">
+        <h3 class="text-sm font-bold text-[#161616]">核心优势（每行一条）</h3>
+        <textarea v-model="featuresText" class="w-full min-h-[8rem] rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] p-3 font-mono text-xs text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
       </section>
 
       <!-- 工作与项目经历 -->
-      <section class="space-y-3 rounded-lg bg-white p-3 shadow-sm">
+      <section class="space-y-3 rounded-xl border border-[#e8e8e8] bg-white p-4 shadow-sm">
         <div class="flex items-center justify-between">
-          <h3 class="text-sm font-bold text-slate-800">工作与项目经历</h3>
-          <button type="button" class="btn btn-ghost btn-xs" @click="addExperienceCompany">+ 公司 / 组织</button>
+          <h3 class="text-sm font-bold text-[#161616]">工作与项目经历</h3>
+          <button type="button" class="rounded-lg px-2.5 py-1.5 text-xs font-medium text-[#0f62fe] transition-all duration-200 hover:bg-[#0f62fe]/8" @click="addExperienceCompany">+ 公司 / 组织</button>
         </div>
-        <p class="text-xs text-slate-400">拖拽 ⣿ 手柄可调整公司顺序</p>
+        <p class="text-xs text-[#a8a8a8]">拖拽 ⣿ 手柄可调整公司顺序</p>
         <div
           v-for="(exp, ei) in resumeData.experience"
           :key="exp.id || ei"
-          class="space-y-2 rounded border border-slate-200 p-2 transition"
+          class="space-y-2 rounded-lg border border-[#e0e0e0] p-2.5 transition"
           :class="{
-            'border-sky-400 bg-sky-50': expSort.overIndex.value === ei,
+            'border-[#0f62fe]/60 bg-[#0f62fe]/5': expSort.overIndex.value === ei,
             'opacity-40': expSort.dragIndex.value === ei,
           }"
           @dragover="expSort.onDragOver(ei, $event)"
@@ -179,23 +178,23 @@
           @dragend="expSort.onDragEnd"
         >
           <div class="flex flex-wrap items-center gap-1">
-            <span class="cursor-grab text-slate-400" draggable="true" @dragstart="expSort.onDragStart(ei)">⣿</span>
-            <input v-model="exp.company" placeholder="公司 / 组织名" class="input input-bordered input-sm min-w-[8rem] flex-1" />
-            <input v-model="exp.icon" placeholder="图标路径（可选）/icons/..." class="input input-bordered input-sm min-w-[8rem] flex-1" />
-            <button type="button" class="btn btn-ghost btn-xs" @click="removeExperienceCompany(ei)">删公司</button>
+            <span class="cursor-grab text-[#a8a8a8]" draggable="true" @dragstart="expSort.onDragStart(ei)">⣿</span>
+            <input v-model="exp.company" placeholder="公司 / 组织名" class="min-w-[8rem] flex-1 rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+            <input v-model="exp.icon" placeholder="图标路径（可选）/icons/..." class="min-w-[8rem] flex-1 rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+            <button type="button" class="rounded-lg px-2.5 py-1.5 text-xs font-medium text-[#6f6f6f] transition-all duration-200 hover:bg-[#f4f4f4] hover:text-[#161616]" @click="removeExperienceCompany(ei)">删公司</button>
           </div>
           <!-- 项目内拖拽 -->
           <div class="space-y-1">
             <div class="flex items-center gap-2">
-              <button type="button" class="btn btn-ghost btn-xs" @click="addExperienceProject(ei)">+ 项目</button>
-              <span class="text-xs text-slate-400">拖拽 ⣿ 调整项目顺序</span>
+              <button type="button" class="rounded-lg px-2.5 py-1.5 text-xs font-medium text-[#0f62fe] transition-all duration-200 hover:bg-[#0f62fe]/8" @click="addExperienceProject(ei)">+ 项目</button>
+              <span class="text-xs text-[#a8a8a8]">拖拽 ⣿ 调整项目顺序</span>
             </div>
             <div
               v-for="(proj, pi) in exp.projects"
               :key="proj.id || pi"
-              class="ml-2 space-y-1 border-l-2 border-sky-200 pl-2 transition"
+              class="ml-2 space-y-1 border-l-2 border-[#0f62fe]/30 pl-2.5 transition"
               :class="{
-                'border-sky-400 bg-sky-50': projSort.overIndex.value === pi,
+                'border-[#0f62fe] bg-[#0f62fe]/5': projSort.overIndex.value === pi,
                 'opacity-40': projSort.dragIndex.value === pi,
               }"
               @dragover="onProjDragOver(ei, pi, $event)"
@@ -203,7 +202,7 @@
               @dragend="onProjDragEnd"
             >
               <div class="flex items-center gap-1">
-                <span class="cursor-grab text-xs text-slate-400" draggable="true" @dragstart="onProjDragStart(ei, pi)">⣿</span>
+                <span class="cursor-grab text-xs text-[#a8a8a8]" draggable="true" @dragstart="onProjDragStart(ei, pi)">⣿</span>
               </div>
               <ResumeProjectFields v-model="exp.projects[pi]" @remove="removeExperienceProject(ei, pi)" />
             </div>
@@ -212,17 +211,17 @@
       </section>
 
       <!-- 教育背景 -->
-      <section class="space-y-2 rounded-lg bg-white p-3 shadow-sm">
+      <section class="space-y-2.5 rounded-xl border border-[#e8e8e8] bg-white p-4 shadow-sm">
         <div class="flex items-center justify-between">
-          <h3 class="text-sm font-bold text-slate-800">教育背景</h3>
-          <button type="button" class="btn btn-ghost btn-xs" @click="addEducation">+ 一条</button>
+          <h3 class="text-sm font-bold text-[#161616]">教育背景</h3>
+          <button type="button" class="rounded-lg px-2.5 py-1.5 text-xs font-medium text-[#0f62fe] transition-all duration-200 hover:bg-[#0f62fe]/8" @click="addEducation">+ 一条</button>
         </div>
         <div
           v-for="(row, i) in resumeData.education"
           :key="row.id || i"
-          class="grid gap-1 rounded border border-slate-100 p-2 transition sm:grid-cols-3"
+          class="grid gap-1.5 rounded-lg border border-[#f0f0f0] p-2 transition sm:grid-cols-3"
           :class="{
-            'border-sky-400 bg-sky-50': eduSort.overIndex.value === i,
+            'border-[#0f62fe]/60 bg-[#0f62fe]/5': eduSort.overIndex.value === i,
             'opacity-40': eduSort.dragIndex.value === i,
           }"
           @dragover="eduSort.onDragOver(i, $event)"
@@ -230,45 +229,45 @@
           @dragend="eduSort.onDragEnd"
         >
           <div class="flex items-center gap-1 sm:col-span-3">
-            <span class="cursor-grab text-xs text-slate-400" draggable="true" @dragstart="eduSort.onDragStart(i)">⣿</span>
-            <span class="text-xs text-slate-400">拖拽排序</span>
+            <span class="cursor-grab text-xs text-[#a8a8a8]" draggable="true" @dragstart="eduSort.onDragStart(i)">⣿</span>
+            <span class="text-xs text-[#a8a8a8]">拖拽排序</span>
           </div>
-          <input v-model="row.school" placeholder="学校" class="input input-bordered input-xs" />
-          <input v-model="row.major" placeholder="专业" class="input input-bordered input-xs" />
+          <input v-model="row.school" placeholder="学校" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-2.5 py-1.5 text-xs text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+          <input v-model="row.major" placeholder="专业" class="w-full rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-2.5 py-1.5 text-xs text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
           <div class="flex gap-1">
-            <input v-model="row.period" placeholder="时间" class="input input-bordered input-xs flex-1" />
-            <button type="button" class="btn btn-ghost btn-xs" @click="removeEducation(i)">删</button>
+            <input v-model="row.period" placeholder="时间" class="w-full flex-1 rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-2.5 py-1.5 text-xs text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+            <button type="button" class="rounded-lg px-2.5 py-1.5 text-xs font-medium text-[#6f6f6f] transition-all duration-200 hover:bg-[#f4f4f4] hover:text-[#161616]" @click="removeEducation(i)">删</button>
           </div>
         </div>
       </section>
 
       <!-- 专业技能 -->
-      <section class="space-y-2 rounded-lg bg-white p-3 shadow-sm">
-        <h3 class="text-sm font-bold text-slate-800">专业技能（每行一项）</h3>
-        <textarea v-model="skillsText" class="textarea textarea-bordered textarea-sm min-h-[6rem] w-full font-mono text-xs" />
+      <section class="space-y-2.5 rounded-xl border border-[#e8e8e8] bg-white p-4 shadow-sm">
+        <h3 class="text-sm font-bold text-[#161616]">专业技能（每行一项）</h3>
+        <textarea v-model="skillsText" class="w-full min-h-[6rem] rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] p-3 font-mono text-xs text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
       </section>
 
       <!-- 荣誉与获奖 -->
-      <section class="space-y-2 rounded-lg bg-white p-3 shadow-sm">
-        <h3 class="text-sm font-bold text-slate-800">荣誉与获奖（每行一条）</h3>
-        <textarea v-model="prizesText" class="textarea textarea-bordered textarea-sm min-h-[4rem] w-full font-mono text-xs" />
+      <section class="space-y-2.5 rounded-xl border border-[#e8e8e8] bg-white p-4 shadow-sm">
+        <h3 class="text-sm font-bold text-[#161616]">荣誉与获奖（每行一条）</h3>
+        <textarea v-model="prizesText" class="w-full min-h-[4rem] rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] p-3 font-mono text-xs text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
       </section>
 
       <!-- 其他实习 -->
-      <section class="space-y-3 rounded-lg bg-white p-3 shadow-sm">
+      <section class="space-y-3 rounded-xl border border-[#e8e8e8] bg-white p-4 shadow-sm">
         <div class="flex items-center justify-between">
-          <h3 class="text-sm font-bold text-slate-800">其他实习（可选）</h3>
-          <button type="button" class="btn btn-ghost btn-xs" @click="addInternshipCompany">+ 公司</button>
+          <h3 class="text-sm font-bold text-[#161616]">其他实习（可选）</h3>
+          <button type="button" class="rounded-lg px-2.5 py-1.5 text-xs font-medium text-[#0f62fe] transition-all duration-200 hover:bg-[#0f62fe]/8" @click="addInternshipCompany">+ 公司</button>
         </div>
-        <p class="text-xs text-slate-500">与「工作与项目」重复时只填一处即可；有数据时预览区会单独显示本区块。</p>
-        <div v-for="(exp, ei) in resumeData.internship" :key="exp.id || ei" class="space-y-2 rounded border border-slate-200 p-2">
+        <p class="text-xs text-[#6f6f6f]">与「工作与项目」重复时只填一处即可；有数据时预览区会单独显示本区块。</p>
+        <div v-for="(exp, ei) in resumeData.internship" :key="exp.id || ei" class="space-y-2 rounded-lg border border-[#e0e0e0] p-2.5">
           <div class="flex flex-wrap gap-1">
-            <input v-model="exp.company" placeholder="公司名" class="input input-bordered input-sm min-w-[8rem] flex-1" />
-            <input v-model="exp.icon" placeholder="图标路径 /icons/..." class="input input-bordered input-sm min-w-[8rem] flex-1" />
-            <button type="button" class="btn btn-ghost btn-xs" @click="removeInternshipCompany(ei)">删公司</button>
+            <input v-model="exp.company" placeholder="公司名" class="min-w-[8rem] flex-1 rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+            <input v-model="exp.icon" placeholder="图标路径 /icons/..." class="min-w-[8rem] flex-1 rounded-lg border border-[#e0e0e0] bg-[#f9f9f9] px-3 py-2 text-sm text-[#161616] outline-none transition-all duration-200 placeholder:text-[#a8a8a8] focus:border-[#0f62fe] focus:bg-white focus:ring-2 focus:ring-[#0f62fe]/20" />
+            <button type="button" class="rounded-lg px-2.5 py-1.5 text-xs font-medium text-[#6f6f6f] transition-all duration-200 hover:bg-[#f4f4f4] hover:text-[#161616]" @click="removeInternshipCompany(ei)">删公司</button>
           </div>
-          <button type="button" class="btn btn-ghost btn-xs" @click="addInternshipProject(ei)">+ 项目</button>
-          <div v-for="(proj, pi) in exp.projects" :key="proj.id || pi" class="ml-2 space-y-1 border-l-2 border-amber-200 pl-2">
+          <button type="button" class="rounded-lg px-2.5 py-1.5 text-xs font-medium text-[#0f62fe] transition-all duration-200 hover:bg-[#0f62fe]/8" @click="addInternshipProject(ei)">+ 项目</button>
+          <div v-for="(proj, pi) in exp.projects" :key="proj.id || pi" class="ml-2 space-y-1 border-l-2 border-amber-300 pl-2.5">
             <ResumeProjectFields v-model="exp.projects[pi]" @remove="removeInternshipProject(ei, pi)" />
           </div>
         </div>
@@ -624,14 +623,13 @@ function onReset() {
 </script>
 
 <style scoped>
-/* 快捷键提示样式 */
 kbd {
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
+  background: #f4f4f4;
+  border: 1px solid #e0e0e0;
   border-radius: 4px;
   padding: 1px 5px;
   font-size: 10px;
   font-family: monospace;
-  color: #64748b;
+  color: #6f6f6f;
 }
 </style>

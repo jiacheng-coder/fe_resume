@@ -3,14 +3,28 @@
   <transition name="fade">
     <div
       v-if="showCopyTip"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/30"
       @click="showCopyTip = false"
     >
-      <div class="modal-box relative rounded-lg bg-base-100 p-6 shadow-xl" @click.stop>
-        <h3 class="text-lg font-bold">{{ resume.ui.copy.title }}</h3>
-        <p class="py-4">{{ resume.ui.copy.message }}</p>
-        <div class="text-right">
-          <button class="btn btn-sm btn-primary" @click="showCopyTip = false">确定</button>
+      <div class="copy-tip-box relative w-full max-w-sm overflow-hidden bg-white" @click.stop>
+        <div class="h-1 w-full bg-gradient-to-r from-[#0f62fe] to-[#6f8fff]"></div>
+        <div class="px-6 pb-4 pt-5">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-lg font-bold text-[#161616]">{{ resume.ui.copy.title }}</h3>
+            <button
+              class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-[#6f6f6f] transition-all hover:bg-[#f4f4f4] hover:text-[#161616]"
+              @click="showCopyTip = false"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+          </div>
+          <p class="mt-2 text-sm leading-relaxed text-[#525252]">{{ resume.ui.copy.message }}</p>
+        </div>
+        <div class="flex items-center justify-end border-t border-[#e8e8e8] bg-[#fafafa] px-6 py-4">
+          <button
+            class="rounded-lg bg-gradient-to-r from-[#0f62fe] to-[#4589ff] px-5 py-2 text-xs font-semibold text-white shadow-[0_2px_8px_rgba(15,98,254,0.3)] transition-all duration-200 hover:shadow-[0_4px_16px_rgba(15,98,254,0.4)] hover:brightness-110"
+            @click="showCopyTip = false"
+          >确定</button>
         </div>
       </div>
     </div>
@@ -137,10 +151,15 @@ onMounted(() => {
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.2s ease;
+  transition: opacity 0.25s ease;
 }
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.copy-tip-box {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.03);
+  border-radius: 16px;
 }
 </style>

@@ -5,7 +5,7 @@
       <li class="mb-6" v-for="skill in resume.skills" :key="skill">
         <div>
           <span
-            class="skill-item mr-2 my-1 rounded-full border px-4 text-sm py-2 font-medium bg-gray-200 hover:text-white duration-300 hover:bg-my-blue hover:cursor-pointer skill">
+            class="skill-item mr-2 my-1 rounded-full border border-[#e0e0e0] bg-[#f4f4f4] px-4 py-2 text-sm font-medium text-[#161616] duration-300 hover:cursor-pointer hover:border-[#0f62fe] hover:bg-[#0f62fe] hover:text-white hover:shadow-[0_2px_8px_rgba(15,98,254,0.25)] skill">
             {{ skill }}
           </span>
         </div>

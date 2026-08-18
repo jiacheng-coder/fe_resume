@@ -1,37 +1,61 @@
 <template>
-  <div class="min-h-screen bg-slate-100">
+  <div class="min-h-screen bg-[#f0f4ff]">
     <!-- 加载中 -->
     <div v-if="loading" class="flex justify-center py-32">
-      <span class="loading loading-spinner loading-lg text-slate-400"></span>
+      <span class="loading loading-spinner loading-lg text-[#002FA7]"></span>
     </div>
 
     <!-- 未找到 -->
     <div v-else-if="!profile" class="flex flex-col items-center gap-4 py-32">
       <div class="text-6xl">😮</div>
-      <p class="text-slate-500">简历不存在或已被删除</p>
-      <router-link to="/" class="btn btn-primary btn-sm">返回列表</router-link>
+      <p class="text-[#5a6a8a]">简历不存在或已被删除</p>
+      <router-link to="/" class="rounded-lg bg-gradient-to-r from-[#002FA7] to-[#3366cc] px-5 py-2 text-xs font-semibold text-white shadow-[0_2px_8px_rgba(0,47,167,0.3)] transition-all duration-200 hover:shadow-[0_4px_16px_rgba(0,47,167,0.4)] hover:brightness-110">返回列表</router-link>
     </div>
 
     <!-- 编辑器布局 -->
     <div
       v-else
       ref="splitRef"
-      class="resume-page-wrap relative flex h-screen min-h-0 flex-col bg-slate-100 md:flex-row"
+      class="resume-page-wrap relative flex h-screen min-h-0 flex-col md:flex-row"
     >
-      <!-- 返回列表按钮（左上角浮动） -->
-      <router-link
-        to="/"
-        class="absolute left-3 top-3 z-20 btn btn-ghost btn-xs bg-white/80 shadow-sm backdrop-blur"
-      >← 列表</router-link>
+      <!-- 顶部工具栏 -->
+      <header class="absolute left-0 right-0 top-0 z-30 flex h-11 items-center border-b border-[#002FA7]/10 bg-white/80 px-4 backdrop-blur-md md:hidden">
+        <router-link
+          to="/"
+          class="flex items-center gap-1.5 text-sm font-medium text-[#002FA7] transition-colors hover:text-[#002FA7]/70"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+          </svg>
+          返回列表
+        </router-link>
+        <span class="ml-3 truncate text-xs text-[#5a6a8a]">{{ profile?.title || '编辑简历' }}</span>
+      </header>
+
       <!-- 左侧：预览 -->
       <div
         ref="leftPaneRef"
-        class="preview-pane flex min-h-0 flex-col overflow-hidden md:min-h-0 md:border-r md:border-slate-200"
+        class="preview-pane flex min-h-0 flex-col overflow-hidden bg-gradient-to-br from-[#e8f0ff] to-[#f0f4ff] pt-11 md:min-h-0 md:border-r md:border-[#002FA7]/10 md:pt-0"
         :class="{ 'flex-1': !isMd }"
         :style="leftPaneStyle"
       >
-        <div class="preview-scroll min-h-0 flex-1 overflow-y-auto p-3 md:p-4">
-          <div id="resume-print-root" class="mx-auto max-w-screen-lg bg-white p-4 shadow-sm hover:shadow-2xl">
+        <!-- 桌面端内嵌返回 -->
+        <div class="hidden items-center gap-2 border-b border-[#002FA7]/8 bg-white/60 px-4 py-2.5 backdrop-blur-sm md:flex">
+          <router-link
+            to="/"
+            class="flex items-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium text-[#002FA7] transition-all hover:bg-[#002FA7]/8"
+          >
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+            </svg>
+            列表
+          </router-link>
+          <span class="mx-1 text-[#002FA7]/20">|</span>
+          <span class="truncate text-xs text-[#5a6a8a]">{{ profile?.title }}</span>
+        </div>
+
+        <div class="preview-scroll min-h-0 flex-1 overflow-y-auto p-4 md:p-6">
+          <div id="resume-print-root" class="mx-auto max-w-screen-lg rounded-2xl bg-white/90 p-4 shadow-[0_4px_24px_rgba(0,47,167,0.08)] ring-1 ring-[#002FA7]/6 backdrop-blur transition-shadow duration-300 hover:shadow-[0_8px_40px_rgba(0,47,167,0.14)]">
             <ResumeRenderer :template-id="profile?.templateId" />
           </div>
         </div>
@@ -39,8 +63,8 @@
 
       <!-- 拖拽分隔条（仅桌面） -->
       <div
-        class="split-resizer no-print hidden h-1 shrink-0 cursor-row-resize touch-none bg-slate-200 hover:bg-sky-400 md:block md:h-auto md:w-1.5 md:cursor-col-resize"
-        :class="{ 'bg-sky-500': dragging }"
+        class="split-resizer no-print hidden h-1 shrink-0 cursor-row-resize touch-none bg-[#002FA7]/15 transition-colors hover:bg-[#002FA7] md:block md:h-auto md:w-1.5 md:cursor-col-resize"
+        :class="{ 'bg-[#002FA7]': dragging }"
         title="拖拽调整左右宽度"
         @mousedown.prevent="onStartDrag"
       />
@@ -48,7 +72,7 @@
       <!-- 右侧：编辑器 -->
       <aside
         ref="rightPaneRef"
-        class="no-print flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden border-t border-slate-200 md:min-h-0 md:border-t-0"
+        class="no-print flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden border-t border-[#002FA7]/10 bg-white pt-11 md:min-h-0 md:border-t-0 md:pt-0"
         :style="rightPaneStyle"
       >
         <ResumeEditor />

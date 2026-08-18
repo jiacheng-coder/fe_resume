@@ -1,29 +1,29 @@
 <template>
-  <div class="min-h-screen bg-slate-100">
+  <div class="min-h-screen bg-[#f4f4f4]">
     <!-- 顶部工具栏 -->
-    <div ref="toolbarRef" class="no-print fixed left-0 right-0 top-0 z-50 flex items-center justify-between bg-white/90 px-6 py-3 shadow-sm backdrop-blur" style="opacity: 0">
+    <div ref="toolbarRef" class="no-print fixed left-0 right-0 top-0 z-50 flex items-center justify-between border-b border-[#e8e8e8] bg-white/90 px-6 py-3 shadow-sm backdrop-blur" style="opacity: 0">
       <div class="flex items-center gap-3">
-        <router-link to="/" class="btn btn-ghost btn-sm">← 返回列表</router-link>
-        <span v-if="profile" class="text-sm font-medium text-slate-600">{{ profile.title }}</span>
+        <router-link to="/" class="flex items-center gap-1 rounded-lg border border-[#e0e0e0] bg-white px-3 py-1.5 text-xs font-medium text-[#525252] transition-all duration-200 hover:border-[#0f62fe]/50 hover:text-[#0f62fe] hover:shadow-sm">← 返回列表</router-link>
+        <span v-if="profile" class="text-sm font-medium text-[#161616]">{{ profile.title }}</span>
       </div>
       <ExportPdfButton />
     </div>
 
     <!-- 加载中 -->
     <div v-if="loading" class="flex justify-center py-32">
-      <span class="loading loading-spinner loading-lg text-slate-400"></span>
+      <span class="loading loading-spinner loading-lg text-[#0f62fe]"></span>
     </div>
 
     <!-- 未找到 -->
     <div v-else-if="!profile" class="flex flex-col items-center gap-4 py-32">
       <div class="text-6xl">😮</div>
-      <p class="text-slate-500">简历不存在或已被删除</p>
-      <router-link to="/" class="btn btn-primary btn-sm">返回列表</router-link>
+      <p class="text-[#6f6f6f]">简历不存在或已被删除</p>
+      <router-link to="/" class="rounded-lg bg-gradient-to-r from-[#0f62fe] to-[#4589ff] px-5 py-2 text-xs font-semibold text-white shadow-[0_2px_8px_rgba(15,98,254,0.3)] transition-all duration-200 hover:shadow-[0_4px_16px_rgba(15,98,254,0.4)] hover:brightness-110">返回列表</router-link>
     </div>
 
     <!-- 简历预览 -->
     <div v-else ref="contentRef" class="pt-16" style="opacity: 0">
-      <div id="resume-print-root" class="mx-auto max-w-screen-lg bg-white p-4 shadow-sm">
+      <div id="resume-print-root" class="mx-auto max-w-screen-lg rounded-xl bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
         <ResumeRenderer :template-id="profile?.templateId" />
       </div>
     </div>
@@ -54,7 +54,7 @@ const resumeComputed = computed<ResumeData>(() => {
   return {
     userInfo: { name: '', job: '', email: '', phone: '', wechat: '', resumeUrl: '', blogUrl: '', githubUrl: '' },
     ui: {
-      theme: { headerBackground: '#0284C7' },
+      theme: { headerBackground: '#0f62fe' },
       copy: { title: '', message: '' },
       exportPdf: { button: '导出 PDF', hint: '' },
       sections: { features: '', education: '', internship: '', projects: '', prizes: '', skills: '' },
