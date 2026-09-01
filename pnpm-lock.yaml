@@ -29,6 +29,12 @@ importers:
       vue-router:
         specifier: ^4.1.6
         version: https://registry.npmmirror.com/vue-router/-/vue-router-4.1.6.tgz(vue@https://registry.npmmirror.com/vue/-/vue-3.2.45.tgz)
+      zod:
+        specifier: ^3.25
+        version: 3.25.76
+      zod-to-json-schema:
+        specifier: ^3.23
+        version: 3.25.2(zod@3.25.76)
     devDependencies:
       '@tailwindcss/typography':
         specifier: ^0.5.8
@@ -1418,6 +1424,14 @@ packages:
     version: 1.10.2
     engines: {node: '>= 6'}
 
+  zod-to-json-schema@3.25.2:
+    resolution: {integrity: sha1-P6eZp7rdVUVBRy+2WEP9xGCy5ao=, tarball: http://r.npm.sankuai.com/zod-to-json-schema/download/zod-to-json-schema-3.25.2.tgz}
+    peerDependencies:
+      zod: ^3.25.28 || ^4
+
+  zod@3.25.76:
+    resolution: {integrity: sha1-JoQcP2/SKmonYOfMtxkXl2hHHjQ=, tarball: http://r.npm.sankuai.com/zod/download/zod-3.25.76.tgz}
+
 snapshots:
 
   '@babel/helper-string-parser@https://registry.npmmirror.com/@babel/helper-string-parser/-/helper-string-parser-7.19.4.tgz': {}
@@ -2484,3 +2498,9 @@ snapshots:
   xtend@https://registry.npmmirror.com/xtend/-/xtend-4.0.2.tgz: {}
 
   yaml@https://registry.npmmirror.com/yaml/-/yaml-1.10.2.tgz: {}
+
+  zod-to-json-schema@3.25.2(zod@3.25.76):
+    dependencies:
+      zod: 3.25.76
+
+  zod@3.25.76: {}

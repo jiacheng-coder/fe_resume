@@ -83,6 +83,15 @@
             </svg>
             <span>新建简历</span>
           </button>
+          <button
+            class="group inline-flex items-center gap-2 rounded-lg border border-[#0f62fe]/30 bg-white px-5 py-2.5 text-sm font-medium text-[#0f62fe] transition-all hover:border-[#0f62fe] hover:bg-[#0f62fe]/5 hover:shadow-lg hover:shadow-[#0f62fe]/15 active:scale-[0.98]"
+            @click="aiDialogOpen = true"
+          >
+            <svg class="h-4 w-4 transition-transform group-hover:scale-125" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z" />
+            </svg>
+            <span>AI 生成简历</span>
+          </button>
           <a
             v-if="store.profileList.value.length > 0"
             href="#my-resumes"
@@ -288,6 +297,11 @@
       @confirm="onCreateConfirm"
     />
 
+    <AIGenerateDialog
+      v-model="aiDialogOpen"
+      @success="onAIGenerateSuccess"
+    />
+
     <ConfirmDialog
       v-model="renameDialogOpen"
       title="重命名简历"
@@ -319,6 +333,7 @@ import { templates, roles, defaultTemplateId, getTemplate, getRole, buildRoleSee
 import type { ResumeProfile, ResumeExportFile, ResumeData } from '@/types/resume'
 import ConfirmDialog from '@/components/ConfirmDialog.vue'
 import TemplatePickerDialog from '@/components/TemplatePickerDialog.vue'
+import AIGenerateDialog from '@/components/AIGenerateDialog.vue'
 import { baseSeed as resumeSeed } from '@/config/seed'
 
 const router = useRouter()
@@ -603,6 +618,18 @@ async function onCreateConfirm(payload: { title: string; templateId: string; rol
   const baseSeed = resumeSeed
   const roleSeed = buildRoleSeed(baseSeed, role)
   const profile = await store.create(trimmed, roleSeed, payload.templateId, payload.roleId)
+  router.push('/editor/' + profile.id)
+}
+
+// ── AI 生成简历 ──────────────────────────────────────────
+
+const aiDialogOpen = ref(false)
+
+async function onAIGenerateSuccess(payload: { data: ResumeData; templateId: string }) {
+  // 标题默认取生成结果里的姓名，缺省为「AI 生成简历」
+  const name = payload.data.userInfo.name.trim()
+  const title = name ? `${name}的简历` : 'AI 生成简历'
+  const profile = await store.create(title, payload.data, payload.templateId)
   router.push('/editor/' + profile.id)
 }
 

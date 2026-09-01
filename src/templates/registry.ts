@@ -1,7 +1,10 @@
 import { defineAsyncComponent, h, type Component } from 'vue'
 import type { ResumeData } from '@/types/resume'
+import { templateSchemas, getSchemaByTemplateId, type ResumeSchema } from '@/schema/templates'
 
 // ── 布局模板 ────────────────────────────────────────────────
+
+export type { ResumeSchema } from '@/schema/templates'
 
 export type TemplateMeta = {
   id: string
@@ -12,6 +15,8 @@ export type TemplateMeta = {
   /** 布局特点标签（用于卡片展示） */
   tags: string[]
   component: Component
+  /** 该模板的简历数据 schema；注册于 src/schema/templates.ts */
+  schema: ResumeSchema
 }
 
 /** 异步加载时的 loading 占位组件 */
@@ -69,6 +74,7 @@ export const templates: TemplateMeta[] = [
     thumbnailColor: '#059669',
     tags: ['标签技能', '卡片化', '绿色主题'],
     component: AITemplate,
+    schema: templateSchemas.ai,
   },
   {
     id: 'classic',
@@ -77,6 +83,7 @@ export const templates: TemplateMeta[] = [
     thumbnailColor: '#0284C7',
     tags: ['单栏', '传统', '横幅头图'],
     component: ClassicTemplate,
+    schema: templateSchemas.classic,
   },
   {
     id: 'modern',
@@ -85,6 +92,7 @@ export const templates: TemplateMeta[] = [
     thumbnailColor: '#7C3AED',
     tags: ['双栏', '侧边栏', '现代感'],
     component: ModernTemplate,
+    schema: templateSchemas.modern,
   },
 ]
 
@@ -93,6 +101,11 @@ export const defaultTemplateId = 'ai'
 export function getTemplate(id: string | undefined): TemplateMeta {
   if (!id) return templates[0]
   return templates.find((t) => t.id === id) ?? templates[0]
+}
+
+/** 获取模板对应的简历 schema（未知 id 回退默认模板的 schema） */
+export function getTemplateSchema(id: string | undefined): ResumeSchema {
+  return getSchemaByTemplateId(getTemplate(id).id)
 }
 
 // ── 角色模板 ────────────────────────────────────────────────

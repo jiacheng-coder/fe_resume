@@ -16,6 +16,13 @@ export default defineConfig({
   server: {
     hmr: true,
     open: true,
+    // 本地开发时将 /api 转发给 vercel dev（需另开终端运行 `vercel dev --listen 3000`）
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+    },
   },
   build: {
     minify: 'esbuild',

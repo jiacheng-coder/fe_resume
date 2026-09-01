@@ -1,9 +1,10 @@
 import { db } from './index'
-import type { ResumeProfile, ResumeData, ResumeExportFile, SectionKey } from '@/types/resume'
+import type { ResumeProfile, ResumeData, ResumeExportFile } from '@/types/resume'
 import { cloneResume } from '@/utils/resumeClone'
 import { ensureEntityIds } from '@/utils/ensureEntityIds'
 import { baseSeed as seed } from '@/config/seed'
-import { defaultTemplateId, defaultRoleId } from '@/templates/registry'
+import { defaultTemplateId, defaultRoleId, getTemplateSchema } from '@/templates/registry'
+import { normalize } from '@/schema/transform'
 
 
 /** 生成唯一 ID */
@@ -120,11 +121,11 @@ export async function exportProfile(id: string): Promise<ResumeExportFile | unde
 }
 
 /**
- * 校验并补全导入的 profile 数据。
- * 确保每个字段都存在且类型正确，缺失的用默认值补全。
- * 返回补全后的 profile，如果结构严重不合法则抛出错误。
+ * 校验并补全导入的 profile 数据（结构校验由模板 schema 统一完成）。
+ * 缺失字段用 schema 默认值补全，未知字段丢弃；结构严重不合法则抛错。
+ * 该函数同时被 AI 生成简历链路复用。
  */
-function normalizeProfile(raw: unknown, index: number): ResumeProfile {
+export function normalizeProfile(raw: unknown, index: number): ResumeProfile {
   if (!raw || typeof raw !== 'object') {
     throw new Error(`第 ${index + 1} 份简历数据不是有效对象`)
   }
@@ -136,132 +137,19 @@ function normalizeProfile(raw: unknown, index: number): ResumeProfile {
   }
 
   const now = new Date().toISOString()
-  const rawData = (obj.data ?? {}) as Record<string, unknown>
+  const templateId = typeof obj.templateId === 'string' && obj.templateId
+    ? obj.templateId
+    : defaultTemplateId
 
-  const normalizedProfile: ResumeProfile = {
+  return {
     id: obj.id,
     title: typeof obj.title === 'string' && obj.title ? obj.title : '未命名简历',
-    templateId: typeof obj.templateId === 'string' ? obj.templateId : defaultTemplateId,
+    templateId,
     roleId: typeof obj.roleId === 'string' ? obj.roleId : undefined,
-    data: {
-      userInfo: normalizeUserInfo(rawData.userInfo),
-      ui: normalizeUi(rawData.ui),
-      education: normalizeEducation(rawData.education),
-      skills: normalizeStringArray(rawData.skills),
-      prizes: normalizeStringArray(rawData.prizes),
-      features: normalizeStringArray(rawData.features),
-      experience: normalizeExperience(rawData.experience),
-      internship: normalizeExperience(rawData.internship),
-      sectionOrder: normalizeSectionOrder(rawData.sectionOrder),
-    },
+    data: ensureEntityIds(normalize(getTemplateSchema(templateId), obj.data)),
     createdAt: typeof obj.createdAt === 'string' ? obj.createdAt : now,
     updatedAt: typeof obj.updatedAt === 'string' ? obj.updatedAt : now,
   }
-  // 确保所有实体都有 ID
-  normalizedProfile.data = ensureEntityIds(normalizedProfile.data)
-  return normalizedProfile
-}
-
-function normalizeUserInfo(raw: unknown): ResumeData['userInfo'] {
-  const obj = (raw ?? {}) as Record<string, unknown>
-  return {
-    name: typeof obj.name === 'string' ? obj.name : '',
-    job: typeof obj.job === 'string' ? obj.job : '',
-    email: typeof obj.email === 'string' ? obj.email : '',
-    phone: typeof obj.phone === 'string' ? obj.phone : '',
-    wechat: typeof obj.wechat === 'string' ? obj.wechat : '',
-    resumeUrl: typeof obj.resumeUrl === 'string' ? obj.resumeUrl : '',
-    blogUrl: typeof obj.blogUrl === 'string' ? obj.blogUrl : '',
-    githubUrl: typeof obj.githubUrl === 'string' ? obj.githubUrl : '',
-    notionUrl: typeof obj.notionUrl === 'string' ? obj.notionUrl : undefined,
-    avatar: typeof obj.avatar === 'string' ? obj.avatar : undefined,
-  }
-}
-
-function normalizeUi(raw: unknown): ResumeData['ui'] {
-  const obj = (raw ?? {}) as Record<string, unknown>
-  const theme = (obj.theme ?? {}) as Record<string, unknown>
-  const copy = (obj.copy ?? {}) as Record<string, unknown>
-  const exportPdf = (obj.exportPdf ?? {}) as Record<string, unknown>
-  const sections = (obj.sections ?? {}) as Record<string, unknown>
-  const labels = (obj.labels ?? {}) as Record<string, unknown>
-  return {
-    theme: { headerBackground: typeof theme.headerBackground === 'string' ? theme.headerBackground : '#0284C7' },
-    copy: {
-      title: typeof copy.title === 'string' ? copy.title : '',
-      message: typeof copy.message === 'string' ? copy.message : '',
-    },
-    exportPdf: {
-      button: typeof exportPdf.button === 'string' ? exportPdf.button : '导出 PDF',
-      hint: typeof exportPdf.hint === 'string' ? exportPdf.hint : '',
-    },
-    sections: {
-      features: typeof sections.features === 'string' ? sections.features : '核心优势',
-      education: typeof sections.education === 'string' ? sections.education : '教育背景',
-      internship: typeof sections.internship === 'string' ? sections.internship : '其他实习',
-      projects: typeof sections.projects === 'string' ? sections.projects : '工作与项目经历',
-      prizes: typeof sections.prizes === 'string' ? sections.prizes : '荣誉与获奖',
-      skills: typeof sections.skills === 'string' ? sections.skills : '专业技能',
-    },
-    labels: {
-      projectDescription: typeof labels.projectDescription === 'string' ? labels.projectDescription : '项目描述:',
-      projectDuty: typeof labels.projectDuty === 'string' ? labels.projectDuty : '项目职责:',
-      techStack: typeof labels.techStack === 'string' ? labels.techStack : '主要技术:',
-    },
-  }
-}
-
-function normalizeEducation(raw: unknown): ResumeData['education'] {
-  if (!Array.isArray(raw)) return []
-  return raw.map((item: unknown) => {
-    const obj = (item ?? {}) as Record<string, unknown>
-    return {
-      id: typeof obj.id === 'string' ? obj.id : '',
-      school: typeof obj.school === 'string' ? obj.school : '',
-      major: typeof obj.major === 'string' ? obj.major : '',
-      period: typeof obj.period === 'string' ? obj.period : '',
-    }
-  })
-}
-
-function normalizeStringArray(raw: unknown): string[] {
-  if (!Array.isArray(raw)) return []
-  return raw.filter((item: unknown): item is string => typeof item === 'string')
-}
-
-function normalizeExperience(raw: unknown): ResumeData['experience'] {
-  if (!Array.isArray(raw)) return []
-  return raw.map((item: unknown) => {
-    const obj = (item ?? {}) as Record<string, unknown>
-    const projects = Array.isArray(obj.projects) ? obj.projects.map((p: unknown) => {
-      const po = (p ?? {}) as Record<string, unknown>
-      return {
-        id: typeof po.id === 'string' ? po.id : '',
-        name: typeof po.name === 'string' ? po.name : '',
-        job: typeof po.job === 'string' ? po.job : '',
-        time: typeof po.time === 'string' ? po.time : '',
-        introduce: typeof po.introduce === 'string' ? po.introduce : '',
-        myContribution: Array.isArray(po.myContribution)
-          ? po.myContribution.filter((x: unknown): x is string => typeof x === 'string')
-          : [],
-        skills: typeof po.skills === 'string' ? po.skills : '',
-        more: typeof po.more === 'string' ? po.more : '',
-      }
-    }) : []
-    return {
-      id: typeof obj.id === 'string' ? obj.id : '',
-      company: typeof obj.company === 'string' ? obj.company : '',
-      icon: typeof obj.icon === 'string' ? obj.icon : '',
-      projects,
-    }
-  })
-}
-
-function normalizeSectionOrder(raw: unknown): SectionKey[] | undefined {
-  if (!Array.isArray(raw)) return undefined
-  const valid: SectionKey[] = ['features', 'projects', 'internship', 'education', 'skills', 'prizes']
-  const filtered = raw.filter((k: unknown): k is SectionKey => typeof k === 'string' && valid.includes(k as SectionKey))
-  return filtered.length > 0 ? filtered : undefined
 }
 
 /** 从导入文件恢复简历（已有相同 id 的会被覆盖，自动校验并补全缺失字段） */
